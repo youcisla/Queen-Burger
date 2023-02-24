@@ -8,17 +8,12 @@ function headerBuildHome(){
     element.addEventListener('click',e =>{
         element.classList.toggle("header_click");
     });
-}
+    }
 
-headerBuildHome();
+headerBuildHome()
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-function bodyBuild(){
-    // variable difinitions
-    const element = document.querySelector(body);
 
-    // functions and EventListeners
 
-}
-
-bodyBuild()
+/////////////////////////////////////////////////////////////////////////////////////////////

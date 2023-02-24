@@ -1,23 +1,38 @@
 :root{
     /* --Colors-- */
-    --greenish:#99ff33;
-    --orangeish:#ffd11a;
-    --resish:#ff471a;
+    --first-color:#99ff33;
+    --second-color:#ffd11a;
+    --third-color:#ff471a;
+    --forth-color:#ffffff;
+    --fifth-color:#000000;
     
 }
 
 body{   
-    background-color: var(--greenish);
+    background-color: var(--first-color);
     width: auto;
     height: max-content;
 }
-
+/* --------header-------- */
 header{
-    background-color: var(--resish);
+    background-color: var(--third-color);
     height:  5em;
     border-radius: 40px;
     width: 5em;
     transition: 1s;
+    display: flex;  
+    flex-direction: row;
+    justify-content: space-evenly;
+    overflow: hidden;
+    align-items: center;
+}
+header *{
+    border: 2px solid var(--forth-color);
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    transform: skewX(-15deg);
 }
 
 .header_click{
