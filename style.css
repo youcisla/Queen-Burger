@@ -65,3 +65,66 @@ nav a {
   background-color: #c40008;
 }
 
+#menu {
+background-color: #f4f4f4;
+padding: 50px;
+text-align: center;
+}
+
+#menu h2 {
+font-size: 36px;
+margin-bottom: 20px;
+}
+
+#menu p {
+font-size: 18px;
+margin-bottom: 30px;
+}
+
+/* Styles pour le localisateur */
+#localisateur {
+background-color: #ed1c24;
+color: white;
+padding: 50px;
+text-align: center;
+}
+
+#localisateur h2 {
+font-size: 36px;
+margin-bottom: 20px;
+}
+
+#localisateur p {
+font-size: 18px;
+margin-bottom: 30px;
+}
+
+/* Styles pour les offres spéciales */
+#offres {
+background-color: #f4f4f4;
+padding: 50px;
+text-align: center;
+}
+
+#offres h2 {
+font-size: 36px;
+margin-bottom: 20px;
+}
+
+#offres p {
+font-size: 18px;
+margin-bottom: 30px;
+}
+
+/* Styles pour le footer */
+footer {
+background-color: #333;
+color: white;
+padding: 20px;
+text-align: center;
+}
+
+footer p {
+font-size: 18px;
+margin-bottom: 10px;
+}
