@@ -1,0 +1,67 @@
+/* Réinitialiser les styles par défaut */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Styles pour le header */
+header {
+  background-color: #ed1c24;
+  color: white;
+  padding: 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Styles pour le hero */
+#hero {
+  background-image: url("https://www.bk.com/sites/default/files/1200x800_Banner.jpg");
+  background-size: cover;
+  background-position: center center;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#hero h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+#hero p {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.button {
+  display: inline-block;
+  background-color: #ed1c24;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #c40008;
+}
+
