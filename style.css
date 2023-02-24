@@ -1,3 +1,26 @@
 :root{
-  
+    /* --Colors-- */
+    --greenish:#99ff33;
+    --orangeish:#ffd11a;
+    --resish:#ff471a;
+    
+}
+
+body{   
+    background-color: var(--greenish);
+    width: auto;
+    height: max-content;
+}
+
+header{
+    background-color: var(--resish);
+    height:  5em;
+    border-radius: 40px;
+    width: 5em;
+    transition: 1s;
+}
+
+.header_click{
+    width: 100%;   
+    transition: 1s;
 }
