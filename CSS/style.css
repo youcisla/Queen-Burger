@@ -7,13 +7,16 @@
     --fifth-color:#000000;
     
 }
-
+html,body{
+    margin: 0;
+    padding: 0;
+}
 body{   
     background-color: var(--first-color);
-    width: auto;
-    height: max-content;
+    width: 100%;
 }
 /* --------header-------- */
+/* le header va etre modifer */
 header{
     background-color: var(--third-color);
     height:  5em;
@@ -25,6 +28,8 @@ header{
     justify-content: space-evenly;
     overflow: hidden;
     align-items: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 header *{
     border: 2px solid var(--forth-color);
@@ -38,5 +43,38 @@ header *{
 .header_click{
     width: 100%;   
     transition: 1s;
+
 }
 
+/* -----Body-----*/
+#core{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+#core > div{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 70vh;
+    padding: 1em;
+}
+
+.L70percent{
+    width: 70%;
+    /* bg color temporary */
+    background-color: var(--second-color);
+    border-radius: 40px;
+}
+.L30percent{
+    width: 30%;
+    
+}
+/* fix pour tout les image */
+
+img{
+    height: 100%;
+    width: 100%;
+}
