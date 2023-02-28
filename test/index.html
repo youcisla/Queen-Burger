@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="dick"></div>
+
+    <script>
+        function createCalendarDivs(parent,id,classs){
+            div=`
+                <div id=${id} class=${classs}>
+                    <div class="title"></div>
+                    <div class="calendarDivBody"></div>
+                </div>
+                `;
+            position="beforeend";
+            parent.insertAdjacentHTML(position, div);
+           
+        }
+        function createCalendarANDColumns(parent,id,classs){
+            const table = document.createElement("div");
+            table.id = id;
+            table.classList.add(classs);
+            parent.appendChild(table);
+            return table
+        }
+
+        function createCalendar(parentID,lignes,columns){
+            // create calendar
+            const parent=document.querySelector(`#${parentID}`);
+            let calendar = createCalendarANDColumns(parent,"calendar","calendar");
+            
+            for(let ligne = 0 ; ligne < lignes ; ligne++ ){
+                let intermidiateDiv = createCalendarANDColumns(calendar,`cal_${ligne}`,"cal");
+                for(let column = 0 ; column < columns ; column++ ){
+                    createCalendarDivs(intermidiateDiv,`cal_${ligne}_${column}`,"task");
+                    console.log("dick");
+                }
+            }
+        }
+        createCalendar("dick",7,10);
+    </script>
+    <style>
+    </style>
+</body>
+</html>
