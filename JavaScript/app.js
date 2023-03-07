@@ -14,6 +14,16 @@ headerBuildHome()
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////
-
-
+//test for header
+function test(){
+    var body = document.body,html = document.documentElement;
+    console.log( body.scrollHeight)
+    console.log(body.offsetHeight)
+    console.log(body.clientHeight)
+    
+    console.log(html.scrollHeight)
+    console.log(html.offsetHeight)
+    console.log(html.clientHeight)
+}
+test();
 /////////////////////////////////////////////////////////////////////////////////////////////
