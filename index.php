@@ -1,4 +1,4 @@
 <?php
 session_start();
-include_once "test/jdid.php";
+include_once "Public/accueil.php";
 ?>
