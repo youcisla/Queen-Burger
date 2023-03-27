@@ -27,3 +27,20 @@ function test(){
 }
 test();
 /////////////////////////////////////////////////////////////////////////////////////////////
+var nombreTables = 0;
+
+function ajouterTable() {
+  nombreTables++;
+  var tableHtml = '<div class="table">Table ' + nombreTables + '</div>';
+  document.getElementById("tables-container").insertAdjacentHTML('beforeend', tableHtml);
+  document.getElementById("total-tables").textContent = nombreTables;
+}
+
+function supprimerTable() {
+  if (nombreTables > 0) {
+    var lastTable = document.querySelector(".table:last-of-type");
+    lastTable.parentNode.removeChild(lastTable);
+    nombreTables--;
+    document.getElementById("total-tables").textContent = nombreTables;
+  }
+}
