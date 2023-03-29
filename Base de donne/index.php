@@ -6,7 +6,6 @@ function bdd(){
         $name="burgerqueen";
         $bdd = new mysqli($host,$user,$pass,$name);
         return $bdd;
-
 }
 
 ?>
