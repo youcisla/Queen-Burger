@@ -1,23 +1,17 @@
-<?php
-include_once "HTML/header.php";
+<?php 
+    include_once 'header.php';
 ?>
-<form action="." method="post">
-    <div class="container">
-        <div class="card">
-            Queen Burger
-            <div class="cardBody">
-                Choose Your Menu
-            </div>
-        </div>
-    </div>
-</form>
-<div id="tables-container">
-  <h2>Tables</h2>
-  <p>Total : <span id="total-tables"></span></p>
+<head>
+  <title>Table Management</title>
+  <link rel="stylesheet" type="text/css" href="/Queen-Burger/CSS/style.css">
+  <script src="../JavaScript/app.js"></script>
+</head>
+<body>
   <button onclick="ajouterTable()">Ajouter une table</button>
-  <button onclick="supprimerTable()">Supprimer une table</button>
-</div>
-
-<?php
-include_once "HTML/footer.php";
+  <button onclick="supprimerTable()">Supprimer la dernière table</button>
+  <div id="tables-container"></div>
+  <p>Nombre total de tables: <span id="total-tables">0</span></p>
+</body>
+<?php 
+    include_once 'footer.php';
 ?>

@@ -4,6 +4,3 @@
         Powered by Groupe Queen Burger
     </div>
 </footer>
-</body>
-
-</html>

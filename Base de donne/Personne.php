@@ -1,7 +1,7 @@
 <?php
 include 'index.php';
 function CreateTable(){
-    $sql1="CREATE TABLE IF NOT EXISTS Personne(
+    $sql="CREATE TABLE IF NOT EXISTS Personne(
         id INT NOT NULL AUTO_INCREMENT,
         nom VARCHAR(100) NOT NULL UNIQUE,
         prenom VARCHAR(100) NOT NULL ,
