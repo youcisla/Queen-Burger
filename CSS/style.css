@@ -19,42 +19,41 @@ body{
 }
 /* --------header-------- */
 /* le header va etre modifer */
-header{
-    background-color: var(--third-color);
-    height:  5em;
-    border-radius: 40px;
-    width: 5em;
-    transition: 1s;
-    display: flex;  
+#header{
+    width: 100%;
+    height: 10vh;
+}
+.floating_header{
+    height: 10vh;
+    width: 100%;
+    display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    overflow: hidden;
     align-items: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    justify-content: space-around;
+    background-color: var(--third-color);
+
 }
-header *{
+.floating_header_after_width{
+    width: 10%;
+}
+.floating_header_after{
+    position: fixed;
+    top: 2vh;
+    left: 2vw;
+}
+
+.floating_header > div {
     border: 2px solid var(--forth-color);
-    padding-top: 1em;
-    padding-bottom: 1em;
-    padding-left: 2em;
-    padding-right: 2em;
-    transform: skewX(-15deg);
+    transform: skew(-20deg);
+    padding: .5em 1em;
 }
-
-.header_click{
-    width: 100%;   
-    transition: 1s;
-
-}
-
 /* -----Body-----*/
 #core{
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    padding: 1em 0em 1em 0em;
+
 }
 #core > div{
     width: 100%;
