@@ -65,6 +65,7 @@ function ReadSecteur_Heure($id){
         }
         return $datas;
 }
+//zebi
 function DeleteSecteur_Heure($id){
     $sql="DELETE FROM Secteur_Heure WHERE id='$id'";
     bdd()->query($sql);
