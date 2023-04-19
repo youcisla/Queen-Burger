@@ -5,6 +5,7 @@
     --third-color:#ff471a;
     --forth-color:#ffffff;
     --fifth-color:#000000;
+    --sixth-color:gold;
     
 }
 html,body{
@@ -15,7 +16,6 @@ html,body{
 }
 body{   
     background-color: var(--first-color);
-    
 }
 /* --------header-------- */
 /* le header va etre modifer */
@@ -69,28 +69,130 @@ header *{
     /* bg color temporary */
     background-color: var(--second-color);
     border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.L30percent{
-    width: 30%;
-    
-}
+
 /* fix pour tout les image */
-
 img{
-    height: 100%;
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
-#tables-container {
-    border: 1px solid black;
-    padding: 10px;
+.tables{
+    width: 300px;
+}
+
+.L30percent {
+    margin:0px 5px;
+    padding :0px 5px;
+    border-radius: 40px;
+    border:solid 2px gold;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 10px;
   }
   
-.table {
+  .add-table-btn,
+  .delete-table-btn {
+    border: none;
+    background-color: var(--sixth-color);
+    color: var(--first-color);
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-table-btn:hover,
+  .delete-table-btn:hover {
+    background-color: var(--fifth-color);
+    color: var(--second-color);
+  }
+  
+  #tables-container {
+    display: flex;
+    flex-wrap: wrap; /* wrap items to new line */
+    justify-content: center; /* center items horizontally */
+    align-items: center; /* center items vertically */
+    width: 350px; /* adjust width to fill parent container */
+  }
+  
+  .table {
     border: 1px solid black;
     padding: 10px;
-    margin-bottom: 10px;
-}
+    margin: 10px;
+    border-radius: 10px;
+    width: 40px;
+    aspect-ratio: 1;
+    flex: 1 1 calc(25% - 20px); /* limit to 4 tables per row (25% = 100/4) */
+    max-width: calc(25% - 20px); /* add max-width to prevent overflow */
+  }  
   
+  .table:nth-of-type(n+10) {
+    display: none; /* Hide tables after the 15th */
+  }
+
+  .L30percent {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1em;
+  }
   
+  .table-buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .add-table-btn,
+  .delete-table-btn {
+    border: none;
+    background-color: var(--sixth-color);
+    color: var(--fifth-color);
+    padding: 10px 20px;
+    margin-right: 1em;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 45%;
+    height:10%;
+    margin:0px 2.5px;
+    display: flex;
+    place-content: center;
+    align-items: center;
+  }
+
+  .L30percent {
+    position: relative; /* set position of parent container */
+  }
+  
+  .add-table-btn {
+    /* button styles */
+    position: absolute; /* set position of buttons relative to parent container */
+    top: 10px; /* adjust top position as needed */
+    left: 10px; /* adjust left position as needed */
+  }
+
+  .delete-table-btn {
+    /* button styles */
+    position: absolute; /* set position of buttons relative to parent container */
+    top: 10px; /* adjust top position as needed */
+    right: 10px; /* adjust left position as needed */
+  }
+  
+  .table{
+    display: flex;
+    place-content: center;
+    align-items: center;
+  }

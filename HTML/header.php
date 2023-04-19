@@ -18,17 +18,7 @@
         <div>about us</div>
         <div>contact</div>
     </header>
-    <div id="core">
-        <div>
-            <div class="L70percent">text</div>
-            <div class="L30percent"></div>
-        </div>
-        <div>
-            <div class="L30percent"></div>
-            <div class="L70percent"><img src="/Queen-Burger/Images/RR.jpg"></div>
-        </div>
-    </div>
-    <script src="/Queen-Burger/JavaScript/app.js" defer></script>
+    <script src="/Queen-Burger/JavaScript/header.js" defer></script>
 </body>
 
 </html>

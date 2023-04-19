@@ -1,46 +1,33 @@
-/////////////////////////////////////////////////////////////////////////////////////////////
+function createCalendarDivs(parent,id,classs){
+    div=`
+        <div id=${id} class=${classs}>
+            <div class="title"></div>
+            <div class="calendarDivBody"></div>
+        </div>
+        `;
+    position="beforeend";
+    parent.insertAdjacentHTML(position, div);
+}
 
-function headerBuildHome(){
-    // variable difinitions
-    const element = document.querySelector("#header");
+function createCalendarElement(parent,id,classs){
+    const table = document.createElement("div");
+    table.id = id;
+    table.classList.add(classs);
+    parent.appendChild(table);
+    return table
+}
 
-    // functions and EventListeners
-    element.addEventListener('click',e =>{
-        element.classList.toggle("header_click");
-    });
-    }
-
-headerBuildHome()
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-//test for header
-function test(){
-    var body = document.body,html = document.documentElement;
-    console.log( body.scrollHeight)
-    console.log(body.offsetHeight)
-    console.log(body.clientHeight)
+function createCalendar(parentID,lignes,columns){
+    // create calendar
+    const parent=document.querySelector(`#${parentID}`);
+    let calendarDiv = createCalendarElement(parent,"calendarDiv","calendarDiv");
+    let calendarBody = createCalendarElement(calendarDiv,"calendarBody","calendarBody");
     
-    console.log(html.scrollHeight)
-    console.log(html.offsetHeight)
-    console.log(html.clientHeight)
+    for(let ligne = 0 ; ligne < lignes ; ligne++ ){
+        let intermidiateDiv = createCalendarElement(calendarBody,`day_${ligne+1}`,"day");
+        for(let column = 0 ; column < columns ; column++ ){
+            createCalendarElement(intermidiateDiv,`day_${ligne+1}_time_${column}`,"task");
+        }
+    }
 }
-test();
-/////////////////////////////////////////////////////////////////////////////////////////////
-var nombreTables = 0;
-
-function ajouterTable() {
-  nombreTables++;
-  var tableHtml = '<div class="table">Table ' + nombreTables + '</div>';
-  document.getElementById("tables-container").insertAdjacentHTML('beforeend', tableHtml);
-  document.getElementById("total-tables").textContent = nombreTables;
-}
-
-function supprimerTable() {
-  if (nombreTables > 0) {
-    var lastTable = document.querySelector(".table:last-of-type");
-    lastTable.parentNode.removeChild(lastTable);
-    nombreTables--;
-    document.getElementById("total-tables").textContent = nombreTables;
-  }
-}
+createCalendar("calendar",7,10);
