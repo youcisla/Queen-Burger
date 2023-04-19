@@ -2,8 +2,8 @@
 // La base de donnée
 include 'index.php';
 include 'Personne.php';
-include 'Emploie_du_temps.php'
-include 'Secteur.php'
+include 'Emploie_du_temps.php';
+include 'Secteur.php';
 function CreateTable(){
 
     $sql1="CREATE TABLE IF NOT EXISTS Serveur(
