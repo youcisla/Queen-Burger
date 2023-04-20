@@ -39,36 +39,6 @@
     </style>
     <script>    
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        const target = document.getElementById("droptarget");
-        let taskNumber = 0;
-
-        function createTask(event){
-            const child =  document.createElement("p");
-            child.id=`x_${taskNumber}`;
-            child.classList.add('draggable');
-            target.appendChild(child);
-            child.style.top = `${event.offsetY}px`;
-            createTab(taskNumber);
-            taskNumber++;
-        }
-
-        function creatTaskContainor(){
-            target.removeEventListener("click",createTask);
-            const resizer = document.querySelector(".resizer");
-            resizer.addEventListener('mousedown', initDrag, false);
-
-        }
-        
-        target.addEventListener('mouseover', function(event) {
-            if(event.target.classList.contains('draggable')){
-                console.log('mouseovered on child element');
-                event.target.addEventListener('click', creatTaskContainor);
-            }else{
-                target.addEventListener("click",createTask);
-            }
-        });
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /**
          * How to use:
          * In : element ID
@@ -80,7 +50,7 @@
         */
         function createTab(taskID){
             // variables
-            var p = document.querySelector(`#x_${taskID}`); // task
+            var p = document.querySelector(`#${taskID}`); // task
             var startY, startHeight;
             // functions to resize
             function initDrag(e) {
@@ -110,9 +80,41 @@
                 position="beforeend";
                 parent.insertAdjacentHTML(position, div);
             }
+            
             // initialize resizability
-            createInstance(`x_${taskID}`,"e");
+            createInstance(`${taskID}`,"e");
+            const resize = document.querySelector(`#r_${taskID}`);
+            resize.addEventListener('mousedown', initDrag, false);
         }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        const target = document.getElementById("droptarget");
+        let taskNumber = 0;
+
+        function createTask(event){
+            const child =  document.createElement("p");
+            child.id=`x_${taskNumber}`;
+            child.classList.add('draggable');
+            target.appendChild(child);
+            child.style.top = `${event.offsetY}px`;
+            createTab(`x_${taskNumber}`);
+            taskNumber++;
+        }
+
+        function creatTaskContainor(){
+            target.removeEventListener("click",createTask);
+
+
+        }
+        
+        target.addEventListener('mouseover', function(event) {
+            if(event.target.classList.contains('draggable')){
+                console.log('mouseovered on child element');
+                event.target.addEventListener('click', creatTaskContainor);
+            }else{
+                target.addEventListener("click",createTask);
+            }
+        });
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         
