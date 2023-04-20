@@ -12,7 +12,13 @@
         <div id="header"></div>
         <div id="subApp">
             <div id="detailsBar"></div>
-            <div id="main"></div>
+            <div id="main" style="z-index=-1;>
+            <div id="weekCal" style="z-index=1;">
+                <?php
+                    include_once "/Queen-Burger/test8resize/week.html";
+                ?>
+                </div>
+            </div>
             <div id="tools"></div>
         </div>
     </div>
