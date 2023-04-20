@@ -4,7 +4,7 @@
 
 <head>
     <title>Table Management</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="/Queen-Burger/CSS/style.css">
     <script src="../JavaScript/app.js"></script>
 </head>
 
