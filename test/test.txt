@@ -1,5 +1,0 @@
--screen height
--curser position
--curser start
--cursed end
--cursure up
