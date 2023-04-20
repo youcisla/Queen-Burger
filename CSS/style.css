@@ -36,6 +36,8 @@
 body{   
   background-color: var(--first-color);
   border: 1px solid var(--fifth-color);
+  height:100vh;
+  width:100%;
 }
 /* Hide scrollbar but keep scrolling functionality */
 body::-webkit-scrollbar {
@@ -104,21 +106,24 @@ header *{
   padding-bottom: 1em;
 }
 #core > div{
-  width: 100%;
   display: flex;
   flex-direction: row;
   height: 70vh;
   padding: 1em;
+  border: 2px solid pink;
+  justify-content: space-around;
+
 }
 
 .L70percent{
-  width: 70%;
+  width: 60%;
   /* bg color temporary */
   background-color: var(--second-color);
   border-radius: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 /* fix pour tout les image */
@@ -132,7 +137,6 @@ img{
 }
 
 .L30percent {
-  margin:0px 15px;
   padding :0px 5px;
   border-radius: 40px;
   border:solid 2px gold;
@@ -241,4 +245,96 @@ img{
   display: flex;
   place-content: center;
   align-items: center;
+}
+.L70_30{
+  gap:1px;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Lato', sans-serif;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+}
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+  /* Increase font size */
+  body {
+    font-size: 1.2em;
+  }
+  
+  /* Adjust the header and logo */
+  header {
+    height: 80px;
+    padding: 20px;
+  }
+  
+  .logo {
+    font-size: 2.5em;
+  }
+  
+  /* Adjust the navigation */
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  nav li {
+    margin: 0 15px;
+  }
+  
+  /* Increase the size of the images */
+  .services img,
+  .gallery img {
+    width: 400px;
+    height: 300px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media screen and (min-width: 992px) {
+  /* Increase font size */
+  body {
+    font-size: 1.3em;
+  }
+  
+  /* Adjust the header and logo */
+  header {
+    height: 100px;
+  }
+  
+  .logo {
+    font-size: 3em;
+  }
+  
+  /* Adjust the navigation */
+  nav ul {
+    width: 70%;
+  }
+  
+  nav li {
+    margin: 0 25px;
+  }
+  
+  /* Increase the size of the images */
+  .services img,
+  .gallery img {
+    width: 500px;
+    height: 350px;
+  }
+  
+}
+
+p {
+  overflow-wrap: break-word;
+  padding: 30px;
+  font-size: 25px;
+  line-height: 1.7em;
+  font-weight: 700;
 }
