@@ -68,21 +68,23 @@ section{
 }
 /* --------header-------- */
 /* le header va etre modifer */
-header{
-  background-color: var(--third-color);
-  height:  5em;
+<<<<<<< HEAD
+header {
+  background-image: url('/Queen-Burger/Images/burger_queen.png');
+  background-size: cover;
   border-radius: 40px;
-  width: 5em;
-  transition: 1s;
+  width: 4.5em;
+  aspect-ratio: 1;
   display: flex;  
   flex-direction: row;
   justify-content: space-evenly;
   overflow: hidden;
   align-items: center;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin: 1em 1em;
+  position:relative;
 }
-header *{
+
+header * {
   border: 2px solid var(--forth-color);
   padding-top: 1em;
   padding-bottom: 1em;
@@ -91,10 +93,53 @@ header *{
   transform: skewX(-15deg);
 }
 
+.header_bg {
+  background-image: url('/Queen-Burger/Images/bg.png');
+  background-size: cover;
+  border-radius: 40px;
+  width: 100%;   
+=======
+header{
+  background-color: var(--third-color);
+  height:  5em;
+  border-radius: 40px;
+  width: 5em;
+>>>>>>> 70cbb6b40728ae7b7187bc5e59b27d017762e5c5
+  transition: 1s;
+  display: flex;  
+  flex-direction: row;
+  justify-content: space-evenly;
+  overflow: hidden;
+  align-items: center;
+<<<<<<< HEAD
+  margin: 1em 1em;
+  position:relative;
+}
+
+.header_bg * {
+=======
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+header *{
+>>>>>>> 70cbb6b40728ae7b7187bc5e59b27d017762e5c5
+  border: 2px solid var(--forth-color);
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  transform: skewX(-15deg);
+}
+
+<<<<<<< HEAD
+.header_return{
+transition: 1s;
+=======
 .header_click{
   width: 100%;   
   transition: 1s;
 
+>>>>>>> 70cbb6b40728ae7b7187bc5e59b27d017762e5c5
 }
 
 /* -----Body-----*/
