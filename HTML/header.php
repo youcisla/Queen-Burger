@@ -14,7 +14,7 @@
         <!-- to be JSed-->
         <div><button onclick="goToReservation()">Reservation</button></div>
         <div><button onclick="goToMenu()">Menu</button></div>
-        <div><button onclick="goToHome()">Home</button></div>
+        <div><button onclick="goToHome()">Connexion</button></div>
         <div><button onclick="goToAbout()">About Us</button></div>
         <div><button onclick="goToContact()">Contact</button></div>
 
