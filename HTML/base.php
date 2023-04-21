@@ -26,7 +26,8 @@
             <div id="core">
                 <div class="L70_30">
                     <div class="L70percent">
-                        <p>Bienvenue sur le site de Queen Burger, l'endroit idéal pour déguster des hamburgers de
+                        <p>
+                            Bienvenue sur le site de Queen Burger, l'endroit idéal pour déguster des hamburgers de
                             qualité
                             supérieure dans un cadre confortable et convivial. Réservez votre table dès maintenant et
                             profitez de notre menu alléchant qui comprend des ingrédients frais et des recettes
@@ -47,14 +48,21 @@
                     <div class="L30percent">
                         <div class='tables'>
                             <div class="button-container">
-                                <button class="add-table-btn" onclick="ajouterTable()">Ajouter une table</button>
-                                <button class="delete-table-btn" onclick="supprimerTable()">Supprimer la dernière
-                                    table
+                                <button class="add-table-btn" onclick="ajouterTable()">
+                                    Add a table
+                                </button>
+                                <button class="delete-table-btn" onclick="supprimerTable()">
+                                    Delete last table
                                 </button>
                             </div>
                             <br><br>
                             <div id="tables-container"></div>
-                            <p>Nombre total de tables: <span id="total-tables">0</span></p>
+                            <p>
+                                Nombre total de tables:
+                                <span id="total-tables">
+                                    0
+                                </span>
+                            </p>
                         </div>
                     </div>
                     <div class="L70percent"><img src="/Queen-Burger/Images/bg.png"></div>
