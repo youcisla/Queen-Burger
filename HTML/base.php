@@ -20,7 +20,7 @@
                 </a>
             </button>
             <button class="buttonCalendar">
-                <a href="/Queen-Burger/HTML/week.html">
+                <a href="/Queen-Burger/test8resize/week.html">
                     Week
                 </a>
             </button>
