@@ -7,7 +7,8 @@ html,body{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-
+    /* flex-direction: row;
+    display: flex; */
 }
 #app{
     height: 100vh;

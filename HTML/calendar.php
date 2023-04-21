@@ -1,12 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <html>
 <div class="headerContainer">
     <?php 
         include_once 'header.php';
     ?>
 </div>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,16 +13,38 @@
     <title>Document</title>
     <link rel="stylesheet" href="../CSS/Calendar.css">
 </head>
+
 <body>
     <div id="app">
-        <div id = "date">
-            <div><p></p><p></p></div>
-            <div><p></p><p></p></div>
-            <div><p></p><p></p></div>
-            <div><p></p><p></p></div>
-            <div><p></p><p></p></div>
-            <div><p></p><p></p></div>
-            <div><p></p><p></p></div>
+        <div id="date">
+            <div>
+                <p></p>
+                <p></p>
+            </div>
+            <div>
+                <p></p>
+                <p></p>
+            </div>
+            <div>
+                <p></p>
+                <p></p>
+            </div>
+            <div>
+                <p></p>
+                <p></p>
+            </div>
+            <div>
+                <p></p>
+                <p></p>
+            </div>
+            <div>
+                <p></p>
+                <p></p>
+            </div>
+            <div>
+                <p></p>
+                <p></p>
+            </div>
         </div>
         <div id="main">
             <div id="calendar" class="calendar"></div>
@@ -33,10 +54,8 @@
     <script src="../JavaScript/date.js" defer></script>
     <script src="../JavaScript/calendar.js" defer></script>
 </body>
-<html>
-<div class="headerContainer">
-    <?php 
-        include_once 'footer.php';
-    ?>
-</div>
+<?php 
+    include_once 'footer.php';
+?>
+
 </html>

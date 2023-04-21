@@ -331,9 +331,9 @@ p {
   }
   
   /* Adjust the header and logo */
-  header {
-    /* height: 100px; */
-  }
+  /* header {
+    height: 100px;
+  } */
   
   .logo {
     font-size: 3em;
