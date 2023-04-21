@@ -11,14 +11,10 @@
 
 <body>
     <section class="homeBodyDiv">
-
-<<<<<<< HEAD
         <button
             style="padding: 10px 20px; font-size: 18px; background-color: #4CAF50; color: white; border: none; cursor: pointer;"><a
                 href="/Queen-Burger/HTML/calendar.php">Calendar</a>
-=======
         <button  style="padding: 10px 20px; font-size: 18px; background-color: #4CAF50; color: white; border: none; cursor: pointer;"><a href="/Queen-Burger/HTML/calendar.php">Calendar</a>
->>>>>>> 70cbb6b40728ae7b7187bc5e59b27d017762e5c5
         </button>
         <button
             style="padding: 10px 20px; font-size: 18px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
@@ -29,15 +25,11 @@
             <div class="L70_30">
                 <div class="L70percent">
                     <p>
-<<<<<<< HEAD
                         Bienvenue sur le site de Queen Burger, l'endroit idéal pour déguster des hamburgers de qualité
                         supérieure dans un cadre confortable et convivial. Réservez votre table dès maintenant et
                         profitez de notre menu alléchant qui comprend des ingrédients frais et des recettes innovantes
                         pour tous les goûts. Notre personnel attentionné sera heureux de vous accueillir et de rendre
                         votre expérience chez Queen Burger inoubliable.
-=======
-                    Bienvenue sur le site de Queen Burger, l'endroit idéal pour déguster des hamburgers de qualité supérieure dans un cadre confortable et convivial. Réservez votre table dès maintenant et profitez de notre menu alléchant qui comprend des ingrédients frais et des recettes innovantes pour tous les goûts. Notre personnel attentionné sera heureux de vous accueillir et de rendre votre expérience chez Queen Burger inoubliable.
->>>>>>> 70cbb6b40728ae7b7187bc5e59b27d017762e5c5
                     </p>
                 </div>
                 <div class="L30percent"></div>
