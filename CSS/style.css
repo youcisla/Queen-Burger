@@ -6,7 +6,6 @@
   align-items: center;
   justify-content: space-around;
   background-color: var(--third-color);
-
 }
 .floating_header_after_width{
   width: 10%;
@@ -79,6 +78,7 @@ header {
   align-items: center;
   margin: 1em 1em;
   position:relative;
+  border:solid 2px var(--second-color);
 }
 
 header * {
