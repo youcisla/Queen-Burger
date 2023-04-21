@@ -44,7 +44,7 @@
                         accueillir et de rendre votre expérience chez Queen Burger inoubliable.
                     </p>
                 </div>
-                <div class="L30percent"></div>
+                <div class="L30percent"><img src="/Queen-Burger/Images/burger.jpg"></div>
             </div>
             <div class="L70_30">
                 <div class="L30percent">
