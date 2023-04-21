@@ -34,8 +34,7 @@
 }  
 
 body{   
-  background-color: var(--first-color);
-  border: 1px solid var(--fifth-color);
+  background-color: var(--firth-color);
   height:100vh;
   width:100%;
 }
@@ -58,7 +57,6 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 section{
-  border: 1px solid red;
   width:100%;
   display:flex;
   place-content: center;
@@ -108,12 +106,14 @@ header * {
 }
 
 .header_bg * {
-  border: 2px solid var(--forth-color);
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 2em;
-  padding-right: 2em;
+   /* border: 2px solid var(--forth-color); */
+  padding: 1em;
   transform: skewX(-15deg);
+  border-radius: 50% 50% 0% 0%;
+  display: flex;
+  place-content: center;
+  align-items: center;
+}
 }
 
 .header_return{
@@ -133,7 +133,6 @@ transition: 1s;
   flex-direction: row;
   height: 70vh;
   padding: 1em;
-  border: 2px solid pink;
   justify-content: space-around;
 
 }
@@ -144,9 +143,10 @@ transition: 1s;
   background-color: var(--second-color);
   border-radius: 40px;
   display: flex;
-  justify-content: center;
+  place-content: center;
   align-items: center;
-
+  box-sizing: border-box;
+  padding: 10px;
 }
 
 /* fix pour tout les image */
@@ -163,6 +163,7 @@ img{
   padding :0px 5px;
   border-radius: 40px;
   border:solid 2px gold;
+  box-sizing: border-box;
 }
 
 .button-container {
@@ -193,10 +194,13 @@ img{
 
 #tables-container {
   display: flex;
-  flex-wrap: wrap; /* wrap items to new line */
   justify-content: center; /* center items horizontally */
   align-items: center; /* center items vertically */
   width: 350px; /* adjust width to fill parent container */
+  margin-top: 5em;
+  align-content: center;
+  flex-wrap: wrap;
+  transform: translate(-25px, -16px);
 }
 
 .table {
@@ -329,7 +333,7 @@ p {
   
   /* Adjust the header and logo */
   header {
-    height: 100px;
+    /* height: 100px; */
   }
   
   .logo {
@@ -354,10 +358,48 @@ p {
   
 }
 
-p {
+.descriprionHome {
   overflow-wrap: break-word;
   padding: 30px;
-  font-size: 25px;
+  font-size: 16px;
   line-height: 1.7em;
   font-weight: 700;
+  box-sizing: border-box;
+}
+.nbTables {
+  overflow-wrap: break-word;
+  padding: 30px;
+  font-size: 16px;
+  line-height: 1.7em;
+  font-weight: 700;
+  box-sizing: border-box;
+  transform: translate(15px, -60px);
+}
+#total-tables{
+  color:var(--second-color);
+}
+.headerContainer{
+  display: flex;
+  place-content: center;
+  align-items: center;
+}
+.buttonsUp{
+  display: flex;
+  place-content: center;
+  align-items: center;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+.buttonCalendar{
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: var(--second-color);
+  border: solid 2px var(--fifth-color);
+  color: var(--fifth-color);
+  /* border: none; */
+  cursor: pointer;
+  border-radius: 50% 50% 0% 0%;
+  margin:1em;
+  text-decoration: none;
 }
