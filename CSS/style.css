@@ -1,4 +1,4 @@
-.floating_header{
+.floating_header {
   height: 10vh;
   width: 100%;
   display: flex;
@@ -7,37 +7,38 @@
   justify-content: space-around;
   background-color: var(--third-color);
 }
-.floating_header_after_width{
+
+.floating_header_after_width {
   width: 10%;
 }
-.floating_header_after{
+
+.floating_header_after {
   position: fixed;
   top: 2vh;
   left: 2vw;
 }
 
-.floating_header > div {
+.floating_header>div {
   border: 2px solid var(--forth-color);
   transform: skew(-20deg);
   padding: .5em 1em;
 }
-:root{
-  /* --Colors-- */
-  --first-color:#ffffff;
-  --second-color:#ffd11a;
-  --third-color:#ff471a;
-  --forth-color:#ffffff;
-  --fifth-color:#000000;
-  --sixth-color:gold;
-  
-}  
 
-body{   
-  background-color: var(--firth-color);
-  height:100vh;
-  width:100%;
+:root {
+  --first-color: #ffffff;
+  --second-color: gold;
+  --third-color: #ff471a;
+  --forth-color: #ffffff;
+  --fifth-color: rgb(0, 0, 255);
+  --sixth-color: #000000;
 }
-/* Hide scrollbar but keep scrolling functionality */
+
+body {
+  background-color: var(--fourth-color);
+  height: 100vh;
+  width: 100%;
+}
+
 body::-webkit-scrollbar {
   width: 0.5em;
 }
@@ -47,38 +48,38 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #ccc;
+  background-color: var(--third-color);
   border-radius: 1em;
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background-color: #aaa;
+  background-color: var(--second-color);
 }
 
-section{
-  width:100%;
-  display:flex;
+section {
+  width: 100%;
+  display: flex;
   place-content: center;
   align-items: center;
   flex-direction: column;
-  /* overflow: hidden; */
 }
-/* --------header-------- */
-/* le header va etre modifer */
+
 header {
-  background-image: url('/Queen-Burger/Images/burger_queen.png');
-  background-size: cover;
-  border-radius: 40px;
-  width: 4.5em;
-  aspect-ratio: 1;
-  display: flex;  
+  background-image: url('/Queen-Burger/Images/bg.png');
+  background-position: -40px -40px;
+  background-size: 203%;
+  border-radius: 50%;
+  /*! width: 4.5em; */
+  /*! aspect-ratio: 1; */
+  display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   overflow: hidden;
   align-items: center;
   margin: 1em 1em;
-  position:relative;
-  border:solid 2px var(--second-color);
+  position: relative;
+  border: solid 10px var(--second-color);
+  cursor: pointer;
 }
 
 header * {
@@ -94,40 +95,39 @@ header * {
   background-image: url('/Queen-Burger/Images/bg.png');
   background-size: cover;
   border-radius: 40px;
-  width: 100%;   
+  width: 55%;
   transition: 1s;
-  display: flex;  
+  display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   overflow: hidden;
   align-items: center;
   margin: 1em 1em;
-  position:relative;
+  position: relative;
 }
 
 .header_bg * {
-   /* border: 2px solid var(--forth-color); */
   padding: 1em;
   transform: skewX(-15deg);
-  border-radius: 50% 50% 0% 0%;
+  border-radius: 50px;
   display: flex;
   place-content: center;
   align-items: center;
 }
 
-.header_return{
-transition: 1s;
+.header_return {
+  transition: 1s;
 }
 
-/* -----Body-----*/
-#core{
+#core {
   width: 100%;
   display: flex;
   flex-direction: column;
   padding-top: 1em;
   padding-bottom: 1em;
 }
-#core > div{
+
+#core>div {
   display: flex;
   flex-direction: row;
   height: 70vh;
@@ -136,9 +136,8 @@ transition: 1s;
 
 }
 
-.L70percent{
+.L70percent {
   width: 60%;
-  /* bg color temporary */
   background-color: var(--second-color);
   border-radius: 40px;
   display: flex;
@@ -148,20 +147,19 @@ transition: 1s;
   padding: 10px;
 }
 
-/* fix pour tout les image */
-img{
+img {
   max-width: 100%;
   max-height: 100%;
 }
 
-.tables{
+.tables {
   width: 300px;
 }
 
 .L30percent {
-  padding :0px 5px;
+  padding: 0px 5px;
   border-radius: 40px;
-  border:solid 2px gold;
+  border: solid 2px var(--second-color);
   box-sizing: border-box;
 }
 
@@ -175,7 +173,7 @@ img{
 .add-table-btn,
 .delete-table-btn {
   border: none;
-  background-color: var(--sixth-color);
+  background-color: var(--second-color);
   color: var(--first-color);
   padding: 10px 20px;
   margin-right: 10px;
@@ -193,9 +191,9 @@ img{
 
 #tables-container {
   display: flex;
-  justify-content: center; /* center items horizontally */
-  align-items: center; /* center items vertically */
-  width: 350px; /* adjust width to fill parent container */
+  justify-content: center;
+  align-items: center;
+  width: 350px;
   margin-top: 5em;
   align-content: center;
   flex-wrap: wrap;
@@ -203,18 +201,18 @@ img{
 }
 
 .table {
-  border: 1px solid black;
+  border: 1px solid var(--fifth-color);
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
   width: 40px;
   aspect-ratio: 1;
-  flex: 1 1 calc(25% - 20px); /* limit to 4 tables per row (25% = 100/4) */
-  max-width: calc(25% - 20px); /* add max-width to prevent overflow */
-}  
+  flex: 1 1 calc(25% - 20px);
+  max-width: calc(25% - 20px);
+}
 
 .table:nth-of-type(n+10) {
-  display: none; /* Hide tables after the 15th */
+  display: none;
 }
 
 .L30percent {
@@ -233,7 +231,7 @@ img{
 .add-table-btn,
 .delete-table-btn {
   border: none;
-  background-color: var(--sixth-color);
+  background-color: var(--second-color);
   color: var(--fifth-color);
   padding: 10px 20px;
   margin-right: 1em;
@@ -242,80 +240,80 @@ img{
   cursor: pointer;
   transition: background-color 0.3s ease;
   width: 45%;
-  height:10%;
-  margin:0px 2.5px;
+  height: 10%;
+  margin: 0px 2.5px;
   display: flex;
   place-content: center;
   align-items: center;
 }
 
 .L30percent {
-  position: relative; /* set position of parent container */
+  position: relative;
 }
 
 .add-table-btn {
-  /* button styles */
-  position: absolute; /* set position of buttons relative to parent container */
-  top: 10px; /* adjust top position as needed */
-  left: 10px; /* adjust left position as needed */
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .delete-table-btn {
-  /* button styles */
-  position: absolute; /* set position of buttons relative to parent container */
-  top: 10px; /* adjust top position as needed */
-  right: 10px; /* adjust left position as needed */
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
-.table{
+.table {
   display: flex;
   place-content: center;
   align-items: center;
 }
-.L70_30{
-  gap:1px;
+
+.L70_30 {
+  gap: 1px;
 }
+
 body {
   font-family: 'Montserrat', sans-serif;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: 'Lato', sans-serif;
 }
 
 p {
+  color: var(--fifth-color);
   font-family: 'Roboto', sans-serif;
 }
-/* Medium devices (tablets, 768px and up) */
+
 @media screen and (min-width: 768px) {
-  /* Increase font size */
+
   body {
     font-size: 1.2em;
   }
-  
-  /* Adjust the header and logo */
+
   header {
     height: 80px;
-    padding: 20px;
+    padding: 35px;
   }
-  
+
   .logo {
     font-size: 2.5em;
   }
-  
-  /* Adjust the navigation */
+
   nav ul {
     display: flex;
     justify-content: space-between;
     width: 50%;
     margin: 0 auto;
   }
-  
+
   nav li {
     margin: 0 15px;
   }
-  
-  /* Increase the size of the images */
+
   .services img,
   .gallery img {
     width: 400px;
@@ -323,38 +321,34 @@ p {
   }
 }
 
-/* Large devices (desktops, 992px and up) */
 @media screen and (min-width: 992px) {
-  /* Increase font size */
+
   body {
     font-size: 1.3em;
   }
-  
-  /* Adjust the header and logo */
-  /* header {
-    height: 100px;
-  } */
-  
+
+  header {
+    height: 16px;
+    width: 16px;
+  }
+
   .logo {
     font-size: 3em;
   }
-  
-  /* Adjust the navigation */
+
   nav ul {
     width: 70%;
   }
-  
+
   nav li {
     margin: 0 25px;
   }
-  
-  /* Increase the size of the images */
+
   .services img,
   .gallery img {
     width: 500px;
     height: 350px;
   }
-  
 }
 
 .descriprionHome {
@@ -365,6 +359,7 @@ p {
   font-weight: 700;
   box-sizing: border-box;
 }
+
 .nbTables {
   overflow-wrap: break-word;
   padding: 30px;
@@ -374,15 +369,20 @@ p {
   box-sizing: border-box;
   transform: translate(15px, -60px);
 }
-#total-tables{
-  color:var(--second-color);
+
+#total-tables {
+  color: var(--second-color);
 }
-.headerContainer{
+
+.headerContainer {
   display: flex;
   place-content: center;
   align-items: center;
+  justify-content: center;
+  align-content: center;
 }
-.buttonsUp{
+
+.buttonsUp {
   display: flex;
   place-content: center;
   align-items: center;
@@ -390,15 +390,62 @@ p {
   align-content: space-around;
 }
 
-.buttonCalendar{
+.buttonCalendar {
   padding: 10px 20px;
   font-size: 18px;
   background-color: var(--second-color);
   border: solid 2px var(--fifth-color);
-  color: var(--fifth-color);
-  /* border: none; */
   cursor: pointer;
   border-radius: 50% 50% 0% 0%;
-  margin:1em;
+  margin: 1em;
+}
+
+.buttonCalendar:hover {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: var(--fifth-color);
+  border: solid 2px var(--second-color);
+  cursor: pointer;
+  border-radius: 50% 50% 0% 0%;
+  margin: 1em;
+}
+
+a {
   text-decoration: none;
+  color: var(--fifth-color);
+}
+
+.buttonCalendar:hover a {
+  color: var(--second-color);
+}
+
+.burgerButton {
+  border: solid 2px var(--fifth-color);
+  background-color: var(--second-color);
+  color: var(--fifth-color);
+  border-radius: 50px;
+  width: 100%;
+  height: 100%;
+}
+
+.burgerButton:hover {
+  border: solid 2px var(--forth-color);
+  background-color: var(--fifth-color);
+  color: var(--second-color);
+}
+
+.buttonHeaderDivs {
+  border: solid 2px var(--third-color);
+  background-color: var(--forth-color);
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
+  width: 100px;
+  height: 25px;
+}
+
+.buttonHeaderDivs:hover {
+  border: solid 2px var(--third-color);
+  background-color: var(--second-color);
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 }
