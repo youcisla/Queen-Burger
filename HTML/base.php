@@ -1,8 +1,9 @@
 <html>
+
 <div class="headerContainer">
     <?php 
         include_once 'header.php';
-    ?>
+     ?>
 </div>
 
 <head>
