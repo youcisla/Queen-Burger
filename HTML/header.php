@@ -10,13 +10,14 @@
 </head>
 
 <body>
-    <header id="header">
+    <header id="header" class="header_return">
         <!-- to be JSed-->
-        <div>home</div>
-        <div>menu</div>
-        <div>reservation</div>
-        <div>about us</div>
-        <div>contact</div>
+        <div><button onclick="goToReservation()">Reservation</button></div>
+        <div><button onclick="goToMenu()">Menu</button></div>
+        <div><button onclick="goToHome()">Home</button></div>
+        <div><button onclick="goToAbout()">About Us</button></div>
+        <div><button onclick="goToContact()">Contact</button></div>
+
     </header>
     <script src="/Queen-Burger/JavaScript/header.js" defer></script>
 </body>
