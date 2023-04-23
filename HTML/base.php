@@ -1,7 +1,10 @@
 <html>
-<?php 
-    include_once 'header.php';
-?>
+
+<div class="headerContainer">
+    <?php 
+        include_once 'header.php';
+     ?>
+</div>
 
 <head>
     <title>Table Management</title>
@@ -11,16 +14,16 @@
 
 <body>
     <section class="homeBodyDiv">
-        <button
-            style="padding: 10px 20px; font-size: 18px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
-            <a href="/Queen-Burger/HTML/calendar.php">Calendar</a>
-            <button
-                style="padding: 10px 20px; font-size: 18px; background-color: #4CAF50; color: white; border: none; cursor: pointer;"><a
-                    href="/Queen-Burger/HTML/calendar.php">Calendar</a>
+        <div class="buttonsUp">
+            <button class="buttonCalendar">
+                <a href="/Queen-Burger/HTML/calendar.php">
+                    Calendar
+                </a>
             </button>
-            <button
-                style="padding: 10px 20px; font-size: 18px; background-color: #4CAF50; color: white; border: none; cursor: pointer;">
-                <a href="/Queen-Burger/HTML/week.html">Week</a>
+            <button class="buttonCalendar">
+                <a href="/Queen-Burger/test8resize/week.html">
+                    Week
+                </a>
             </button>
 
             <div id="core">
@@ -41,7 +44,6 @@
                             recettes innovantes pour tous les goûts. Notre personnel attentionné sera heureux de vous
                             accueillir et de rendre votre expérience chez Queen Burger inoubliable.
                         </p>
-
                     </div>
                     <div class="L30percent"></div>
                 </div>
