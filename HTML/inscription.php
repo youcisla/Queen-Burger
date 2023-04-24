@@ -9,8 +9,9 @@
 <body>
     <div class="principal">
         <div class="inscription">
+          <h1>Inscription</h1>  
+        </div>
             <forum action="#">
-                </div>
                 <div class="nom">
                 <label for="Tnom">Nom</label>
                 <input type="nom" id="nom" name="nom" required>
