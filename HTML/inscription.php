@@ -11,7 +11,7 @@
         <div class="inscription">
           <h1>Inscription</h1>  
         </div>
-            <forum action="#">
+            <form method="post" action="">
                 <div class="nom">
                 <label for="Tnom">Nom</label>
                 <input type="nom" id="nom" name="nom" required>
@@ -23,12 +23,12 @@
 
                 </div>
                 <div class="telephone">
-                <label for="Ttelephone">telephone</label>
+                <label for="Ttelephone">Telephone</label>
                 <input type="tel" id="telephone" name="telephone" pattern="[0-9]{9}" required>
 
                 </div>
                 <div class="login">
-                <label for="Tlogin">login</label>
+                <label for="Tlogin">Login</label>
                 <input type="login" id="login" name="login" required>
 
                 </div>
@@ -48,7 +48,7 @@
             
 
                 </div>
-            </forum>
+            </form>
 
 
 
@@ -56,3 +56,4 @@
     </div>
 </body>
 </html>
+
