@@ -23,13 +23,13 @@
 
                 </div>
                 <div class="telephone">
-                <label for="Tprenom">Prenom</label>
-                <input type="prenom" id="prenom" name="prenom" required>
+                <label for="Ttelephone">Prenom</label>
+                <input type="tel" id="telephone" name="telephone" placeholder="xxxxxxxxxx" pattern="[0-9]{9}" required>
 
                 </div>
                 <div class="login">
-                <label for="Tprenom">Prenom</label>
-                <input type="prenom" id="prenom" name="prenom" required>
+                <label for="Tlogin">Prenom</label>
+                <input type="login" id="prenom" name="prenom" required>
 
                 </div>
                 <div class="mot_de_passe">
