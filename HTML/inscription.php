@@ -42,9 +42,10 @@
                 <input type="prenom" id="prenom" name="prenom" required>
 
                 </div>
-                <div class="bouton_inscription">
-                <label for="Tprenom">Prenom</label>
-                <input type="prenom" id="prenom" name="prenom" required>
+                <button class="bonton" onclick="">
+                                    Creer mon compte
+                                </button>
+            
 
                 </div>
             </forum>
