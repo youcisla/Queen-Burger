@@ -13,7 +13,7 @@
         <div class="inscription">
           <h1>Inscription</h1>  
         </div>
-            <form method="POST" action="/Queen-Burger/PHP/validation.php">
+            <form method="POST" action="/Queen-Burger/Base de donne/validation.php">
                 <div class="nom">
                 <label for="Tnom">Nom</label>
                 <input type="text" id="nom" name="nom" required>
