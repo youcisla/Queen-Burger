@@ -7,7 +7,6 @@
     <title>Inscription</title>
 </head>
 <?php // potentille header 
-echo (var_dump($_POST));
 ?>
 <body>
     <div class="principal">
