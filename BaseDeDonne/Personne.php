@@ -36,4 +36,5 @@ function iDPersonne($nom,$prenom){
     $row = $result->fetch_assoc();
     return $row;
 }
+echo (ReadPersonne(1));
 ?>
