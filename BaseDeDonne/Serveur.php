@@ -1,6 +1,6 @@
 <?php
 // La base de donnée
-include 'indexx.php';
+include_once 'indexx.php';
 include 'Personne.php';
 include 'Emploie_du_temps.php';
 include 'Secteur.php';

@@ -1,7 +1,6 @@
 <?php
 include_once 'Client.php';
 include_once 'Personne.php';
-include_once 'indexx.php';
 if(!empty($_POST)){
     if(
         isset($_POST["nom"],$_POST["prenom"],$_POST["telephone"],$_POST["login"],$_POST["mot_de_passe"],$_POST["confirmation"])
