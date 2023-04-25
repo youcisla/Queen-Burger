@@ -1,5 +1,5 @@
 <?php
-include 'index.php';
+include 'indexx.php';
 function CreateTable(){
     $sql="CREATE TABLE IF NOT EXISTS Personne(
         id INT NOT NULL AUTO_INCREMENT,
