@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 21 avr. 2023 à 11:42
+-- Généré le : mar. 25 avr. 2023 à 20:32
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -35,6 +35,23 @@ CREATE TABLE IF NOT EXISTS `absence` (
   `personne` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `personne` (`personne`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `client`
+--
+
+DROP TABLE IF EXISTS `client`;
+CREATE TABLE IF NOT EXISTS `client` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `login` varchar(100) COLLATE utf16_bin NOT NULL,
+  `mot_de_passe` varchar(100) COLLATE utf16_bin NOT NULL,
+  `information` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `login` (`login`),
+  KEY `information` (`information`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
 -- --------------------------------------------------------
