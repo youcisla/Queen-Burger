@@ -1,7 +1,7 @@
 <?php
 include 'indexx.php';
 include 'Personne.php';
-function CreateTable(){
+function Gerant(){
 
 
     $sql1="CREATE TABLE IF NOT EXISTS Gerant(

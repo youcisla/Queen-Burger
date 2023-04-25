@@ -4,7 +4,7 @@ include 'indexx.php';
 include 'Personne.php';
 include 'Emploie_du_temps.php';
 include 'Secteur.php';
-function CreateTable(){
+function serveur(){
 
     $sql1="CREATE TABLE IF NOT EXISTS Serveur(
         id INT NOT NULL AUTO_INCREMENT,

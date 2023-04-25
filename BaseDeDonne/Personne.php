@@ -1,6 +1,6 @@
 <?php
 include 'indexx.php';
-function CreateTable(){
+function personne(){
     $sql="CREATE TABLE IF NOT EXISTS Personne(
         id INT NOT NULL AUTO_INCREMENT,
         nom VARCHAR(100) NOT NULL UNIQUE,

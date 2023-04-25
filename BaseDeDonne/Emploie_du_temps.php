@@ -1,6 +1,6 @@
 <?php
 include 'indexx.php';
-function CreateTable(){
+function edt(){
 
 
     $sql1="CREATE TABLE IF NOT EXISTS Creneaux(

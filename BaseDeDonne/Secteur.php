@@ -1,6 +1,6 @@
 <?php
 include 'indexx.php';
-function CreateTable(){
+function secteur(){
 
     $sql1="CREATE TABLE IF NOT EXISTS Secteur(
         id INT NOT NULL AUTO_INCREMENT,
