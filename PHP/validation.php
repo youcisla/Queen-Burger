@@ -12,9 +12,9 @@ if(!empty($_POST)){
             $login=strip_tags($_POST["login"]);
             $mot_de_passe=strip_tags($_POST["mot_de_passe"]);
            
-            include_once "/Queen-Burger/Base de donne/Personne.php";
-            include_once "/Queen-Burger/Base de donne/Client.php";
-            include_once "/Queen-Burger/Base de donne/index.php";
+            include_once "Queen-Burger\Base de donne\Client.php";
+            include_once "Queen-Burger\Base de donne\Personne.php";
+            include_once "Queen-Burger\Base de donne\index.php";
             CreatePersonne($nom,$prenom,$telephone);
             //id
             $information=bdd()->lastInsertId();
