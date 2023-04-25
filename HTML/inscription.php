@@ -6,20 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
 </head>
+<?php // potentille header 
+var_dump($_POST);
+?>
 <body>
     <div class="principal">
         <div class="inscription">
           <h1>Inscription</h1>  
         </div>
-            <form method="post" action="">
+            <form method="POST" action="PHP/validation.php">
                 <div class="nom">
                 <label for="Tnom">Nom</label>
-                <input type="nom" id="nom" name="nom" required>
+                <input type="text" id="nom" name="nom" required>
 
                 </div>
                 <div class="prenom">
                 <label for="Tprenom">Prenom</label>
-                <input type="prenom" id="prenom" name="prenom" required>
+                <input type="text" id="prenom" name="prenom" required>
 
                 </div>
                 <div class="telephone">
@@ -42,7 +45,7 @@
                 <input type="confirmation" id="confirmation" name="confirmation" required>
 
                 </div>
-                <button class="bonton" onclick="">
+                <button type="submit">
                                     Creer mon compte
                                 </button>
             
