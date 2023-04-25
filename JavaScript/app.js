@@ -59,3 +59,5 @@ function ajouterTable() {
       nombreTables--;
       document.getElementById("total-tables").textContent = nombreTables;
     }
+}
+}
