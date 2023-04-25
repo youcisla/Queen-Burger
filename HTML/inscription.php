@@ -7,7 +7,7 @@
     <title>Inscription</title>
 </head>
 <?php // potentille header 
-var_dump($_POST);
+echo (var_dump($_POST));
 ?>
 <body>
     <div class="principal">
@@ -27,7 +27,7 @@ var_dump($_POST);
                 </div>
                 <div class="telephone">
                 <label for="Ttelephone">Telephone</label>
-                <input type="tel" id="telephone" name="telephone" pattern="[0-9]{9}" required>
+                <input type="tel" id="telephone" name="telephone" pattern="[0-9]{10}" required>
 
                 </div>
                 <div class="login">
