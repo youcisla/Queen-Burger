@@ -1,5 +1,5 @@
 <?php
-include_once "Queen-Burger\bdd.php"
+include_once "/Queen-Burger/bdd.php"
 function bdd(){
         $host="localhost";
         $user = "root";
