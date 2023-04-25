@@ -1,5 +1,4 @@
 <?php
-
 include_once 'Client.php';
 include_once 'Personne.php';
 include_once 'indexx.php';
@@ -18,7 +17,7 @@ if(!empty($_POST)){
            
             CreatePersonne($nom,$prenom,$telephone);
             //id
-            $information=bdd()->lastInsertId();
+            $information=iDPersonne($nom, $prenom)["id"];
             CreateClient($login,$mot_de_passe,$information);
             die("Client enregistré");
             
