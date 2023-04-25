@@ -1,6 +1,8 @@
 <?php
 function bdd(){
-        return mysqli_connect("localhost", "root", "", "base-de-donne");
+        $pdo = new PDO('mysql:host=localhost;dbname=base-de-donne', 'root', '');
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $pdo;
 }
 
 ?>
