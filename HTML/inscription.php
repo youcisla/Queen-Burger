@@ -45,10 +45,11 @@
                 <input type="confirmation" id="confirmation" name="confirmation" required>
 
                 </div>
+                <div class="bouton">
                 <button type="submit">
                                     Creer mon compte
                                 </button>
-            
+                </div>
 
                 </div>
             </form>
