@@ -18,7 +18,6 @@ if(!empty($_POST)){
             //id
             $information=iDPersonne($nom, $prenom)["id"];
             CreateClient($login,$mot_de_passe,$information);
-            die("Client enregistré");
             header("Location: /Queen-Burger/HTML/base.php");
             
 
