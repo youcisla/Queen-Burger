@@ -1,5 +1,5 @@
 <?php
-include 'indexx.php';
+include_once 'indexx.php';
 function edt(){
 
 

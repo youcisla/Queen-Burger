@@ -1,6 +1,6 @@
 <?php
-include 'indexx.php';
-include 'Personne.php';
+include_once 'indexx.php';
+include_once 'Personne.php';
 function absence(){
 
 

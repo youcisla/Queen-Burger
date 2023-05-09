@@ -1,5 +1,5 @@
 <?php
-include 'indexx.php';
+include_once 'indexx.php';
 function secteur(){
 
     $sql1="CREATE TABLE IF NOT EXISTS Secteur(
