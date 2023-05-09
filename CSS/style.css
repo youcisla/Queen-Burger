@@ -67,6 +67,7 @@ section{
 /* --------header-------- */
 /* le header va etre modifer */
 header {
+  display : flex;
   background-image: url('/Queen-Burger/Images/burger_queen.png');
   background-size: cover;
   border-radius: 40px;
