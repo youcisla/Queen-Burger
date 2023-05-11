@@ -45,19 +45,41 @@ headerBuildHome()
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
-var nombreTables = 0;
 
-function ajouterTable() {
-  nombreTables++;
-  var tableHtml = '<div class="table">Table ' + nombreTables + '</div>';
-  document.getElementById("tables-container").insertAdjacentHTML('beforeend', tableHtml);
-  document.getElementById("total-tables").textContent = nombreTables;
-  function supprimerTable() {
-    if (nombreTables > 0) {
-      var lastTable = document.querySelector(".table:last-of-type");
-      lastTable.parentNode.removeChild(lastTable);
-      nombreTables--;
-      document.getElementById("total-tables").textContent = nombreTables;
+// Load the JSON data
+
+// create an AJAX request
+var xhr = new XMLHttpRequest();
+xhr.open('GET', '/Queen-Burger/json/test.json');
+
+// set the response type to JSON
+xhr.responseType = 'json';
+
+// handle the response
+xhr.onload = function() {
+  if (xhr.status === 200) {
+    // get the JSON data from the response
+    var data = xhr.response;
+
+    // loop through the objects in the data array and add the burger types to the #json-data-body div
+    var jsonDataBody = document.querySelector('#json-data-body');
+    for (var i = 0; i < data.length; i++) {
+      var burgerType = data[i];
+      var burgerDiv = document.createElement('div');
+      burgerDiv.classList.add('json-data-item');
+      var burgerName = document.createElement('h3');
+      burgerName.textContent = burgerType.name;
+      var burgerImage = document.createElement('img');
+      burgerImage.src = burgerType.image;
+      burgerImage.alt = burgerType.name + " image";
+      burgerDiv.appendChild(burgerName);
+      burgerDiv.appendChild(burgerImage);
+      jsonDataBody.appendChild(burgerDiv);
     }
-}
-}
+  } else {
+    console.log('Error: ' + xhr.status);
+  }
+};
+
+// send the request
+xhr.send();

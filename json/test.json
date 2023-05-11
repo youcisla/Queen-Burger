@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Cheeseburger",
+        "image": "/Queen-Burger/Images/cheeseburger.png"
+    },
+    {
+        "name": "Hamburger",
+        "image": "/Queen-Burger/Images/hamburger.png"
+    },
+    {
+        "name": "Veggie Burger",
+        "image": "/Queen-Burger/Images/Veggie-Burger.png"
+    },
+    {
+        "name": "Bacon Cheeseburger",
+        "image": "/Queen-Burger/Images/Bacon-Cheeseburger.png"
+    },
+    {
+        "name": "Double Cheeseburger",
+        "image": "/Queen-Burger/Images/Double-Cheeseburger.png"
+    },
+    {
+        "name": "Chicken Burger",
+        "image": "/Queen-Burger/Images/Chicken-Burger.png"
+    },
+    {
+        "name": "Fish Burger",
+        "image": "/Queen-Burger/Images/Fish-Burger.png"
+    }
+]
