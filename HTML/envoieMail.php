@@ -7,7 +7,6 @@ include_once "../BasedeDonne/Personne.php";
 function envoieMailAbsence($destinataire, $debut, $fin, $id_personne) {
     $personne = ReadPersonne($id_personne);
 
-    print_r($personne);
 
     $mailBurgerQueen = "burger.queen.off@gmail.com";
 

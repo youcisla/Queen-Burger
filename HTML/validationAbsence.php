@@ -7,13 +7,11 @@ include_once "../BaseDeDonne/Cuisinier.php";
 //verif si la personne est co a ajouter
 
 $id_personne = 1; // 0 zero pour le moment, a modifier avec l id de la personne connecté
-print_r($_POST);
 
 
 
 if(!isset($_POST["debutDate"],  $_POST["finDate"])) {
     // pas de date dans le post ???
-    die("pas de form");
     header("Location: ../HTML/creationAbsence.php");
 
 
@@ -23,7 +21,6 @@ if(!isset($_POST["debutDate"],  $_POST["finDate"])) {
 
     if($dateDebut > $dateFin) {
         //date invalide
-        die("date invalide");
         header("Location: ../HTML/creationAbsence.php");
         
 
@@ -43,7 +40,6 @@ if(!isset($_POST["debutDate"],  $_POST["finDate"])) {
         CreateAbsence($dateDebut,$dateFin,$id_personne);
 
         //redirection a changer
-        die("reussite critique");
         header("Location: ../index.php");
     }
 }
