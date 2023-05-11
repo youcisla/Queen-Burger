@@ -49,8 +49,9 @@ if ($conn->connect_error) {
 }
 
 // Query the database to get the employee data
-// $sql = "SELECT nom, prenom, telephone, email, fonction FROM serveur";
-// $result = $conn->query($sql);
+$sql = "SELECT serveur.login, personne.nom, personne.prenom, personne.telephone FROM personne
+INNER JOIN serveur ON serveur.information = personne.id";
+$result = $conn->query($sql);
 
 // Generate the table HTML
 echo "<table>";
@@ -60,25 +61,25 @@ echo "<th>nom</th>";
 echo "<th>prenom</th>";
 echo "<th>tel</th>";
 echo "<th>e-mail</th>";
-echo "<th>fonction</th>";
+// echo "<th>fonction</th>";
 echo "<th>Select</th>";
 echo "</tr>";
 echo "</thead>";
 echo "<tbody>";
 
 // Loop through the query results and generate a row for each employee
-// if ($result->num_rows > 0) {
-//   while($row = $result->fetch_assoc()) {
-//     echo "<tr>";
-//     echo "<td>" . $row["nom"] . "</td>";
-//     echo "<td>" . $row["prenom"] . "</td>";
-//     echo "<td>" . $row["telephone"] . "</td>";
-//     echo "<td>" . $row["email"] . "</td>";
-//     echo "<td>" . $row["fonction"] . "</td>";
-//     echo "<td><input type='checkbox' name='selected[]' value='" . $row["nom"] . "'></td>";
-//     echo "</tr>";
-//   }
-// }
+if ($result->num_rows > 0) {
+  while($row = $result->fetch_assoc()) {
+    echo "<tr>";
+    echo "<td>" . $row["nom"] . "</td>";
+    echo "<td>" . $row["prenom"] . "</td>";
+    echo "<td>" . $row["telephone"] . "</td>";
+    echo "<td>" . $row["login"] . "</td>";
+    // echo "<td>" . $row["fonction"] . "</td>";
+    echo "<td><input type='checkbox' name='selected[]' value='" . $row["nom"] . "'></td>";
+    echo "</tr>";
+  }
+}
 
 echo "</tbody>";
 echo "</table>";
@@ -183,7 +184,6 @@ $conn->close();
         .buttonSHAPE i {
             font-size: 24px;
         }
-
         /* CSS for table */
         table {
             border-collapse: collapse;
