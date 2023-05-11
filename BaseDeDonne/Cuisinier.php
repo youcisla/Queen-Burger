@@ -40,6 +40,19 @@ function Cuisinier(){
     }
 
 
+    function GetAllCuisinierMail() {
+        $sql = "SELECT login FROM Cuisinier";
+
+        $return = array();
+        $result = bdd()->query($sql);
+        while($row =  $result->fetch_assoc()) {
+            $return[] = $row["login"];
+        }
+
+
+
+        return $return;
+    }
 
 
 ?>

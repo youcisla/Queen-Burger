@@ -1,10 +1,13 @@
 <?php
+include_once "../BasedeDonne/Personne.php";
 
 // destinataire : mail du destinataire
 // absence : {id, personne, dateDebut, dateFIn}
 
-function envoieMailAbsence($destinataire, $absence) {
-    $personne = $absence["personne"];
+function envoieMailAbsence($destinataire, $debut, $fin, $id_personne) {
+    $personne = ReadPersonne($id_personne);
+
+    print_r($personne);
 
     $mailBurgerQueen = "burger.queen.off@gmail.com";
 
@@ -26,7 +29,7 @@ function envoieMailAbsence($destinataire, $absence) {
             </style>
         </head>
         <body>
-            <p>{$personne['nom']} {$personne['prenom']} sera absent du {$absence['dateDebut']} jusqu'a {$absence['dateFin']}</p>
+            <p>{$personne['nom']} {$personne['prenom']} sera absent du {$debut} jusqu'a {$fin}</p>
         <body>
     </html>";
     
