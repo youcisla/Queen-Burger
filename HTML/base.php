@@ -61,16 +61,6 @@ if(isset($_SESSION['gerant_id'])){
                     Email
                 </a>
             </button>
-            <button class="buttonCalendar hvr-float-shadow">
-                <a href="/Queen-Burger/HTML/creatAbsence.php">
-                    Absence
-                </a>
-            </button>
-            <button class="buttonCalendar hvr-float-shadow">
-                <a href="/Queen-Burger/HTML/envoieMail.php">
-                    Email
-                </a>
-            </button>
         </div>
         <div id="core">
             <div class="L70_30">
