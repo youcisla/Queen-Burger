@@ -28,11 +28,34 @@ if(isset($_SESSION['gerant_id'])){
 }
 ?>
 
+<?php
+if(isset($_SESSION['gerant_id'])){
+    $gerant_id = $_SESSION['gerant_id'];
+    include_once '/Queen-Burger/BaseDeDonne/Gerant.php';
+    $gerant = ReadGerant($gerant_id);
+    $sql = "SELECT gerant.login, personne.nom, personne.prenom, personne.telephone FROM personne
+        INNER JOIN gerant ON gerant.information = $gerant[3]";
+    $result = $conn->query($sql);
+    $res = mysqli_fetch_assoc($result);
+    echo "Welcome, " . $res['login'];
+} else {
+    // header("Location: /Queen-Burger/HTML/connexion.php");
+    echo 'not connected';
+    // exit;
+}
+?>
+
 <body>
     <section class="homeBodyDiv">
         <div class="buttonsUp">
             <button class="buttonCalendar hvr-float-shadow">
                 <a href="/Queen-Burger/HTML/calendar.php">
+                    Calendar PHP
+                </a>
+            </button>
+            <button class="buttonCalendar hvr-float-shadow">
+                <a href="/Queen-Burger/HTML/calendar.html">
+                    Calendar HTML
                     Calendar PHP
                 </a>
             </button>
@@ -49,6 +72,16 @@ if(isset($_SESSION['gerant_id'])){
             <button class="buttonCalendar hvr-float-shadow">
                 <a href="/Queen-Burger/HTML/test.php">
                     test
+                </a>
+            </button>
+            <button class="buttonCalendar hvr-float-shadow">
+                <a href="/Queen-Burger/HTML/creatAbsence.php">
+                    Absence
+                </a>
+            </button>
+            <button class="buttonCalendar hvr-float-shadow">
+                <a href="/Queen-Burger/HTML/envoieMail.php">
+                    Email
                 </a>
             </button>
             <button class="buttonCalendar hvr-float-shadow">
@@ -90,8 +123,10 @@ if(isset($_SESSION['gerant_id'])){
                     <div class='tables'>
                         <div class="button-container">
                             <button class="add-table-btn" onclick="ajouterTable()">
+                            <button class="add-table-btn" onclick="ajouterTable()">
                                 Add a table
                             </button>
+                            <button class="delete-table-btn" onclick="supprimerTable()">
                             <button class="delete-table-btn" onclick="supprimerTable()">
                                 Delete last table
                             </button>
@@ -142,8 +177,10 @@ if(isset($_SESSION['gerant_id'])){
     <script src="/Queen-Burger/JavaScript/app.js" defer></script>
 
     <?php 
+    <?php 
     include_once 'footer.php';
 ?>
 </body>
+
 
 </html>
