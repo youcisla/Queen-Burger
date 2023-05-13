@@ -33,7 +33,10 @@ if(!isset($_POST["debutDate"],  $_POST["finDate"])) {
         print_r($mails);
 
         foreach($mails as $mail) {
-            envoieMailAbsence($mail, $dateDebut, $dateFin, $id_personne);
+            if(!envoieMailAbsence($mail, $dateDebut, $dateFin, $id_personne)) {
+                
+                exit;
+            }
         }
         
         //ajout de l'absence a la bdd

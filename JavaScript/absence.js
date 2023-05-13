@@ -10,7 +10,7 @@ function testDebutAvantFin(debut, fin) {
 
 
 inputDebut.addEventListener("input", () => {
-    inputFin.min = getDateLendemain(inputDebut.value);
+    inputFin.min = inputDebut.value;
     
     //la date de fin est valide
     if(!testDebutAvantFin(inputDebut.value, inputFin.value)) {
