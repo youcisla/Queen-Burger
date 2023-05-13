@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 25 avr. 2023 à 20:32
+-- Généré le : sam. 13 mai 2023 à 14:21
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -46,8 +46,8 @@ CREATE TABLE IF NOT EXISTS `absence` (
 DROP TABLE IF EXISTS `client`;
 CREATE TABLE IF NOT EXISTS `client` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `login` varchar(100) COLLATE utf16_bin NOT NULL,
-  `mot_de_passe` varchar(100) COLLATE utf16_bin NOT NULL,
+  `login` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
+  `mot_de_passe` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
   `information` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
@@ -63,8 +63,8 @@ CREATE TABLE IF NOT EXISTS `client` (
 DROP TABLE IF EXISTS `cuisinier`;
 CREATE TABLE IF NOT EXISTS `cuisinier` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `login` varchar(100) COLLATE utf16_bin NOT NULL,
-  `mot_de_passe` varchar(100) COLLATE utf16_bin NOT NULL,
+  `login` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
+  `mot_de_passe` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
   `information` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
@@ -80,8 +80,8 @@ CREATE TABLE IF NOT EXISTS `cuisinier` (
 DROP TABLE IF EXISTS `gerant`;
 CREATE TABLE IF NOT EXISTS `gerant` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `login` varchar(100) COLLATE utf16_bin NOT NULL,
-  `mot_de_passe` varchar(100) COLLATE utf16_bin NOT NULL,
+  `login` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
+  `mot_de_passe` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
   `information` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
@@ -97,9 +97,10 @@ CREATE TABLE IF NOT EXISTS `gerant` (
 DROP TABLE IF EXISTS `personne`;
 CREATE TABLE IF NOT EXISTS `personne` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(100) COLLATE utf16_bin NOT NULL,
-  `prenom` varchar(100) COLLATE utf16_bin NOT NULL,
-  `telephone` varchar(13) COLLATE utf16_bin NOT NULL,
+  `nom` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
+  `prenom` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
+  `telephone` varchar(13) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
+  `mail` varchar(250) COLLATE utf16_bin NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nom` (`nom`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
@@ -144,8 +145,8 @@ CREATE TABLE IF NOT EXISTS `assignation_serveur` (
 DROP TABLE IF EXISTS `serveur`;
 CREATE TABLE IF NOT EXISTS `serveur` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `login` varchar(100) COLLATE utf16_bin NOT NULL,
-  `mot_de_passe` varchar(100) COLLATE utf16_bin NOT NULL,
+  `login` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
+  `mot_de_passe` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
   `information` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
