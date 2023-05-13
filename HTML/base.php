@@ -28,34 +28,11 @@ if(isset($_SESSION['gerant_id'])){
 }
 ?>
 
-<?php
-if(isset($_SESSION['gerant_id'])){
-    $gerant_id = $_SESSION['gerant_id'];
-    include_once '/Queen-Burger/BaseDeDonne/Gerant.php';
-    $gerant = ReadGerant($gerant_id);
-    $sql = "SELECT gerant.login, personne.nom, personne.prenom, personne.telephone FROM personne
-        INNER JOIN gerant ON gerant.information = $gerant[3]";
-    $result = $conn->query($sql);
-    $res = mysqli_fetch_assoc($result);
-    echo "Welcome, " . $res['login'];
-} else {
-    // header("Location: /Queen-Burger/HTML/connexion.php");
-    echo 'not connected';
-    // exit;
-}
-?>
-
 <body>
     <section class="homeBodyDiv">
         <div class="buttonsUp">
             <button class="buttonCalendar hvr-float-shadow">
                 <a href="/Queen-Burger/HTML/calendar.php">
-                    Calendar PHP
-                </a>
-            </button>
-            <button class="buttonCalendar hvr-float-shadow">
-                <a href="/Queen-Burger/HTML/calendar.html">
-                    Calendar HTML
                     Calendar PHP
                 </a>
             </button>
