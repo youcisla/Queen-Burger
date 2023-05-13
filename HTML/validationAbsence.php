@@ -42,8 +42,8 @@ if(!isset($_POST["debutDate"],  $_POST["finDate"])) {
         CreateAbsence($dateDebut,$dateFin,$id_personne);
 
         //supression de tout les creneaux des jours ou l'employé est absent
-        $sql = "DELETE FROM creneaux WHERE date between $dateDebut and $dateFin"
-        
+        $sql = "DELETE FROM creneaux WHERE date between {$dateDebut} and {$dateFin}"
+
 
 
         //redirection a changer
