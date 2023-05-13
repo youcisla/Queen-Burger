@@ -6,12 +6,13 @@ function personne(){
         nom VARCHAR(100) NOT NULL UNIQUE,
         prenom VARCHAR(100) NOT NULL ,
         telephone VARCHAR(13) NOT NULL ,
+        mail VARCHAR(250),
         CONSTRAINT pk_id PRIMARY KEY (id))";
 bdd()->query($sql);
 
 }
-function CreatePersonne($nom,$prenom,$telephone){
-    $sql = "INSERT INTO Personne(nom,prenom,telephone)Values('$nom','$prenom','$telephone')";
+function CreatePersonne($nom,$prenom,$telephone,$mail){
+    $sql = "INSERT INTO Personne(nom,prenom,telephone,mail)Values('$nom','$prenom','$telephone','$mail')";
     bdd()->query($sql);
 }
 function DeletePersonne($id){
@@ -24,9 +25,9 @@ function ReadPersonne($id){
     $row = $result->fetch_assoc();
     return $row;
 }
-function UpdatePersonne($id,$nom,$prenom,$telephone){
+function UpdatePersonne($id,$nom,$prenom,$telephone,$mail){
     $sql = "UPDATE Personne SET
-    nom='$nom',prenom='$prenom',telephone='$telephone' where id = '$id'";
+    nom='$nom',prenom='$prenom',telephone='$telephone',mail=$mail where id = '$id'";
     bdd()->query($sql);
    
 }

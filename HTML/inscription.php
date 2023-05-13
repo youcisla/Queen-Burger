@@ -28,6 +28,11 @@
                 <div class="telephone">
                 <label for="Ttelephone">Telephone</label>
                 <input type="tel" id="telephone" name="telephone" pattern="[0-9]{10}" required>
+                </div>
+
+                <div class="mail">
+                <label for="mail">email</label>
+                <input type="mail" id="mail" name="mail" pattern="" required>
 
                 </div>
                 <div class="login">
