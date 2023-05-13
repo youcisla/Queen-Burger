@@ -177,7 +177,6 @@ if(isset($_SESSION['gerant_id'])){
     <script src="/Queen-Burger/JavaScript/app.js" defer></script>
 
     <?php 
-    <?php 
     include_once 'footer.php';
 ?>
 </body>
