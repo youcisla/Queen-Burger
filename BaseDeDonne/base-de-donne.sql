@@ -32,9 +32,9 @@ CREATE TABLE IF NOT EXISTS `absence` (
   `id` int NOT NULL AUTO_INCREMENT,
   `dateDebut` date DEFAULT NULL,
   `dateFin` date DEFAULT NULL,
-  `personne` int NOT NULL,
+  `id_serveur` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `personne` (`personne`)
+  KEY `id_serveur` (`id_serveur`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
 -- --------------------------------------------------------
@@ -52,21 +52,6 @@ CREATE TABLE IF NOT EXISTS `client` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
   KEY `information` (`information`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `creneaux`
---
-
-DROP TABLE IF EXISTS `creneaux`;
-CREATE TABLE IF NOT EXISTS `creneaux` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `hdebut` time DEFAULT NULL,
-  `hfin` time DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
 -- --------------------------------------------------------
@@ -134,19 +119,20 @@ CREATE TABLE IF NOT EXISTS `secteur` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `secteur_heure`
+-- Structure de la table `assignation_serveur`
 --
 
-DROP TABLE IF EXISTS `secteur_heure`;
+DROP TABLE IF EXISTS `assignation_serveur`;
 CREATE TABLE IF NOT EXISTS `secteur_heure` (
   `id` int NOT NULL,
   `id_serveur` int NOT NULL,
-  `id_crenaux` int NOT NULL,
-  `secteur` int NOT NULL,
+  `id_secteur` int NOT NULL,
+  `hdebut` time DEFAULT NULL,
+  `hfin` time DEFAULT NULL,
+  `date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_serveur` (`id_serveur`),
-  KEY `secteur` (`secteur`),
-  KEY `id_crenaux` (`id_crenaux`)
+  KEY `id_secteur` (`id_secteur`),
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
 -- --------------------------------------------------------
