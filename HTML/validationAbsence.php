@@ -34,13 +34,17 @@ if(!isset($_POST["debutDate"],  $_POST["finDate"])) {
 
         foreach($mails as $mail) {
             if(!envoieMailAbsence($mail, $dateDebut, $dateFin, $id_personne)) {
-                
                 exit;
             }
         }
         
         //ajout de l'absence a la bdd
         CreateAbsence($dateDebut,$dateFin,$id_personne);
+
+        //supression de tout les creneaux des jours ou l'employé est absent
+        $sql = "DELETE FROM creneaux WHERE date between $dateDebut and $dateFin"
+        
+
 
         //redirection a changer
         header("Location: ../index.php");
