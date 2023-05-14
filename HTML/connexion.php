@@ -28,7 +28,7 @@ include_once "../BaseDeDonne/indexx.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Establish a database connection
-  $c = bdd();
+  $c = bdd(); //?????
 
   // Query the database to get the employee data
   $sql = "SELECT * FROM `gerant` WHERE `gerant`.`login` = ? AND `gerant`.`mot_de_passe` = ?";

@@ -5,12 +5,15 @@ function secteur(){
     $sql1="CREATE TABLE IF NOT EXISTS Secteur(
         id INT NOT NULL AUTO_INCREMENT,
         CONSTRAINT pk_id PRIMARY KEY (id))";
-    $sql2="CREATE TABLE IF NOT EXISTS Tables(
+
+
+        $sql2="CREATE TABLE IF NOT EXISTS Tables(
         id INT NOT NULL AUTO_INCREMENT,
         nb_place INT NOT NULL DEFAULT 4,
         emplacement INT NOT NULL,
         CONSTRAINT pk_id PRIMARY KEY (id),
         FOREIGN KEY(emplacement) REFERENCES Secteur(id))";
+
         bdd()->query($sql1);
         bdd()->query($sql2);
 

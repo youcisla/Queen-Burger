@@ -7,14 +7,14 @@ function absence(){
     id INT NOT NULL AUTO_INCREMENT,
     dateDebut DATE,
     dateFin DATE,
-    id_personne INT NOT NULL,
+    id_serveur INT NOT NULL,
     CONSTRAINT pk_id PRIMARY KEY (id),
-    FOREIGN KEY(id_personne) REFERENCES id_Personne(id))";
+    FOREIGN KEY(id_serveur) REFERENCES id_serveur(id))";
     bdd()->query($sql1);
 }
 
-function CreateAbsence($dateDebut,$dateFin,$id_personne){
-    $sql = "INSERT INTO Absence(dateDebut,dateFin,id_personne)Values('$dateDebut','$dateFin','$id_personne')";
+function CreateAbsence($dateDebut,$dateFin,$id_serveur){
+    $sql = "INSERT INTO Absence(dateDebut,dateFin,id_serveur)Values('$dateDebut','$dateFin','$id_serveur')";
     bdd()->query($sql);
 }
 
