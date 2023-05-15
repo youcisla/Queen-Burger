@@ -112,18 +112,20 @@ function createTask(parent,taskID){
     enableDrag(taskChild,task,parent);
 }
 function enableDrag(elementchild,element,parent) {
+    console.log("in");
     let isDragging = false;
     let initialPosition;
 
     elementchild.addEventListener("mousedown", (event) => {
-        event.stopPropagation();
-        isDragging = true;
+/*         event.stopPropagation();
+ */        isDragging = true;
         initialPosition = element.offsetTop - event.clientY;
     });
 
     document.addEventListener("mousemove", (event) => {
-        event.stopPropagation();
-        if (isDragging) {
+/*         event.stopPropagation();
+ */    console.log("move")
+   if (isDragging) {
         const newPosition = event.clientY + initialPosition;
         const parentBottom = parent.offsetTop + parent.offsetHeight;
         const maxPosition = parentBottom - element.offsetHeight;
@@ -133,7 +135,7 @@ function enableDrag(elementchild,element,parent) {
     });
 
     document.addEventListener("mouseup", event => {
-        event.stopPropagation();
+        /* event.stopPropagation(); */
         isDragging = false;
     });
 }
