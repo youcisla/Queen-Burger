@@ -53,19 +53,19 @@ function obtenirRolePersonne($id_personne) {
     }
 
     $sql2 = "SELECT * FROM cuisinier WHERE information = {$id_personne}";
-    $result2 = bdd()->query($sql2); // Corrected variable name from $sql1 to $sql2
+    $result2 = bdd()->query($sql2);
     if ($result2->rowCount() > 0) {
         return 2;
     }
 
     $sql3 = "SELECT * FROM serveur WHERE information = {$id_personne}";
-    $result3 = bdd()->query($sql3); // Corrected variable name from $sql1 to $sql3
+    $result3 = bdd()->query($sql3);
     if ($result3->rowCount() > 0) {
         return 3;
     }
 
     $sql4 = "SELECT * FROM client WHERE information = {$id_personne}";
-    $result4 = bdd()->query($sql4); // Corrected variable name from $sql1 to $sql4
+    $result4 = bdd()->query($sql4);
     if ($result4->rowCount() > 0) {
         return 4;
     }
