@@ -108,7 +108,7 @@ $conn->close();
 
             <div class='right'>
                 <button class="buttonSHAPE">
-                    <a href="/Queen-Burger/HTML/calendar.php">
+                    <a href="/Queen-Burger/HTML/ajouter.php">
                         <i class="fa-solid fa-plus"></i>
                         Ajouter
                     </a>

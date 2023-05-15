@@ -14,8 +14,6 @@
         ?>
     </div>
     
-</body>
-</html>
 <?php
 // Establish a database connection
 $servername = "localhost";
@@ -81,3 +79,5 @@ $conn->close();
             include_once 'footer.php';
         ?>
 </footer>
+</body>
+</html>
