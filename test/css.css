@@ -2,7 +2,7 @@ div{
     background-color: aqua;
     height: 600px;
     width: 400px;
-    position: relative;
+    
 }
 
 .draggable{
@@ -14,9 +14,4 @@ div{
     border: 1px solid;
     position: absolute;
     top: 0;
-}
-.draggable_Child{
-    width: 100%;
-    height: 100%;
-    background-color: pink;
 }
