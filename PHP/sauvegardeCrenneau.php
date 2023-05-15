@@ -34,7 +34,7 @@ $id_secteur = $data["id_secteur"];
 $sql1 = "SELECT * FROM absence WHERE ('{$date}' BETWEEN absence.dateDebut AND absence.dateFin) AND absence.id_serveur = {$id_serveur}";
 $result1 = bdd()->query($sql1);
 
-if($result1->rowCount() > 0) {
+if($result1->num_rows > 0) {
     // le serveur a une absence ce jour
     $return["valide"] = false;
     $return["raison"] = "absence ce jour";*
@@ -54,7 +54,7 @@ $test4 = "(hfin BETWEEN '{$heuredebut}' AND '{$heurefin}')";
 $sql2 = "SELECT * FROM assignation_serveur WHERE ({$test1} OR {$test2} OR {$test3} OR {$test4}) AND id_serveur = {$id_serveur} AND date = '{$date}'";
 $result2 = bdd()->query($sql1);
 
-if($result2->rowCount() > 0) {
+if($result2->num_rows > 0) {
     //superposition de creneau a cette date
     $return["valide"] = false;
     $return["raison"] = "creneau au meme horaire";
