@@ -24,31 +24,39 @@ include_once "../BaseDeDonne/indexx.php";
     </form>
 
     <?php
+session_start(); // Add this line to start the session
 include_once "../BaseDeDonne/indexx.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Establish a database connection
-  $c = bdd(); //?????
+  $c = bdd();
 
   // Query the database to get the employee data
-  $sql = "SELECT * FROM `gerant` WHERE `gerant`.`login` = ? AND `gerant`.`mot_de_passe` = ?";
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  $sql = "SELECT * FROM `Gerant` WHERE `Gerant`.`login` = ? AND `Gerant`.`mot_de_passe` = ?";
   $stmt = $c->prepare($sql);
-  $stmt->bind_param('ss', $_POST['email'], $_POST['password']);
+  $stmt->bind_param('ss', $email, $password);
   $stmt->execute();
 
   $result = $stmt->get_result();
 
   $row = $result->fetch_assoc();
   if ($row) {
-    // Successful login, redirect to dashboard.php
+    // After successful login/authentication
+    $_SESSION['gerant_id'] = $row['id']; // Corrected to use $row['id']
+    // Successful login, redirect to base.php
     header('Location: base.php');
     exit();
-} else {
+  } else {
     // Failed login, show error message
     echo 'Invalid email or password';
-}
+  }
 }
 ?>
+
+
 
 
 </body>

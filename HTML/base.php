@@ -12,21 +12,25 @@
 </head>
 
 <?php
-if(isset($_SESSION['gerant_id'])){
+session_start(); // Add this line to start the session
+
+if (isset($_SESSION['gerant_id'])) {
     $gerant_id = $_SESSION['gerant_id'];
-    include_once '/Queen-Burger/BaseDeDonne/Gerant.php';
+    include_once '../BaseDeDonne/Gerant.php'; // Adjust the file path
     $gerant = ReadGerant($gerant_id);
     $sql = "SELECT gerant.login, personne.nom, personne.prenom, personne.telephone FROM personne
-        INNER JOIN gerant ON gerant.information = $gerant[3]";
-    $result = $conn->query($sql);
-    $res = mysqli_fetch_assoc($result);
+        INNER JOIN gerant ON gerant.information = personne.id WHERE gerant.id = $gerant_id"; // Adjust the table and column names
+    $result = bdd()->query($sql); // Use the appropriate function to execute the query
+    $res = $result->fetch_assoc(); // Use the appropriate function to fetch the result
     echo "Welcome, " . $res['login'];
 } else {
     // header("Location: /Queen-Burger/HTML/connexion.php");
     echo 'not connected';
+    var_dump($_SESSION['gerant_id']);
     // exit;
 }
 ?>
+
 
 <body>
     <section class="homeBodyDiv">
