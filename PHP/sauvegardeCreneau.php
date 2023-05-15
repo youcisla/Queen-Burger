@@ -37,7 +37,7 @@ $result1 = bdd()->query($sql1);
 if($result1->num_rows > 0) {
     // le serveur a une absence ce jour
     $return["valide"] = false;
-    $return["raison"] = "absence ce jour";*
+    $return["raison"] = "absence ce jour";
     $return["id"] = -1;
 
     echo json_encode($return);
@@ -68,7 +68,7 @@ if($result2->num_rows > 0) {
 
 // le crenau peut etre ajouté
 $sql3 = "INSERT INTO assignation_serveur (id_serveur, id_secteur, hdebut, hfin, date) 
-VALUES ({$id_serveur}, {$id_secteur}, '{$heuredebut}', '{$heurefin}', '{$date)'";
+VALUES ({$id_serveur}, {$id_secteur}, '{$heuredebut}', '{$heurefin}', '{$date}'";
 bdd()->query($sql);
 
 $return["valide"] = true;
