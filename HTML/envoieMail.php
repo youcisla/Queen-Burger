@@ -7,7 +7,7 @@ require '..\PHPMailer/src/Exception.php';
 require '..\PHPMailer/src/PHPMailer.php';
 require '..\PHPMailer/src/SMTP.php';
 
-include_once "../BasedeDonne/Personne.php";
+include_once "../BasedeDonne/Serveur.php";
 
 
 function envoyerMail($adresse_dest, $nom_dest, $contenu, $sujet) {
@@ -18,7 +18,7 @@ function envoyerMail($adresse_dest, $nom_dest, $contenu, $sujet) {
 
     $mail->CharSet = 'UTF-8';
 
-    $mail->SMTPDebug = 2;
+    //$mail->SMTPDebug = 2; //debugage
 
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
@@ -41,7 +41,7 @@ function envoyerMail($adresse_dest, $nom_dest, $contenu, $sujet) {
         return true;
     } else {
         print_r($mail->ErrorInfo);
-        print_r($mail->Debugoutput);
+        //print_r($mail->Debugoutput); //debugage
         return false;
     }
 
@@ -49,20 +49,17 @@ function envoyerMail($adresse_dest, $nom_dest, $contenu, $sujet) {
 
 
 // destinataire : mail du destinataire
-// absence : {id, personne, dateDebut, dateFIn}
+// debut : date debut absence, format yyyy-mm-dd
+// fin : date fin absence, format yyyy-mm-dd
+// id_serveur : id du serveur absent
 
-function envoieMailAbsence($destinataire, $debut, $fin, $id_personne) {
-    $personne = ReadPersonne($id_personne);
+function envoieMailAbsence($destinataire, $debut, $fin, $id_serveur) {
+    $information = ReadPersonne($id_serveur);
 
 
     $mailBurgerQueen = "burger.queen.off@gmail.com";
 
-    $sujet = "Absence de " . $personne["nom"] . " " . $personne["prenom"] . ".";
-
-    $headers = array();
-    $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-    $headers[] = "From: BurgerQueen {$mailBurgerQueen}";
+    $sujet = "Absence de " . $information["nom"] . " " . $information["prenom"] . ".";
 
     // a modifier
     $contenu =
@@ -75,11 +72,11 @@ function envoieMailAbsence($destinataire, $debut, $fin, $id_personne) {
             </style>
         </head>
         <body>
-            <p>{$personne['nom']} {$personne['prenom']} sera absent du {$debut} jusqu'a {$fin}</p>
+            <p>{$information['nom']} {$information['prenom']} sera absent du {$debut} jusqu'a {$fin}</p>
         <body>
     </html>";
     
-    return envoyerMail($destinataire, $personne['nom'] ." ". $personne['prenom'], $contenu, $sujet);
+    return envoyerMail($destinataire, $information['nom'] ." ". $information['prenom'], $contenu, $sujet);
     
     
 }

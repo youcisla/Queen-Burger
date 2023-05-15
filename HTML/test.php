@@ -99,7 +99,7 @@ $conn->close();
                     </a>
                 </button>
                 <button class="buttonSHAPE">
-                    <a href="/Queen-Burger/HTML/calendar.php">
+                    <a href="/Queen-Burger/HTML/modification.php">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                         Modifier
                     </a>

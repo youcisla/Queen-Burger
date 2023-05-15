@@ -32,7 +32,7 @@
 
                 <div class="mail">
                 <label for="mail">email</label>
-                <input type="mail" id="mail" name="mail" pattern="" required>
+                <input type="mail" id="mail" name="mail" required>
 
                 </div>
                 <div class="login">

@@ -27,7 +27,7 @@ function ReadPersonne($id){
 }
 function UpdatePersonne($id,$nom,$prenom,$telephone,$mail){
     $sql = "UPDATE Personne SET
-    nom='$nom',prenom='$prenom',telephone='$telephone',mail=$mail where id = '$id'";
+    nom='$nom',prenom='$prenom',telephone='$telephone',mail='$mail' where id = '$id'";
     bdd()->query($sql);
    
 }

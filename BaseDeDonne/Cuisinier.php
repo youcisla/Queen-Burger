@@ -41,15 +41,13 @@ function Cuisinier(){
 
 
     function GetAllCuisinierMail() {
-        $sql = "SELECT login FROM Cuisinier";
+        $sql = "SELECT mail FROM Cuisinier INNER JOIN Personne ON personne.id = cuisinier.information";
 
         $return = array();
         $result = bdd()->query($sql);
         while($row =  $result->fetch_assoc()) {
-            $return[] = $row["login"];
+            $return[] = $row["mail"];
         }
-
-
 
         return $return;
     }

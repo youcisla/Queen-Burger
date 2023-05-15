@@ -2,7 +2,6 @@
 // La base de donnée
 include_once 'indexx.php';
 include_once 'Personne.php';
-include_once 'Emploie_du_temps.php';
 include_once 'Secteur.php';
 function serveur(){
 
@@ -72,6 +71,15 @@ function DeleteSecteur_Heure($id){
 }
 
 
+function GetInformationServeur($id_serveur) {
+    $sql = "SELECT personne.mail, personne.prenom, personne.nom, personne.telephone, serveur.login FROM serveur WHERE {$id_serveur} = serveur.id
+    INNER JOIN personne ON personne.id = serveur.information";
+
+    $result = bdd()->query($sql);
+
+    return $result->fetch_assoc();
+
+}
 
 
 
