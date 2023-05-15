@@ -37,4 +37,39 @@ function iDPersonne($nom,$prenom){
     $row = $result->fetch_assoc();
     return $row;
 }
+
+/* retourne un entier corespondant a un role
+  - 1 : gerant
+  - 2 : cuisinier
+  - 3 : serveur
+  - 4 : client  
+  - 0 : pas trouvé dans la base de donné
+*/
+function obtenirRolePersonne($id_personne) {
+    $sql1 = "SELECT * FROM gerant WHERE information = {$id_personne}";
+    $result1 = bdd()->query($sql1);
+    if($result1->rowCount() > 0) {
+        return 1;
+    }
+
+    $sql2 = "SELECT * FROM cuisinier WHERE information = {$id_personne}";
+    $result2 = bdd()->query($sql1);
+    if($result2->rowCount() > 0) {
+        return 2;
+    }
+
+    $sql3 = "SELECT * FROM serveur WHERE information = {$id_personne}";
+    $result3 = bdd()->query($sql1);
+    if($result3->rowCount() > 0) {
+        return 3;
+    }
+
+    $sql4 = "SELECT * FROM client WHERE information = {$id_personne}";
+    $result4 = bdd()->query($sql1);
+    if($result4->rowCount() > 0) {
+        return 4;
+    }
+
+    return 0;
+}
 ?>
