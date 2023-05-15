@@ -52,13 +52,13 @@ if(isset($_SESSION['gerant_id'])){
                 </a>
             </button>
             <button class="buttonCalendar hvr-float-shadow">
-                <a href="/Queen-Burger/HTML/creatAbsence.php">
-                    Absence
+                <a href="/Queen-Burger/HTML/inscription.php">
+                    Inscription
                 </a>
             </button>
             <button class="buttonCalendar hvr-float-shadow">
-                <a href="/Queen-Burger/HTML/envoieMail.php">
-                    Email
+                <a href="/Queen-Burger/HTML/creationAbsence.php">
+                    Creation Absence
                 </a>
             </button>
         </div>
@@ -90,13 +90,13 @@ if(isset($_SESSION['gerant_id'])){
                     <div class='tables'>
                         <div class="button-container">
                             <button class="add-table-btn" onclick="ajouterTable()">
-                            <button class="add-table-btn" onclick="ajouterTable()">
-                                Add a table
-                            </button>
-                            <button class="delete-table-btn" onclick="supprimerTable()">
-                            <button class="delete-table-btn" onclick="supprimerTable()">
-                                Delete last table
-                            </button>
+                                <button class="add-table-btn" onclick="ajouterTable()">
+                                    Add a table
+                                </button>
+                                <button class="delete-table-btn" onclick="supprimerTable()">
+                                    <button class="delete-table-btn" onclick="supprimerTable()">
+                                        Delete last table
+                                    </button>
                         </div>
                         <br><br>
                         <div id="tables-container"></div>
