@@ -34,20 +34,28 @@ function goToReservation() {
     window.location.href = "/Queen-Burger/HTML/base.php";
 }
 
-function goToMenu() {
-    window.location.href = "/Queen-Burger/HTML/base.php";
+function goToServers() {
+  window.location.href = "/Queen-Burger/HTML/test.php";
+}
+
+function goToSignUp() {
+    window.location.href = "/Queen-Burger/HTML/inscription.php";
+}
+
+function goToSignIn() {
+    window.location.href = "/Queen-Burger/HTML/connexion.php";
 }
 
 function goToHome() {
     window.location.href = "/Queen-Burger/HTML/base.php";
 }
 
-function goToAbout() {
-    window.location.href = "/Queen-Burger/HTML/base.php";
+function goToCalendar() {
+    window.location.href = "/Queen-Burger/HTML/calendar.php";
 }
 
-function goToContact() {
-    window.location.href = "/Queen-Burger/HTML/base.php";
+function goToMenu() {
+  window.location.href = "/Queen-Burger/HTML/base.php";
 }
 /////////////////////////////////////////////////////////////////////////////////////////////
 //test for header

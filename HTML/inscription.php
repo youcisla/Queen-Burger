@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<div class="headerContainer">
+    <?php 
+        include_once 'header.php';
+     ?>
+</div>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

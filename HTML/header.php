@@ -12,11 +12,13 @@
 <body>
     <header id="header" class="header_return">
         <!-- to be JSed-->
-        <button class="burgerButton" onclick="goToReservation()">Reservation</button>
-        <button class="burgerButton" onclick="goToMenu()">Menu</button>
-        <button class="burgerButton" onclick="goToHome()">Connexion</button>
-        <button class="burgerButton" onclick="goToAbout()">About Us</button>
-        <button class="burgerButton" onclick="goToContact()">Contact</button>
+        <!-- <button class="burgerButton" onclick="goToReservation()">Reservation</button> -->
+        <!-- <button class="burgerButton" onclick="goToMenu()">Menu</button> -->
+        <button class="burgerButton" onclick="goToHome()">Home</button>
+        <button class="burgerButton" onclick="goToSignUp()">Inscription</button>
+        <button class="burgerButton" onclick="goToSignIn()">Connexion</button>
+        <button class="burgerButton" onclick="goToCalendar()">Calendar</button>
+        <button class="burgerButton" onclick="goToServers()">Serveurs</button>
 
     </header>
     <script src="/Queen-Burger/JavaScript/header.js" defer></script>
