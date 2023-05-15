@@ -36,23 +36,6 @@ function addDate(idDiv) {
     }
 }
 
-
-
-function getElementCoordinates(element) {
-  
-    const parentRect = element.parentNode.getBoundingClientRect();
-    const elementRect = element.getBoundingClientRect();
-  
-    const top = elementRect.top - parentRect.top;
-    const bottom = elementRect.bottom - parentRect.top;
-  
-    return {
-      top: top,
-      bottom: bottom
-    };
-  }
-
-
 function oneMinInPixils(parent){
     let parentSizeInPixils = parent.clientHeight;
     let oneMin = parentSizeInPixils / ( 24 * 60);
@@ -65,6 +48,28 @@ function getDuration(element,parent){
     let timeOfElmentInMinuts = elementSizeInPixils / oneMin ;
 
     return timeOfElmentInMinuts;
+}
+function getElementCoordinates(element) {
+  
+    const parentRect = element.parentNode.getBoundingClientRect();
+    const elementRect = element.getBoundingClientRect();
+  
+    const top = elementRect.top - parentRect.top;
+    const bottom = elementRect.bottom - parentRect.top;
+  
+    return {
+      top: top,
+      bottom: bottom
+    };
+}
+function getTime(topInPixels,BotInPixels,parent){
+    const oneMin = oneMinInPixils(parent);
+    const timeStart = topInPixels / oneMin;
+    const timeEnd = BotInPixels / oneMin;
+    return {
+        timeStart:timeStart,
+        timeEnd:timeEnd
+    }
 }
 function calcTime(timeOfElmentInMinuts){
     const hours = Math.floor( timeOfElmentInMinuts / 60 );
@@ -85,12 +90,21 @@ function printTime(hours,min,parent){
     }
     parent.appendChild(div);
 }
-
-
-
-
-
-
+function printTimeSE(element,parent){
+    // calculations
+    const corrdsTopBot = getElementCoordinates(element);
+    const getTmeSE = getTime(corrdsTopBot.top,corrdsTopBot.bottom,parent);
+    const hourAndMinOfStartTime =  calcTime(getTmeSE.timeStart);
+    const hourAndMinOfEndTime = calcTime(getTmeSE.timeEnd);
+    // things
+    const timeDiv = createElement(element,`${element.id}_time`,"Time");
+    printTime(hourAndMinOfStartTime.hours,hourAndMinOfStartTime.min,timeDiv);
+    printTime(hourAndMinOfEndTime.hours,hourAndMinOfEndTime.min,timeDiv);
+}
+function removeElement(elementID){
+    const element = document.getElementById(elementID);
+    element.parentNode.removeChild(element);
+}
 function createTable(line_nb,column_nb){
     createCalendarView("calendar1",column_nb,line_nb);
     addDate("date");
@@ -110,27 +124,31 @@ function createTask(parent,taskID){
     // info
     //createContent(taskChild);
     enableDrag(taskChild,task,parent);
+    //
+    printTimeSE(task,parent);
+
 }
 function enableDrag(elementchild,element,parent) {
-    console.log("in");
     let isDragging = false;
     let initialPosition;
 
     elementchild.addEventListener("mousedown", (event) => {
-/*         event.stopPropagation();
- */        isDragging = true;
+        event.stopPropagation();
+        isDragging = true;
         initialPosition = element.offsetTop - event.clientY;
     });
 
     document.addEventListener("mousemove", (event) => {
-/*         event.stopPropagation();
- */    console.log("move")
-   if (isDragging) {
+    event.stopPropagation();
+    
+    if (isDragging) {
         const newPosition = event.clientY + initialPosition;
         const parentBottom = parent.offsetTop + parent.offsetHeight;
         const maxPosition = parentBottom - element.offsetHeight;
         const newPositionInBounds = Math.min(maxPosition, Math.max(newPosition, 0));
         element.style.top = `${newPositionInBounds}px`;
+        removeElement(`${element.id}_time`)
+        printTimeSE(element,parent);
         }
     });
 
@@ -147,6 +165,9 @@ function createContent(task){
 }
 function removeClick(){
     target.removeEventListener("click",createTask(target,`x_${dayNbr}_${taskNumber}`));
+}
+function checkHeightChange(element){
+    
 }
 
 // editing below
@@ -211,10 +232,5 @@ const column_nb = 7;
 createTable(line_nb,column_nb)
 //week();
 //
-
 const target = document.getElementById(`droptarget_${1}`);
-
-createTask(target,"moth");
-const moth = document.getElementById("moth");
-let x = getElementCoordinates(moth)
-console.log(x.top,x.bottom);
+createTask(target,"xxx");
