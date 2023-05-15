@@ -1,39 +1,29 @@
-function createCalendarDivs(parent,id,classs){
-    div=`
-        <div id=${id} class=${classs}>
-            <div class="title"></div>
-            <div class="calendarDivBody"></div>
-        </div>
-        `;
-    position="beforeend";
-    parent.insertAdjacentHTML(position, div);
+function createElement(parent,id,classs){
+    const div = document.createElement("div");
+    div.id = id;
+    div.classList.add(classs);
+    parent.appendChild(div);
+    return div
 }
-function createCalendarElement(parent,id,classs){
-    const table = document.createElement("div");
-    table.id = id;
-    table.classList.add(classs);
-    parent.appendChild(table);
-    return table
-}
-function createCalendar1(parentID,lignes,columns){
+function createCalendarView(parentID,lignes,columns){
     // create calendar
     const parent=document.querySelector(`#${parentID}`);
-    let calendarBody = createCalendarElement(parent,"calendarBody1","calendarBody");
+    let calendarBody = createElement(parent,"calendarBody1","calendarBody");
     
     for(let ligne = 0 ; ligne < lignes ; ligne++ ){
-        let intermidiateDiv = createCalendarElement(calendarBody,`day_${ligne+1}`,"day");
+        let intermidiateDiv = createElement(calendarBody,`day_${ligne+1}`,"day");
         for(let column = 0 ; column < columns ; column++ ){
-            createCalendarElement(intermidiateDiv,`day_${ligne+1}_time_${column}`,"task");
+            createElement(intermidiateDiv,`day_${ligne+1}_time_${column}`,"task");
         }
     }
 }
 function createCalendar(parentID,lignes){
     // create calendar
     const parent=document.querySelector(`#${parentID}`);
-    let calendarBody = createCalendarElement(parent,"calendarBody","calendarBody");
+    let calendarBody = createElement(parent,"calendarBody","calendarBody");
     
     for(let ligne = 0 ; ligne < lignes ; ligne++ ){
-        let intermidiateDiv = createCalendarElement(calendarBody,`droptarget_${ligne+1}`,"droptarget");
+        let intermidiateDiv = createElement(calendarBody,`droptarget_${ligne+1}`,"droptarget");
     }
 }
 function addDate(idDiv) {
@@ -71,7 +61,6 @@ function calcTime(divID,parentID,insertID){
 function printTime(hours,min,parent){
     const div = document.createElement("div");
     div.classList.add("currentTime");
-    console.log(min,hours);
     if( ( hours < 10 ) && ( min < 10 )  ){
         div.innerHTML =`0${hours}:0${min}`;
     }else if ( ( hours < 10 )  && ( min > 10 ) ){
@@ -86,90 +75,118 @@ function printTime(hours,min,parent){
 function removeTime(parent){
     parent.removeChild(parent.firstElementChild);
 }
+function createTable(line_nb,column_nb){
+    createCalendarView("calendar1",column_nb,line_nb);
+    addDate("date");
+    createCalendar("calendar",column_nb);
+}
+function createTask(parent,taskID){
+    //
+    const task =  document.createElement("div");
+    task.id=`${taskID}`;
+    task.classList.add('draggable');
+    parent.appendChild(task);
+    //
+    // content
+    const taskChild =  document.createElement("div");
+    taskChild.classList.add('draggable_Child');
+    task.appendChild(taskChild);
+    // info
+    //createContent(taskChild);
+    enableDrag(taskChild,task,parent);
+}
+function enableDrag(elementchild,element,parent) {
+    let isDragging = false;
+    let initialPosition;
 
-//
-const line_nb = 10;
-const column_nb = 7;
-createCalendar1("calendar1",column_nb,line_nb);
-addDate("date");
-createCalendar("calendar",column_nb);
+    elementchild.addEventListener("mousedown", (event) => {
+        event.stopPropagation();
+        isDragging = true;
+        initialPosition = element.offsetTop - event.clientY;
+    });
 
-function day(dayNbr){
+    document.addEventListener("mousemove", (event) => {
+        event.stopPropagation();
+        if (isDragging) {
+        const newPosition = event.clientY + initialPosition;
+        const parentBottom = parent.offsetTop + parent.offsetHeight;
+        const maxPosition = parentBottom - element.offsetHeight;
+        const newPositionInBounds = Math.min(maxPosition, Math.max(newPosition, 0));
+        element.style.top = `${newPositionInBounds}px`;
+        }
+    });
+
+    document.addEventListener("mouseup", event => {
+        event.stopPropagation();
+        isDragging = false;
+    });
+}
+function createContent(task){
+    const x = document.createElement('div');
+    x.id=444;
+    x.classList.add('one');
+    task.appendChild(x);
+}
+function removeClick(){
+    target.removeEventListener("click",createTask(target,`x_${dayNbr}_${taskNumber}`));
+}
+function createClickForm(){
+    return true;
+}
+function createManualTaskAdderForum(){
+    return timeStart,timeEnd,day;
+}
+function AddTaskManually(){
+
+    let taskNbr=0;
+    let data =createManualTaskAdderForum();
+    let timeStart = data[0];
+    let timeEnd = data[1];
+    let day = data[2];
+
+    const addTask = document.getElementById("addTask");
+    addTask.addEventListener("click",e=>{
+        e.stopPropagation();
+        createTask(`droptarget_${day}`,``);
+        taskNbr++;
+    })
+
+
+
+}
+
+
+/* function day(dayNbr){
 
     const target = document.getElementById(`droptarget_${dayNbr}`);
     let taskNumber = 0;
+    var elementHovered = false;
 
-    function createTask(event){
-        //
-        const child =  document.createElement("p");
-        child.id=`day_${dayNbr}_${taskNumber}`;
-        child.classList.add('draggable');
-        target.appendChild(child);
-        child.style.top = `${event.offsetY - ( child.offsetHeight / 2 )}px`;
-        //
-        //
-        content=`
-            <div  class="content">
-                <div class="Title" id="Time_${child.id}"></div>
-                <div class="resizer" id ="r_${child.id}"></div>
-            </div>
-            `;
-        child.insertAdjacentHTML("beforeend", content);
-        let time = document.querySelector(`#Time_${child.id}`);
-        //
-        // fuinctions to resize
-        var startY, startHeight;
-
-        function doDrag(e) {
-            removeTime(time);
-            let a = calcTime(child.id,target.id,time.id); 
-            printTime(a[0],a[1],time);
-
-            let pxNbr = (startHeight + e.clientY - startY);
-            let px = pxNbr +  'px';
-
-            child.style.height = px;
-        }
-        function stopDrag(e) {
-            document.documentElement.removeEventListener('mousemove', doDrag, false);
-            document.documentElement.removeEventListener('mouseup', stopDrag, false);
-        }
-        //
-        const resize = document.querySelector(`#r_${child.id}`);
-        resize.addEventListener('mousedown',e=>{
-            startY = e.clientY;
-            startHeight = parseInt(document.defaultView.getComputedStyle(child).height, 10);
-            document.documentElement.addEventListener('mousemove', doDrag, false);
-            document.documentElement.addEventListener('mouseup', stopDrag, false);
-        });
-        //
-        let a = calcTime(child.id,target.id,time.id); 
-        printTime(a[0],a[1],time);
-        //
-        taskNumber++;
-    }
-
-    function removeClick(){
-        target.removeEventListener("click",createTask);
-    }
-    //
-    target.addEventListener('mouseover', function(event) {
-        if(event.target.classList.contains('draggable')){
-            console.log('mouseovered on child element');
-            event.target.addEventListener('click', removeClick);
+    target.addEventListener('click', function(event) {
+        event.stopPropagation();
+        if((event.target.classList.contains('draggable'))){
+            elementHovered = true;
         }else{
-            target.addEventListener("click",createTask);
-        }
+            elementHovered = false;
+            target.addEventListener("click",e=>{
+                e.stopPropagation();
+                createTask(target,`x_${dayNbr}_${taskNumber}`)
+            });
+            taskNumber++;
+        }  
     });
-}
-
+}  */
 function week(){
     const weekDays = 7; 
     for(var i = 1 ; i <= weekDays ; i++){
         day(i)
     }
 }
+
+
+//
+const line_nb = 10;
+const column_nb = 7;
+createTable(line_nb,column_nb)
 week();
-
-
-
+//
