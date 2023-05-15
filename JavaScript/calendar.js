@@ -35,28 +35,41 @@ function addDate(idDiv) {
         div.children[i].children[1].innerHTML = dates[i];
     }
 }
-function getTime(divID,parentID){
 
-    const element = document.querySelector(`#${divID}`);
-    const parent = document.querySelector(`#${parentID}`);
+
+
+function getElementCoordinates(element) {
+  
+    const parentRect = element.parentNode.getBoundingClientRect();
+    const elementRect = element.getBoundingClientRect();
+  
+    const top = elementRect.top - parentRect.top;
+    const bottom = elementRect.bottom - parentRect.top;
+  
+    return {
+      top: top,
+      bottom: bottom
+    };
+  }
+
+
+function oneMinInPixils(parent){
+    let parentSizeInPixils = parent.clientHeight;
+    let oneMin = parentSizeInPixils / ( 24 * 60);
+    return oneMin;
+}
+function getDuration(element,parent){
 
     let elementSizeInPixils = element.clientHeight;
-    let parentSizeInPixils = parent.clientHeight;
-    let oneMinInPixils = parentSizeInPixils / ( 24 * 60);
-    let timeOfElmentInMinuts = elementSizeInPixils / oneMinInPixils ;
+    let oneMin = oneMinInPixils(parent);
+    let timeOfElmentInMinuts = elementSizeInPixils / oneMin ;
 
     return timeOfElmentInMinuts;
 }
-function calcTime(divID,parentID,insertID){
-    // In
-    const timeOfElmentInMinuts = getTime(divID,parentID);
-    const intermidiate = ( timeOfElmentInMinuts / 60 );
-    const element = document.querySelector(`#${insertID}`);
-    // out
+function calcTime(timeOfElmentInMinuts){
     const hours = Math.floor( timeOfElmentInMinuts / 60 );
     const min = Math.floor( timeOfElmentInMinuts % 60 );
-    //
-    return [ hours , min ]
+    return { hours:hours , min:min }
 }
 function printTime(hours,min,parent){
     const div = document.createElement("div");
@@ -72,9 +85,12 @@ function printTime(hours,min,parent){
     }
     parent.appendChild(div);
 }
-function removeTime(parent){
-    parent.removeChild(parent.firstElementChild);
-}
+
+
+
+
+
+
 function createTable(line_nb,column_nb){
     createCalendarView("calendar1",column_nb,line_nb);
     addDate("date");
@@ -130,6 +146,9 @@ function createContent(task){
 function removeClick(){
     target.removeEventListener("click",createTask(target,`x_${dayNbr}_${taskNumber}`));
 }
+
+// editing below
+
 function createClickForm(){
     return true;
 }
@@ -176,17 +195,24 @@ function AddTaskManually(){
         }  
     });
 }  */
-function week(){
+/* function week(){
     const weekDays = 7; 
     for(var i = 1 ; i <= weekDays ; i++){
         day(i)
     }
-}
+} */
 
 
 //
 const line_nb = 10;
 const column_nb = 7;
 createTable(line_nb,column_nb)
-week();
+//week();
 //
+
+const target = document.getElementById(`droptarget_${1}`);
+
+createTask(target,"moth");
+const moth = document.getElementById("moth");
+let x = getElementCoordinates(moth)
+console.log(x.top,x.bottom);
