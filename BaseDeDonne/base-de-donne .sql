@@ -125,15 +125,12 @@ CREATE TABLE IF NOT EXISTS `secteur` (
 
 DROP TABLE IF EXISTS `assignation_serveur`;
 CREATE TABLE IF NOT EXISTS `assignation_serveur` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `id_serveur` int NOT NULL,
   `id_secteur` int NOT NULL,
   `hdebut` time DEFAULT NULL,
   `hfin` time DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_serveur` (`id_serveur`),
-  KEY `id_secteur` (`id_secteur`)
+  `date` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
 -- --------------------------------------------------------

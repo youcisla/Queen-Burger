@@ -14,6 +14,9 @@ input
 ouput
     - valide : retourne true si le creneau a pu etre ajouté
     - raison : juste un string avec la raison
+        1 : absence ce jour la
+        2 : deja un creneau
+        3 : creneau valide
     - id : id du creneau cree
 */
 
@@ -37,7 +40,7 @@ $result1 = bdd()->query($sql1);
 if($result1->num_rows > 0) {
     // le serveur a une absence ce jour
     $return["valide"] = false;
-    $return["raison"] = "absence ce jour";
+    $return["raison"] = 1;
     $return["id"] = -1;
 
     echo json_encode($return);
@@ -46,18 +49,18 @@ if($result1->num_rows > 0) {
 
 
 //test si le serveur est deja prit a cet horaire
-$test1 = "('{$heuredebut}' BETWEEN hdebut AND hfin)";
-$test2 = "('{$heurefin}' BETWEEN hdebut AND hfin)";
-$test3 = "(hdebut BETWEEN '{$heuredebut}' AND '{$heurefin}')";
-$test4 = "(hfin BETWEEN '{$heuredebut}' AND '{$heurefin}')";
+$test1 = "('{$heuredebut}' >= hdebut AND '{$heuredebut}' <= hfin)";
+$test2 = "('{$heurefin}' >= hdebut AND '{$heurefin}' <= hfin)";
 
-$sql2 = "SELECT * FROM assignation_serveur WHERE ({$test1} OR {$test2} OR {$test3} OR {$test4}) AND id_serveur = {$id_serveur} AND date = '{$date}'";
-$result2 = bdd()->query($sql1);
+
+$sql2 = "SELECT * FROM assignation_serveur WHERE ({$test1} OR {$test2}) AND id_serveur = {$id_serveur} AND date = '{$date}'";
+$result2 = bdd()->query($sql2);
+$return["zzzz"] = $sql2;
 
 if($result2->num_rows > 0) {
     //superposition de creneau a cette date
     $return["valide"] = false;
-    $return["raison"] = "creneau au meme horaire";
+    $return["raison"] = 2;
     $return["id"] = -1;
 
     echo json_encode($return);
@@ -66,14 +69,15 @@ if($result2->num_rows > 0) {
 
 
 
-// le crenau peut etre ajouté
+// le creneau peut etre ajouté
 $sql3 = "INSERT INTO assignation_serveur (id_serveur, id_secteur, hdebut, hfin, date) 
-VALUES ({$id_serveur}, {$id_secteur}, '{$heuredebut}', '{$heurefin}', '{$date}'";
-bdd()->query($sql);
+    VALUES ({$id_serveur}, {$id_secteur}, '{$heuredebut}', '{$heurefin}', '{$date}')";
+bdd()->query($sql3);
+$newid = bdd()->insert_id;
 
 $return["valide"] = true;
-$return["raison"] = "";
-$return["id"] = bdd()->insert_id;
+$return["raison"] = 3;
+$return["id"] = $newid;
 
 echo json_encode($return);
 ?>
