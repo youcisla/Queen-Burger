@@ -13,10 +13,9 @@
 
 <?php
 session_start(); // Add this line to start the session
-
+include_once '../BaseDeDonne/Gerant.php'; // Adjust the file path
 if (isset($_SESSION['gerant_id'])) {
     $gerant_id = $_SESSION['gerant_id'];
-    include_once '../BaseDeDonne/Gerant.php'; // Adjust the file path
     $gerant = ReadGerant($gerant_id);
     $sql = "SELECT gerant.login, personne.nom, personne.prenom, personne.telephone FROM personne
         INNER JOIN gerant ON gerant.information = personne.id WHERE gerant.id = $gerant_id"; // Adjust the table and column names
@@ -34,7 +33,7 @@ if (isset($_SESSION['gerant_id'])) {
 
 <body>
     <section class="homeBodyDiv">
-        <div class="buttonsUp">
+        <!-- <div class="buttonsUp">
             <button class="buttonCalendar hvr-float-shadow">
                 <a href="/Queen-Burger/HTML/calendar.php">
                     Calendar PHP
@@ -65,7 +64,7 @@ if (isset($_SESSION['gerant_id'])) {
                     Creation Absence
                 </a>
             </button>
-        </div>
+        </div> -->
         <div id="core">
             <div class="L70_30">
                 <div class="L70percent">
@@ -147,9 +146,11 @@ if (isset($_SESSION['gerant_id'])) {
     <script src="/Queen-Burger/JavaScript/tables.js" defer></script>
     <script src="/Queen-Burger/JavaScript/app.js" defer></script>
 
-    <?php 
-    include_once 'footer.php';
-?>
+    <footer>
+        <?php 
+            include_once 'footer.php';
+        ?>
+    </footer>
 </body>
 
 

@@ -37,7 +37,4 @@ function Gerant(){
         bdd()->query($sql);
     }
 
-
-
-
 ?>
