@@ -48,25 +48,25 @@ function iDPersonne($nom,$prenom){
 function obtenirRolePersonne($id_personne) {
     $sql1 = "SELECT * FROM gerant WHERE information = {$id_personne}";
     $result1 = bdd()->query($sql1);
-    if ($result1->rowCount() > 0) {
+    if ($result1->num_rows > 0) {
         return 1;
     }
 
     $sql2 = "SELECT * FROM cuisinier WHERE information = {$id_personne}";
     $result2 = bdd()->query($sql2);
-    if ($result2->rowCount() > 0) {
+    if ($result2->num_rows > 0) {
         return 2;
     }
 
     $sql3 = "SELECT * FROM serveur WHERE information = {$id_personne}";
     $result3 = bdd()->query($sql3);
-    if ($result3->rowCount() > 0) {
+    if ($result3->num_rows > 0) {
         return 3;
     }
 
     $sql4 = "SELECT * FROM client WHERE information = {$id_personne}";
     $result4 = bdd()->query($sql4);
-    if ($result4->rowCount() > 0) {
+    if ($result4->num_rows > 0) {
         return 4;
     }
 
