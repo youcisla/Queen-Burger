@@ -1,3 +1,4 @@
+// finished functions
 function createElement(parent,id,classs){
     const div = document.createElement("div");
     div.id = id;
@@ -19,7 +20,7 @@ function createCalendarView(parentID,lignes,columns){
 }
 function createCalendar(parentID,lignes){
     // create calendar
-    const parent=document.querySelector(`#${parentID}`);
+    const parent=document.querySelector("#"+parentID);
     let calendarBody = createElement(parent,"calendarBody","calendarBody");
     
     for(let ligne = 0 ; ligne < lignes ; ligne++ ){
@@ -113,7 +114,7 @@ function createTask(parent,taskID){
     //
     const task = createElement(parent,taskID,'draggable');
     // content
-    const taskChild = createElement(task,`${taskID}_draggable_Child`,'draggable_Child');
+    const taskChild = createElement(task,`${taskID}_Child`,'draggable_Child');
     // info
     createContent(taskChild);
     // drag feature
@@ -155,20 +156,17 @@ function enableDrag(elementchild,element,parent) {
     });
 }
 function createContent(task){
-    const x = document.createElement('div');
-    x.id=444;
-    x.classList.add('one');
-    task.appendChild(x);
+    let element1 = createElement(task,"id","classs");
+    let element2 = createElement(task,"x","deleter")
+    element2.addEventListener("click",e=>{
+        e.stopPropagation();
+        deleteElement(task.parentNode);
+    });
 }
-function removeClick(){
-    target.removeEventListener("click",createTask(target,`x_${dayNbr}_${taskNumber}`));
+function deleteElement(element) {
+    element.remove();
 }
-function checkHeightChange(element){
-    
-}
-
 // editing below
-
 function createClickForm(){
     return true;
 }
@@ -193,16 +191,17 @@ function AddTaskManually(){
 
 
 }
+// lunching functions
 function day(dayNbr){
 
     const target = document.getElementById(`droptarget_${dayNbr}`);
-    let taskNumber = 0;
+    let taskNumber = 1;
 
     target.addEventListener('click', function(event) {
         console.log("click");
         if (event.target === target) {
           event.stopPropagation();
-          createTask(target,`draggable_${dayNbr}_${taskNumber}`)
+          createTask(target,`{day:${dayNbr};taskNbr:${taskNumber}}_draggable`);
           taskNumber++;
         }
       });
