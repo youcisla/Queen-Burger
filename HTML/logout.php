@@ -5,7 +5,9 @@ header("Cache-Control: no-cache, must-revalidate");
 header("Expires: Sat, 1 Jan 2000 00:00:00 GMT");
 
 
-session_start(); // Start the session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+} // Start the session
 
 // Clear all session variables
 $_SESSION = array();

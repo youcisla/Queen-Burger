@@ -49,7 +49,7 @@ if(!isset($_POST["debutDate"],  $_POST["finDate"])) {
 
 
         //redirection a changer
-        header("Location: ../index.php");
+        header("Location: ../calendar.php");
     }
 }
 
