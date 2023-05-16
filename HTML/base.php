@@ -33,38 +33,6 @@ if (isset($_SESSION['gerant_id'])) {
 
 <body>
     <section class="homeBodyDiv">
-        <!-- <div class="buttonsUp">
-            <button class="buttonCalendar hvr-float-shadow">
-                <a href="/Queen-Burger/HTML/calendar.php">
-                    Calendar PHP
-                </a>
-            </button>
-            <button class="buttonCalendar hvr-float-shadow">
-                <a href="/Queen-Burger/HTML/calendar.html">
-                    Calendar HTML
-                </a>
-            </button>
-            <button class="buttonCalendar hvr-float-shadow">
-                <a href="/Queen-Burger/HTML/connexion.php">
-                    connexion
-                </a>
-            </button>
-            <button class="buttonCalendar hvr-float-shadow">
-                <a href="/Queen-Burger/HTML/test.php">
-                    test
-                </a>
-            </button>
-            <button class="buttonCalendar hvr-float-shadow">
-                <a href="/Queen-Burger/HTML/inscription.php">
-                    Inscription
-                </a>
-            </button>
-            <button class="buttonCalendar hvr-float-shadow">
-                <a href="/Queen-Burger/HTML/creationAbsence.php">
-                    Creation Absence
-                </a>
-            </button>
-        </div> -->
         <div id="core">
             <div class="L70_30">
                 <div class="L70percent">
@@ -88,8 +56,186 @@ if (isset($_SESSION['gerant_id'])) {
                     <img src="/Queen-Burger/Images/bg.png">
                 </div>
             </div>
+            </br>
+            <h2>Nos Burgers</h2>
+            </br>
             <div class="L70_30">
                 <div class="L30percent">
+                    <div class="recette">
+                        <h2>Ingrédients du Cheeseburger</h2>
+                        <ul>
+                            <li>Viande hachée</li>
+                            <li>Pains à hamburger</li>
+                            <li>Tranches de fromage</li>
+                            <li>Laitue</li>
+                            <li>Tranches de tomates</li>
+                            <li>Tranches d'oignons</li>
+                            <li>Cornichons</li>
+                            <li>Ketchup</li>
+                            <li>Moutarde</li>
+                            <li>Sel et poivre</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="L70percent">
+                    <div class="recettePIC cheeseburger"></div>
+                </div>
+            </div>
+            </br>
+            <div class="L70_30">
+                <div class="L70percent">
+                    <div class="recettePIC hamburger"></div>
+                </div>
+                <div class="L30percent">
+                    <div class="recette">
+                        <h2>Ingrédients du Hamburger</h2>
+                        <ul>
+                            <li>Steak haché</li>
+                            <li>Pain à hamburger</li>
+                            <li>Fromage</li>
+                            <li>Laitue</li>
+                            <li>Tranches de tomates</li>
+                            <li>Tranches d'oignons</li>
+                            <li>Cornichons</li>
+                            <li>Ketchup</li>
+                            <li>Moutarde</li>
+                            <li>Sel et poivre</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </br>
+            <div class="L70_30">
+                <div class="L30percent">
+                    <div class="recette">
+                        <h2>Ingrédients du Fish-Burger</h2>
+                        <ul>
+                            <li>Poisson</li>
+                            <li>Pains à hamburger</li>
+                            <li>Sauce tartare</li>
+                            <li>Laitue</li>
+                            <li>Tranches de tomates</li>
+                            <li>Tranches d'oignons</li>
+                            <li>Cornichons</li>
+                            <li>Sel et poivre</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="L70percent">
+                    <div class="recettePIC Fish-Burger"></div>
+                </div>
+            </div>
+            </br>
+            <div class="L70_30">
+                <div class="L70percent">
+                    <div class="recettePIC Chicken-Burger"></div>
+                </div>
+                <div class="L30percent">
+                    <div class="recette">
+                        <h2>Ingrédients du Chicken-Burger</h2>
+                        <ul>
+                            <li>Poulet</li>
+                            <li>Pains à hamburger</li>
+                            <li>Sauce spéciale</li>
+                            <li>Laitue</li>
+                            <li>Tranches de tomates</li>
+                            <li>Tranches d'oignons</li>
+                            <li>Cornichons</li>
+                            <li>Sel et poivre</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </br>
+            <div class="L70_30">
+                <div class="L30percent">
+                    <div class="recette">
+                        <h2>Ingrédients du Double-Cheeseburger</h2>
+                        <ul>
+                            <li>Double portion de viande hachée</li>
+                            <li>Pains à hamburger</li>
+                            <li>Double portion de tranches de fromage</li>
+                            <li>Laitue</li>
+                            <li>Tranches de tomates</li>
+                            <li>Tranches d'oignons</li>
+                            <li>Cornichons</li>
+                            <li>Ketchup</li>
+                            <li>Moutarde</li>
+                            <li>Sel et poivre</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="L70percent">
+                    <div class="recettePIC Double-Cheeseburger"></div>
+                </div>
+            </div>
+            </br>
+            <div class="L70_30">
+                <div class="L70percent">
+                    <div class="recettePIC Bacon-Cheeseburger"></div>
+                </div>
+                <div class="L30percent">
+                    <div class="recette">
+                        <h2>Ingrédients du Bacon-Cheeseburger</h2>
+                        <ul>
+                            <li>Viande hachée</li>
+                            <li>Pains à hamburger</li>
+                            <li>Tranches de fromage</li>
+                            <li>Laitue</li>
+                            <li>Tranches de tomates</li>
+                            <li>Tranches d'oignons</li>
+                            <li>Cornichons</li>
+                            <li>Tranches de bacon</li>
+                            <li>Ketchup</li>
+                            <li>Moutarde</li>
+                            <li>Sel et poivre</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </br>
+            <div class="L70_30">
+                <div class="L30percent">
+                    <div class="recette">
+                        <h2>Ingrédients du Veggie-Burger</h2>
+                        <ul>
+                            <li>Steak végétarien</li>
+                            <li>Pains à hamburger</li>
+                            <li>Fromage végétalien</li>
+                            <li>Laitue</li>
+                            <li>Tranches de tomates</li>
+                            <li>Tranches d'oignons</li>
+                            <li>Cornichons</li>
+                            <li>Ketchup</li>
+                            <li>Moutarde</li>
+                            <li>Sel et poivre</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="L70percent">
+                    <div class="recettePIC Veggie-Burger"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <script src="/Queen-Burger/JavaScript/tables.js" defer></script>
+    <script src="/Queen-Burger/JavaScript/app.js" defer></script>
+
+    <footer>
+        <?php 
+            include_once 'footer.php';
+        ?>
+    </footer>
+</body>
+
+
+</html>
+
+
+
+<!-- <div class="L30percent">
                     <div class='tables'>
                         <div class="button-container">
                             <button class="add-table-btn" onclick="ajouterTable()">
@@ -110,48 +256,4 @@ if (isset($_SESSION['gerant_id'])) {
                             </span>
                         </p>
                     </div>
-                </div>
-                <div class="L70percent">
-                    <img src="/Queen-Burger/Images/bg.png">
-                </div>
-            </div>
-            <div class="L70_30">
-                <div class="L70percent">
-                    <img src="/Queen-Burger/Images/bg.png">
-                </div>
-                <div class="L30percent">
-                    text
-                </div>
-            </div>
-            <div class="L70_30">
-                <div class="L30percent">
-                    text
-                </div>
-                <div class="L70percent">
-                    <img src="/Queen-Burger/Images/bg.png">
-                </div>
-            </div>
-
-            <div id="json-data">
-                <div class="json-data-header">
-                    <h2>Burger Types</h2>
-                </div>
-                <div id="json-data-body">
-                </div>
-            </div>
-
-
-        </div>
-    </section>
-    <script src="/Queen-Burger/JavaScript/tables.js" defer></script>
-    <script src="/Queen-Burger/JavaScript/app.js" defer></script>
-
-    <footer>
-        <?php 
-            include_once 'footer.php';
-        ?>
-    </footer>
-</body>
-
-
-</html>
+                </div> -->

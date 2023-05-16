@@ -25,15 +25,15 @@
 }
 
 :root {
-  --first-color: #ffffff;
-  --second-color: rgb(255, 255, 0);
+  --first-color: antiquewhite;
+  --second-color: white;
   --third-color: rgba(255, 68, 0, 0.5);
   --sixth-color: rgba(0, 0, 0, 0);
-  --sixth-color: rgba(0, 191, 255, 0.5);
+  --sixth-color: antiquewhite;
 }
 
 body {
-  background-color: var(--first-color);
+  background-color: antiquewhite;
   height: 100vh;
   /* width: 100%; */
 }
@@ -138,13 +138,13 @@ header * {
 
 .L70percent {
   width: 60%;
-  background-color: var(--second-color);
   border-radius: 40px;
   display: flex;
   place-content: center;
   align-items: center;
   box-sizing: border-box;
   padding: 10px;
+  transition: width 0.5s ease-in-out;
 }
 
 img {
@@ -157,10 +157,16 @@ img {
 }
 
 .L30percent {
+  width: 30%;
   padding: 0px 5px;
   border-radius: 40px;
-  border: solid 2px var(--second-color);
   box-sizing: border-box;
+  transition: width 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .button-container {
@@ -215,14 +221,6 @@ img {
   display: none;
 }
 
-.L30percent {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .table-buttons {
   display: flex;
   align-items: center;
@@ -245,10 +243,6 @@ img {
   display: flex;
   place-content: center;
   align-items: center;
-}
-
-.L30percent {
-  position: relative;
 }
 
 .add-table-btn {
@@ -358,6 +352,8 @@ p {
   line-height: 1.7em;
   font-weight: 700;
   box-sizing: border-box;
+  border: solid 3px white;
+  border-radius: 45px;
 }
 
 .nbTables {
@@ -433,78 +429,6 @@ a {
   color: var(--second-color);
 }
 
-#json-data {
-  border: solid 5px var(--third-color);
-  border-radius: 40px;
-  color: var(--fifth-color);
-  display: flex;
-  place-content: center;
-  align-items: center;
-  align-content: stretch;
-  /* height: auto; */
-  /* overflow: auto; */
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  min-height: 100%;
-}
-
-
-.json-data-header {
-  background-color: var(--third-color);
-  color: white;
-  font-size: 20px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  align-content: space-around;
-}
-
-.json-data-item {
-  border: solid 1px var(--third-color);
-  font-size: 18px;
-  padding: 10px;
-  width: calc(33.33% - 2em);
-  flex: 1 1 25%;
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-content: center;
-  align-items: center;
-  margin: 0px 3px;
-  border-radius: 50px;
-}
-
-.json-data-item img {
-  max-width: 100%;
-  max-height: 150px;
-}
-
-#json-data-body {
-  display: flex;
-  place-content: center;
-  align-items: center;
-  justify-content: space-evenly;
-  align-content: space-around;
-}
-
-.json-data-item h3 {
-  border:solid 1px var(--sixth-color);
-  padding: 3px;
-}
-
-.L30percent {
-  width: 30%;
-  /* background-color: var(--sixth-color); */
-  transition: width 0.5s ease-in-out;
-}
-.L70percent {
-  width: 70%;
-  background-color: var(--sixth-color);
-  transition: width 0.5s ease-in-out;
-}
-
 /* Float Shadow */
 .hvr-float-shadow {
   display: inline-block;
@@ -518,6 +442,7 @@ a {
   -webkit-transition-property: transform;
   transition-property: transform;
 }
+
 .hvr-float-shadow:before {
   pointer-events: none;
   position: absolute;
@@ -536,14 +461,112 @@ a {
   -webkit-transition-property: transform, opacity;
   transition-property: transform, opacity;
 }
-.hvr-float-shadow:hover, .hvr-float-shadow:focus, .hvr-float-shadow:active {
+
+.hvr-float-shadow:hover,
+.hvr-float-shadow:focus,
+.hvr-float-shadow:active {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
   /* move the element up by 5px */
 }
-.hvr-float-shadow:hover:before, .hvr-float-shadow:focus:before, .hvr-float-shadow:active:before {
+
+.hvr-float-shadow:hover:before,
+.hvr-float-shadow:focus:before,
+.hvr-float-shadow:active:before {
   opacity: 1;
   -webkit-transform: translateY(5px);
   transform: translateY(5px);
   /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
+}
+
+.recettePIC {
+  background-position: 50% 50%;
+  background-size: 60%;
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  background-repeat: no-repeat;
+}
+
+.recette {
+  background-color: rgba(255,255,255,0.3);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.recette h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.recette ul {
+  list-style-type: none;
+  padding: 0;
+  margin: -8px;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.recette li {
+  flex: 1 1 50%;
+  margin-bottom: 3px;
+  transform: translate(8%, 0%);
+}
+
+.recette li::before {
+  content: "•";
+  color: #ff6347;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.recette li:last-child {
+  margin-bottom: 0;
+}
+
+.cheeseburger {
+  background-image: url(/Queen-Burger/Images/cheeseburger.png);
+}
+
+.hamburger {
+  background-image: url(/Queen-Burger/Images/hamburger.png);
+}
+
+.Veggie-Burger {
+  background-image: url(/Queen-Burger/Images/Veggie-Burger.png);
+}
+
+.Bacon-Cheeseburger {
+  background-image: url(/Queen-Burger/Images/Bacon-Cheeseburger.png);
+}
+
+.Double-Cheeseburger {
+  background-image: url(/Queen-Burger/Images/Double-Cheeseburger.png);
+}
+
+.Chicken-Burger {
+  background-image: url(/Queen-Burger/Images/Chicken-Burger.png);
+}
+
+.Fish-Burger {
+  background-image: url(/Queen-Burger/Images/Bacon-Cheeseburger.png);
+}
+
+#core>h2:nth-child(3) {
+  background-color: white;
+  width: 50%;
+  text-align: center;
+  transform: translate(50%, 0%);
+  border-radius: 45px;
 }

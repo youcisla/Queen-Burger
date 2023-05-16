@@ -1,40 +1,192 @@
 body {
-    background-color: orange;
-    color: white;
-    font-family: sans-serif;
+    background-color: antiquewhite;
 }
-form {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-    padding: 20px;
-    max-width: 400px;
+
+h1 {
     margin: auto;
-    margin-top: 50px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+    font-family: 'Work Sans', sans-serif;
 }
-input[type="email"],
-input[type="password"] {
-    display: block;
+
+.burger-top {
     width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
+    height: 70px;
+    background-color: rgb(171, 118, 4);
+    border-radius: 50% 50% 0 0;
+    position: relative;
+    margin: 0 auto;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    overflow: hidden;
+}
+
+.burger-top:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    width: 15px;
+    height: 10px;
+    background-color: #bba006a2;
+    border-radius: 50%;
+    transform: skew(-45deg);
+}
+
+.burger-top:after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 30%;
+    width: 15px;
+    height: 10px;
+    background-color: #bba006a2;
+    border-radius: 50%;
+    transform: skew(45deg);
+}
+
+.burger-top::before,
+.burger-top::after,
+.burger-leaf {
+    transition: transform 0.3s ease;
+}
+
+.burger-top:hover::before,
+.burger-top:hover::after,
+.burger-leaf:hover {
+    transform: scale(1.2);
+}
+
+.burger-leaf {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: -10px;
+    width: 80px;
+    height: 80px;
+    background-color: rgb(123, 218, 0);
+    border-radius: 50%;
+    transform: rotate(45deg);
+}
+
+.cheese {
+    position: relative;
+    height: 50px;
+    background-color: rgb(255, 196, 0);
+    border-radius: 10px;
     margin-bottom: 10px;
 }
-input[type="submit"] {
-    background-color: orange;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+
+.principal {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    width: 600px;
+    transform: translate(0%, -50%);
 }
-h2 {
-    text-align: center;
-    color: black;
-}
+
 label {
-    display: block;
-    margin-bottom: 5px;
+    display: flex;
+    place-content: center;
+    align-items: center;
+}
+
+input {
+    border: none;
+    width: 75%;
+    height: 50;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+input:hover {
     color: black;
+    background: antiquewhite;
+}
+
+.mot_de_passe {
+    background:saddlebrown;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.leaf-container {
+    display: flex;
+    justify-content: center;
+}
+
+.leaf {
+    width: 40px;
+    height: 40px;
+    background-color: #83c83b;
+    border-radius: 50%;
+    position: relative;
+    margin: 5px;
+}
+
+.leaf:before,
+.leaf:after {
+    content: "";
+    width: 25px;
+    height: 50px;
+    background-color: #83c83b;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.leaf:before {
+    transform: rotate(-45deg);
+}
+
+.leaf:after {
+    transform: rotate(45deg);
+}
+
+.footer {
+    background-color: rgb(171, 118, 4);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.mail {
+    background: rgb(255, 196, 0);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.empty {
+    background: rgb(255,0,0);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.bouton {
+    height: 50px;
+    background-color: rgb(171, 118, 4);
+    width: 100%;
+    border-radius: 0px 0px 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }

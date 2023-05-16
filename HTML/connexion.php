@@ -20,14 +20,60 @@ include_once "../BaseDeDonne/indexx.php";
 
 <body>
     <!-- <form action="action.php" method="post"> -->
-    <form method="post">
-        <h2>Se connecter</h2>
-        <label for="email">E-mail :</label>
-        <input type="email" id="email" name="email" required>
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password" required>
-        <input type="submit" value="Se connecter">
-    </form>
+    <div class="principal">
+        <div class="burger-top">
+            <h1>Se connecter</h1>
+        </div>
+
+        <div class="leaf-container">
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+        </div>
+        <form method="POST">
+
+            <div class="mail">
+                <label for="mail">
+                    <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/new-post.png"
+                        alt="new-post" />
+                </label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/new-post.png" alt="new-post" />
+            </div>
+
+            <div class="empty">
+                <label for="empty">
+                    <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/hamburger.png"
+                        alt="hamburger" />
+                </label>
+                <input required>
+                <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/hamburger.png" alt="hamburger" />
+            </div>
+
+            <div class="mot_de_passe">
+                <label for="Tmot_de_passe">
+                    <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/password.png"
+                        alt="password" />
+                </label>
+                <input type="password" id="password" name="password" placeholder="Mots de passe" required>
+                <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/password.png" alt="password" />
+            </div>
+
+            <div class="bouton">
+                <input type="submit" value="Se connecter">
+            </div>
+
+        </form>
+    </div>
 
     <?php
 session_start(); // Add this line to start the session
@@ -62,11 +108,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<footer>
-            <?php 
+    <footer>
+        <?php 
             include_once 'footer.php';
         ?>
-</footer>
+    </footer>
 
 
 </body>
