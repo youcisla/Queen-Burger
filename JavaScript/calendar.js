@@ -193,20 +193,11 @@ function AddTaskManually(){
 
 
 }
-
-
 function day(dayNbr){
 
     const target = document.getElementById(`droptarget_${dayNbr}`);
     let taskNumber = 0;
 
-/*     target.addEventListener('click', function(event) {
-        console.log("click");
-        event.stopPropagation();
-        createTask(target,`draggable_${dayNbr}_${taskNumber}`)
-        taskNumber++;
-        }  
-    ); */
     target.addEventListener('click', function(event) {
         console.log("click");
         if (event.target === target) {
@@ -222,8 +213,6 @@ function week(){
         day(i)
     }
 }
-
-
 function main(){
     const line_nb = 10;
     const column_nb = 7;
