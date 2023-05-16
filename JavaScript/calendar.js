@@ -90,14 +90,14 @@ function printTime(hours,min,parent){
     }
     parent.appendChild(div);
 }
-function printTimeSE(element,parent){
+function printTimeSE(element,parent,elementchild){
     // calculations
     const corrdsTopBot = getElementCoordinates(element);
     const getTmeSE = getTime(corrdsTopBot.top,corrdsTopBot.bottom,parent);
     const hourAndMinOfStartTime =  calcTime(getTmeSE.timeStart);
     const hourAndMinOfEndTime = calcTime(getTmeSE.timeEnd);
     // things
-    const timeDiv = createElement(element,`${element.id}_time`,"Time");
+    const timeDiv = createElement(elementchild,`${element.id}_time`,"Time");
     printTime(hourAndMinOfStartTime.hours,hourAndMinOfStartTime.min,timeDiv);
     printTime(hourAndMinOfEndTime.hours,hourAndMinOfEndTime.min,timeDiv);
 }
@@ -112,20 +112,21 @@ function createTable(line_nb,column_nb){
 }
 function createTask(parent,taskID){
     //
-    const task =  document.createElement("div");
-    task.id=`${taskID}`;
-    task.classList.add('draggable');
-    parent.appendChild(task);
-    //
+    const task = createElement(parent,taskID,'draggable');
     // content
-    const taskChild =  document.createElement("div");
-    taskChild.classList.add('draggable_Child');
-    task.appendChild(taskChild);
+    const taskChild = createElement(task,`${taskID}_draggable_Child`,'draggable_Child');
     // info
     //createContent(taskChild);
+    // drag feature
     enableDrag(taskChild,task,parent);
-    //
-    printTimeSE(task,parent);
+    // time stuff
+    printTimeSE(task,parent,taskChild);
+
+    task.addEventListener('mousemove',e=>{
+        console.log("hello");
+        removeElement(`${task.id}_time`)
+        printTimeSE(task,parent,taskChild);
+    })
 
 }
 function enableDrag(elementchild,element,parent) {
@@ -147,8 +148,6 @@ function enableDrag(elementchild,element,parent) {
         const maxPosition = parentBottom - element.offsetHeight;
         const newPositionInBounds = Math.min(maxPosition, Math.max(newPosition, 0));
         element.style.top = `${newPositionInBounds}px`;
-        removeElement(`${element.id}_time`)
-        printTimeSE(element,parent);
         }
     });
 
