@@ -1,10 +1,18 @@
 <?php
-function bdd(){
-        $conn = new mysqli('localhost','root','','queenburger');
-        if( $conn->connect_error ) {
-                die("Erreur : 1conn->connect_error");
-                }
-        return $conn;
-}
+// modif de la connexion, avant on cree une connexion par appel de la fonction
+// retour de insert_id
+$connection = NULL;
 
+function bdd() {
+    global $connection;
+    if($connection != NULL) {
+        return $connection;
+    } else {
+        $connection = new mysqli('localhost','root','','queenburger');
+        if( $connection->connect_error ) {
+            die($connection->connect_error);
+        }
+        return $connection;
+    }
+}
 ?>

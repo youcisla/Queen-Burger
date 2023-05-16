@@ -6,6 +6,6 @@ const secteur = document.getElementById("secteur");
 const button = document.getElementById("button");
 
 
-button.addEventListener("click", () => {
-    console.log(ajouterCreneau(date.value, debut.value + ":00", fin.value + ":00", secteur.value, serveur.value));
+button.addEventListener("click", async () => {
+    console.log(await ajouterCreneau(date.value, debut.value + ":00", fin.value + ":00", secteur.value, serveur.value));
 });
