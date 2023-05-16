@@ -35,7 +35,6 @@ function addDate(idDiv) {
         div.children[i].children[1].innerHTML = dates[i];
     }
 }
-
 function oneMinInPixils(parent){
     let parentSizeInPixils = parent.clientHeight;
     let oneMin = parentSizeInPixils / ( 24 * 60);
@@ -116,14 +115,13 @@ function createTask(parent,taskID){
     // content
     const taskChild = createElement(task,`${taskID}_draggable_Child`,'draggable_Child');
     // info
-    //createContent(taskChild);
+    createContent(taskChild);
     // drag feature
     enableDrag(taskChild,task,parent);
     // time stuff
     printTimeSE(task,parent,taskChild);
 
     task.addEventListener('mousemove',e=>{
-        console.log("hello");
         removeElement(`${task.id}_time`)
         printTimeSE(task,parent,taskChild);
     })
@@ -197,39 +195,41 @@ function AddTaskManually(){
 }
 
 
-/* function day(dayNbr){
+function day(dayNbr){
 
     const target = document.getElementById(`droptarget_${dayNbr}`);
     let taskNumber = 0;
-    var elementHovered = false;
 
-    target.addEventListener('click', function(event) {
+/*     target.addEventListener('click', function(event) {
+        console.log("click");
         event.stopPropagation();
-        if((event.target.classList.contains('draggable'))){
-            elementHovered = true;
-        }else{
-            elementHovered = false;
-            target.addEventListener("click",e=>{
-                e.stopPropagation();
-                createTask(target,`x_${dayNbr}_${taskNumber}`)
-            });
-            taskNumber++;
+        createTask(target,`draggable_${dayNbr}_${taskNumber}`)
+        taskNumber++;
         }  
-    });
-}  */
-/* function week(){
+    ); */
+    target.addEventListener('click', function(event) {
+        console.log("click");
+        if (event.target === target) {
+          event.stopPropagation();
+          createTask(target,`draggable_${dayNbr}_${taskNumber}`)
+          taskNumber++;
+        }
+      });
+}
+function week(){
     const weekDays = 7; 
     for(var i = 1 ; i <= weekDays ; i++){
         day(i)
     }
-} */
+}
 
 
 //
 const line_nb = 10;
 const column_nb = 7;
 createTable(line_nb,column_nb)
-//week();
+week();
 //
-const target = document.getElementById(`droptarget_${1}`);
+/* const target = document.getElementById(`droptarget_${1}`);
 createTask(target,"xxx");
+createTask(target,"yyy"); */
