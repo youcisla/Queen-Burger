@@ -99,6 +99,8 @@
 
             <div class="bouton">
                 <button type="submit">Créer Mon Compte</button>
+                <p>Vous avez un compte ?</p>
+                <button class="burgerButton" onclick="goToSignIn()">Connection</button>
             </div>
         </form>
     </div>

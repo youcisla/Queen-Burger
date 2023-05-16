@@ -1,6 +1,3 @@
-<?php
-include_once "../BaseDeDonne/indexx.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +52,7 @@ include_once "../BaseDeDonne/indexx.php";
                     <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/hamburger.png"
                         alt="hamburger" />
                 </label>
-                <input required>
+                <input>
                 <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/hamburger.png" alt="hamburger" />
             </div>
 
@@ -70,6 +67,8 @@ include_once "../BaseDeDonne/indexx.php";
 
             <div class="bouton">
                 <input type="submit" value="Se connecter">
+                <p>Vous n'avez pas un compte ?</p>
+                <button class="burgerButton" onclick="goToSignUp()">Inscription</button>
             </div>
 
         </form>
@@ -77,7 +76,6 @@ include_once "../BaseDeDonne/indexx.php";
 
     <?php
 session_start(); // Add this line to start the session
-include_once "../BaseDeDonne/indexx.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Establish a database connection
@@ -87,9 +85,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  $sql = "SELECT * FROM `Gerant` WHERE `Gerant`.`login` = ? AND `Gerant`.`mot_de_passe` = ?";
+  $sql = "SELECT * FROM `Personne` WHERE `Personne`.`mail` = ? AND (`Gerant`.`mot_de_passe` = ? OR `Cuisinier`.`mot_de_passe` = ? OR `Serveur`.`mot_de_passe` = ?)";
   $stmt = $c->prepare($sql);
-  $stmt->bind_param('ss', $email, $password);
+  $stmt->bind_param('ssss', $email, $password, $password, $password);
   $stmt->execute();
 
   $result = $stmt->get_result();
@@ -97,7 +95,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $row = $result->fetch_assoc();
   if ($row) {
     // After successful login/authentication
-    $_SESSION['gerant_id'] = $row['id']; // Corrected to use $row['id']
+    if (!empty($row['Gerant_id'])) {
+      $_SESSION['gerant_id'] = $row['Gerant_id'];
+    } elseif (!empty($row['Cuisinier_id'])) {
+      $_SESSION['cuisinier_id'] = $row['Cuisinier_id'];
+    } elseif (!empty($row['Serveur_id'])) {
+      $_SESSION['serveur_id'] = $row['Serveur_id'];
+    }
     // Successful login, redirect to base.php
     header('Location: base.php');
     exit();
@@ -107,6 +111,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 ?>
+
+
     <script src="/Queen-Burger/JavaScript/app.js" defer></script>
 
     <footer>
