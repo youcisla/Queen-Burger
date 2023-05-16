@@ -224,12 +224,10 @@ function week(){
 }
 
 
-//
-const line_nb = 10;
-const column_nb = 7;
-createTable(line_nb,column_nb)
-week();
-//
-/* const target = document.getElementById(`droptarget_${1}`);
-createTask(target,"xxx");
-createTask(target,"yyy"); */
+function main(){
+    const line_nb = 10;
+    const column_nb = 7;
+    createTable(line_nb,column_nb)
+    week();    
+}
+main();
