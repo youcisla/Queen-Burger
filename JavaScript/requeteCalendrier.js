@@ -10,20 +10,78 @@
  * @return {data} {id, raison, valide} || null si erreur
  */
 async function ajouterCreneau(date, heuredebut, heurefin, id_secteur, id_serveur) {
-    let data = null;
-    await axios.post('../PHP/sauvegardeCreneau.php', {
-          id_serveur: id_serveur,
-          date: date,
-          heuredebut: heuredebut,
-          heurefin: heurefin,
-          id_secteur: id_secteur
-        })
-        .then(async function (response) {
-          data = response.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    
-    return data;
+  let result = null;
+  await axios.post('../PHP/sauvegardeCreneau.php', {
+        id_serveur: id_serveur,
+        date: date,
+        heuredebut: heuredebut,
+        heurefin: heurefin,
+        id_secteur: id_secteur
+      })
+      .then(async function (response) {
+        result = response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  
+  return result;
+}
+
+/**
+ * suprime un creneau
+ * @param {number} id_creneau id du creneau a supprimer
+ */
+function supprimerCreneau(id_creneau) {
+  axios.post('../PHP/suppressionCreneau.php', {
+    id_creneau : id_creneau
+  });
+}
+
+/**
+ * obtient tout les creneaux d'une liste de date
+ * FONCTION ASYNCRHONE
+ * @param {array dates} dates tableau de date format yyyy-mm-dd
+ * @param {number} id_serveur id du serveur
+ * 
+ * @return {dictionnaire creneaus} {date1 : [creneau11, creneau21], date2 : [creneau12, creneau22]}
+ */
+async function obtenirCreneauxDates(id_serveur, dates) {
+  let creneaux = null;
+  await axios.post('../PHP/obtenirCreneaux.php', {
+    id_serveur : id_serveur,
+    dates : dates
+  })
+  .then(async function (response) {
+    creneaux = response.data;
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+return creneaux;
+}
+
+/**
+ * renvoit un boolean par date en fonction de l'absence du serveur
+ * FONCTION ASYNCRHONE
+ * @param {number} id_serveur : id de l'employé
+ * @param {array dates} dates : tableau de date format yyyy-mm-dd
+ * 
+ * @return {dictionnaire boolean} {date1 : bool1, date2 : bool2}
+ */
+async function obtenirAbsencesDates(id_serveur, dates) {
+  let absences = null;
+  await axios.post('../PHP/obtenirAbsences.php', {
+    id_serveur : id_serveur,
+    dates : dates
+  })
+  .then(async function (response) {
+    absences = response.data;
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+  return absences;
 }

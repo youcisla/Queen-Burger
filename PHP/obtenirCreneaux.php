@@ -18,7 +18,7 @@ ouput
 $request_body = file_get_contents('php://input');
 $data = json_decode($request_body, true);
 
-$crenaux = array();
+$creneaux = array();
 
 $id_serveur = $data["id_serveur"];
 $dates = $data["dates"];
@@ -29,14 +29,13 @@ foreach($dates as $date) {
     $result = bdd()->query($sql);
     if($result->num_rows > 0) {
 
-        $return = array()
-        while($row =  $result->fetch_assoc()) {
+        $return = array();
+        while($row = $result->fetch_assoc()) {
             $return[] = $row;
-        }
-
-        $crenaux[$date] = $return;
+        }  
+        $creneaux[$date] = $return;   
     }
 }
 
-echo json_encode($crenaux);
+echo json_encode($creneaux);
 ?>

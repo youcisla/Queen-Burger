@@ -5,7 +5,7 @@ include_once "../BaseDeDonne/indexx.php";
 /*
 input 
     - id_serveur : id de l'employé
-    - jours : tableau contenant une liste de jour format yyyy-mm-dd
+    - dates : tableau de date format yyyy-mm-dd
 
 ouput
     - absence : dictionnaire contenant tout les absences
@@ -21,13 +21,13 @@ $data = json_decode($request_body, true);
 $absences = array();
 
 $id_serveur = $data["id_serveur"];
-$jours = $data["jours"];
+$dates = $data["dates"];
 
-foreach($jours as $jour) {
+foreach($dates as $date) {
     $sql = "SELECT * FROM absence WHERE id_serveur = $id_serveur AND ('$date' BETWEEN datedebut AND datefin)";
     $result = bdd()->query($sql);
 
-    $absences[$jour] = ($result->num_rows));
+    $absences[$date] = ($result->num_rows);
 }
 
 echo json_encode($absences);
