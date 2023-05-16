@@ -426,7 +426,8 @@ a {
 .burgerButton:hover {
   border: solid 2px var(--first-color);
   background-color: var(--fifth-color);
-  color: var(--second-color);
+  color: black;
+  border:solid 2px white;
 }
 
 /* Float Shadow */
