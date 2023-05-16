@@ -571,3 +571,14 @@ a {
   transform: translate(50%, 0%);
   border-radius: 45px;
 }
+
+#header > button:nth-child(6){
+  background :red;
+  border:solid 1px white;
+  color :antiquewhite;
+}
+#header > button:nth-child(6):hover{
+  background :antiquewhite;
+  border:solid 2px white;
+  color :black;
+}
