@@ -83,7 +83,7 @@ html,body{
     position: relative;
 }
 .draggable{
-    height: 30px;
+    height: 100px;
     width: 100%;
     background-color: rgb(54, 167, 233);
     position: absolute;
@@ -94,10 +94,16 @@ html,body{
     overflow: hidden;
     border: 1px solid;
     top: 0;
+    max-height: 100%; /* Limit maximum height to parent's height */
 }
 
 .draggable_Child{
     width: 100%;
     height: 100%;
     background-color: pink;
+}
+.deleter{
+    height:20px;
+    width: 10%;
+    background-color: green;
 }
