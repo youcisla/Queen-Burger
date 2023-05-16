@@ -107,13 +107,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 }
 ?>
+    <script src="/Queen-Burger/JavaScript/app.js" defer></script>
 
     <footer>
         <?php 
             include_once 'footer.php';
         ?>
     </footer>
-
 
 </body>
 
