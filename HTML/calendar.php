@@ -53,6 +53,7 @@
     </div>
     <script src="../JavaScript/date.js" defer></script>
     <script src="../JavaScript/calendar.js" defer></script>
+    <script src="../JavaScript/app.js" defer></script>
 </body>
 <?php 
     include_once 'footer.php';

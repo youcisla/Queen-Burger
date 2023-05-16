@@ -1,3 +1,18 @@
+<?php
+session_start(); 
+include_once '../BaseDeDonne/indexx.php'; 
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+    $sql = "SELECT * FROM Personne WHERE Personne.id = $id";
+    $result = bdd()->query($sql);
+    $res = $result->fetch_assoc();
+    echo "Welcome, " . $res['prenom'];
+} else {
+    // echo 'Connectez vous';
+    header('Location: connexion.php');
+}
+?>
+
 <html>
 
 <div class="headerContainer">
@@ -10,26 +25,6 @@
     <title>Table Management</title>
     <link rel="stylesheet" type="text/css" href="/Queen-Burger/CSS/style.css">
 </head>
-
-<?php
-session_start(); // Add this line to start the session
-include_once '../BaseDeDonne/Gerant.php'; // Adjust the file path
-if (isset($_SESSION['gerant_id'])) {
-    $gerant_id = $_SESSION['gerant_id'];
-    $gerant = ReadGerant($gerant_id);
-    $sql = "SELECT gerant.login, personne.nom, personne.prenom, personne.telephone FROM personne
-        INNER JOIN gerant ON gerant.information = personne.id WHERE gerant.id = $gerant_id"; // Adjust the table and column names
-    $result = bdd()->query($sql); // Use the appropriate function to execute the query
-    $res = $result->fetch_assoc(); // Use the appropriate function to fetch the result
-    echo "Welcome, " . $res['login'];
-} else {
-    // header("Location: /Queen-Burger/HTML/connexion.php");
-    echo 'not connected';
-    var_dump($_SESSION['gerant_id']);
-    // exit;
-}
-?>
-
 
 <body>
     <section class="homeBodyDiv">

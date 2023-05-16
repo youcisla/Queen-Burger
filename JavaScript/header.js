@@ -57,6 +57,10 @@ function goToCalendar() {
 function goToMenu() {
   window.location.href = "/Queen-Burger/HTML/base.php";
 }
+
+function goToLogOut() {
+  window.location.href = "/Queen-Burger/HTML/logout.php";
+}
 /////////////////////////////////////////////////////////////////////////////////////////////
 //test for header
 function test(){

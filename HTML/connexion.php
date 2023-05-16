@@ -1,11 +1,81 @@
+<?php
+session_start(); // Add this line to start the session
+include '../BaseDeDonne/indexx.php';
+include '../BaseDeDonne/Personne.php';
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Establish a database connection
+  $c = bdd();
+
+  // Query the database to get the person's ID
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  $sql = "SELECT * FROM `Personne` WHERE `Personne`.`mail` = ?";
+  $stmt = $c->prepare($sql);
+  $stmt->bind_param('s', $email);
+  $stmt->execute();
+
+  $result = $stmt->get_result();
+
+  $row = $result->fetch_assoc();
+  if ($row) {
+    // After successful login/authentication
+    $personId = $row['id'];
+    $_SESSION['role'] = obtenirRolePersonne($personId);
+
+    if ($_SESSION['role'] === 1){
+      $sql = "SELECT * FROM `Gerant` WHERE `Gerant`.`mot_de_passe` = ?";
+      $stmt = $c->prepare($sql);
+      $stmt->bind_param('s', $password);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $row = $result->fetch_assoc();
+    }
+
+    if ($_SESSION['role'] === 2){
+      $sql = "SELECT * FROM `Cuisinier` WHERE `Cuisinier`.`mot_de_passe` = ?";
+      $stmt = $c->prepare($sql);
+      $stmt->bind_param('s', $password);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $row = $result->fetch_assoc();
+    }
+    
+    if ($_SESSION['role'] === 3){
+      $sql = "SELECT * FROM `Serveur` WHERE `Serveur`.`mot_de_passe` = ?";
+      $stmt = $c->prepare($sql);
+      $stmt->bind_param('s', $password);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $row = $result->fetch_assoc();
+    }
+
+    if ($_SESSION['role'] === 4){
+      $sql = "SELECT * FROM `Client` WHERE `Client`.`mot_de_passe` = ?";
+      $stmt = $c->prepare($sql);
+      $stmt->bind_param('s', $password);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $row = $result->fetch_assoc();
+    }
+    
+    $_SESSION['id'] = $row['id'];
+    
+    // Successful login, redirect to base.php
+    header('Location: base.php');
+    exit();
+  } else {
+    // Failed login, show error message
+    echo 'Invalid email or password';
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
-<div class="headerContainer">
-    <?php 
-        include_once 'header.php';
-     ?>
-</div>
 
 <head>
     <meta charset="UTF-8">
@@ -16,7 +86,12 @@
 </head>
 
 <body>
-    <!-- <form action="action.php" method="post"> -->
+    <div class="headerContainer">
+        <?php 
+            include_once 'header.php';
+        ?>
+    </div>
+
     <div class="principal">
         <div class="burger-top">
             <h1>Se connecter</h1>
@@ -74,45 +149,6 @@
         </form>
     </div>
 
-    <?php
-session_start(); // Add this line to start the session
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // Establish a database connection
-  $c = bdd();
-
-  // Query the database to get the employee data
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-
-  $sql = "SELECT * FROM `Personne` WHERE `Personne`.`mail` = ? AND (`Gerant`.`mot_de_passe` = ? OR `Cuisinier`.`mot_de_passe` = ? OR `Serveur`.`mot_de_passe` = ?)";
-  $stmt = $c->prepare($sql);
-  $stmt->bind_param('ssss', $email, $password, $password, $password);
-  $stmt->execute();
-
-  $result = $stmt->get_result();
-
-  $row = $result->fetch_assoc();
-  if ($row) {
-    // After successful login/authentication
-    if (!empty($row['Gerant_id'])) {
-      $_SESSION['gerant_id'] = $row['Gerant_id'];
-    } elseif (!empty($row['Cuisinier_id'])) {
-      $_SESSION['cuisinier_id'] = $row['Cuisinier_id'];
-    } elseif (!empty($row['Serveur_id'])) {
-      $_SESSION['serveur_id'] = $row['Serveur_id'];
-    }
-    // Successful login, redirect to base.php
-    header('Location: base.php');
-    exit();
-  } else {
-    // Failed login, show error message
-    echo 'Invalid email or password';
-  }
-}
-?>
-
-
     <script src="/Queen-Burger/JavaScript/app.js" defer></script>
 
     <footer>
@@ -120,7 +156,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             include_once 'footer.php';
         ?>
     </footer>
-
 </body>
 
 </html>
