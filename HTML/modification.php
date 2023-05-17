@@ -38,22 +38,15 @@ $result = $result->fetch_assoc();
     <h1> <?php echo sprintf("Modification des informations de %s %s", $result['nom'], $result['prenom']) ?> </h1>
     <p>	
 <?php 
-    if ($result) {
-    while ($row = $result->fetch_assoc()) {
-        // Accéder aux données individuelles
-        $nom = $row['nom'];
-        $prenom = $row['prenom'];
-        $tel = $row['telephone'];
-        $mail = $row['mail'];
-        $mdp = $row['mot_de_passe'];
 
-        // Effectuer les opérations nécessaires avec les données
-        // ...
-    }
-} else {
-    // Gérer l'erreur de la requête
-    echo "Erreur de requête : " . $conn->error;
-}
+    $nom = $result['nom'];
+    $prenom = $result['prenom'];
+    $tel = $result['telephone'];
+    $mail = $result['mail'];
+    $mdp = $result['mot_de_passe'];
+    $login = $result['login'];
+    $id = $result['id'];
+
 $conn->close();
 ?>
         <form action="/Queen-Burger/BaseDeDonne/modifier_post.php" method="POST">

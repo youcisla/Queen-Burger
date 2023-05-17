@@ -96,7 +96,7 @@ function modifierPersonne($id, $nouveauNom, $nouveauPrenom, $nouveauRole, $nouve
 
 function afficheRole($role) {
 
-    $conn = seConnecterBDD();
+    $conn = bdd();
     $sql = "SELECT * FROM personne WHERE role = '$role'";
     $result = $conn->query($sql);
 
