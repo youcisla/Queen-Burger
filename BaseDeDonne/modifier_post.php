@@ -1,6 +1,5 @@
 
 <?php
-include_once 'Serveur.php';
 include_once 'Personne.php';
 $id=1;
 
@@ -17,13 +16,6 @@ $password = "root";
 $dbname = "queenburger";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$sql = "SELECT id_personne, login 
-        FROM serveur
-        WHERE id = '$id'";
-$result = $conn->query($sql);
-$result = $result -> fetch_assoc();
-$idp = $result['id_personne'];
-
 if(!empty($_POST)){
     if(estValide()) {
             $nom = strip_tags($_POST["nom"]);
@@ -32,9 +24,11 @@ if(!empty($_POST)){
             $mail = strip_tags($_POST["mail"]);
             $login = strip_tags($_POST["login"]);
             $mot_de_passe = strip_tags($_POST["mot_de_passe"]);
-            UpdatePersonne($idp ,$nom, $prenom, $telephone, $mail, $mot_de_passe);
-            UpdateServeur($id, $login);
-            header("Location: /Queen-Burger/HTML/test.php");
+            $id = strip_tags($_POST["id"]);
+            $role = $_POST["role"];
+
+            modifierPersonne($id ,$nom, $prenom, $role, $telephone, $login, $mot_de_passe, $mail);
+            header("Location: /Queen-Burger/HTML/gerant.php");
 
         }
         else{

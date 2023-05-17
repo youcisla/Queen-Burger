@@ -14,12 +14,12 @@
         // ajoute des liens dans le header en fonction du role
         if($role == "gerant") {
             //gerant connecté
-
+            
             //gestion serveur
-            echo "<button class='burgerButton' onclick='goToServers()'>Serveurs</button>";
+            echo "<button class = 'burgerButton' onclick = 'goToServers()'>Serveurs</button>";
 
             //emploie du temps
-            echo "<button class='burgerButton' onclick='goToCalendar()''>Calendar</button>";
+            echo "<button class = 'burgerButton' onclick = 'goToCalendar()'>Calendar</button>";
         }
 
         if($role == "cuisinier") {

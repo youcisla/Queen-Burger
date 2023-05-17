@@ -110,6 +110,41 @@ function modifierPersonne($id, $nouveauNom, $nouveauPrenom, $nouveauRole, $nouve
     $conn->close();
 }
 
+function afficheRole($role) {
+
+    $conn = seConnecterBDD();
+    $sql = "SELECT * FROM personne WHERE role = '$role'";
+    $result = $conn->query($sql);
+
+    if (!$result) {
+        echo "Erreur SQL : " . mysqli_error($conn);
+        exit;
+    }
+
+    if ($result->num_rows > 0) {
+        echo sprintf("
+        <h2> Liste des %ss : </h2>
+        <table>
+            <tr>
+                <td> <strong> Nom </strong> </td>
+                <td> <strong> Prenom </strong> </td>
+                <td> <strong> Mail </strong> </td>
+                <td> <strong> Login </strong> </td>
+                <td> <strong> Mot de passe </strong> </td>
+            </tr>
+        ", $role);
+        foreach($result as $temp) {
+            echo "<tr>";
+            echo sprintf("<td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td>",$temp['nom'],$temp['prenom'],$temp['mail'],$temp['login'],$temp['mot_de_passe']);
+            echo sprintf("<td> <form action='modification.php' method='POST'>
+                            <button type='submit' name='id_selec' value='%d'> Modifier </button>
+                        </form> </td>", $temp['id']);
+            echo "</tr>";
+        }
+        echo "</table>";
+    }
+}
+
 // Fonction pour obtenir le rôle d'une personne
 function obtenirRole($id) {
 
