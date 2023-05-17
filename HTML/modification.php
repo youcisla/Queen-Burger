@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Modification</title>
 </head>
 <body>
 <div class="headerContainer">
@@ -18,7 +18,7 @@
 // Establish a database connection
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "queenburger";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -26,33 +26,46 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$id = $_SESSION['id'];
-// Query the database to get the employee data
-$sql = "SELECT serveur.login,serveur.mot_de_passe,personne.nom, personne.prenom, personne.telephone,personne.mail FROM personne
-INNER JOIN serveur ON serveur.information = personne.id WHERE serveur.id='$id'";
+$id=1;
+
+$sql = "SELECT id_personne, login 
+        FROM serveur
+        WHERE id = '$id'";
 $result = $conn->query($sql);
+
+if($result) {
+    
+    $result = $result->fetch_assoc();
+    $login = $result['login'];
+    $result = $result['id_personne'];
+    $sql = "SELECT *
+            FROM personne
+            WHERE id = '$result'";
+    $result = $conn->query($sql);
+} else {
+    echo "Erreur de requête : " . $conn->error;
+}
 ?>
 <div class="principal">
-    <h1>Page Gerant</h1>
+    <h1> <?php echo sprintf("Modification des informations de %s %s", $_POST['nom'], $_POST['prenom']) ?> </h1>
     <p>	
-        <?php if ($result) {
+<?php 
+    if ($result) {
     while ($row = $result->fetch_assoc()) {
         // Accéder aux données individuelles
         $nom = $row['nom'];
         $prenom = $row['prenom'];
         $tel = $row['telephone'];
         $mail = $row['mail'];
-        $login = $row['login'];
         $mdp = $row['mot_de_passe'];
     }
 } else {
     // Gérer l'erreur de la requête
-    echo "Erreur de requête : " . $mysqli->error;
+    echo "Erreur de requête : " . $conn->error;
 }
 $conn->close();
 ?>
         <form action="/Queen-Burger/BaseDeDonne/modifier_post.php" method="POST">
-
 
             <label for="nom">Nom</label><br/>
                 <input type="text" name="nom" id= "nom" value="<?php echo $nom ;?>" required><br/>
@@ -64,7 +77,7 @@ $conn->close();
                 <input type="text" name="mail" id="mail" value="<?php echo $mail;?>" required><br/>
             <label for="login">Login</label><br/>
                 <input type="text" name="login" id="login" value="<?php echo $login;?>" required><br/>
-            <label for="mot_de_passe">Mots de passe</label><br/>
+            <label for="mot_de_passe">Mot de passe</label><br/>
                 <input type="text" name="mot_de_passe" id="mot_de_passe" value="<?php echo $mdp;?>" required><br/>
             <button type="submit">Modifier</button>
 

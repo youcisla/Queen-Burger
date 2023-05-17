@@ -12,7 +12,7 @@
         $role = roleConnexion();
 
         // ajoute des liens dans le header en fonction du role
-        if($role == 1) {
+        if($role == "gerant") {
             //gerant connecté
 
             //gestion serveur
@@ -22,8 +22,8 @@
             echo "<button class='burgerButton' onclick='goToCalendar()''>Calendar</button>";
         }
 
-        if($role == 2) {
-            //cuisinié connecté
+        if($role == "cuisinier") {
+            //cuisinier connecté
 
             //gestion serveur
             echo "<button class='burgerButton' onclick='goToServers()'>Serveurs</button>";
@@ -32,7 +32,7 @@
             echo "<button class='burgerButton' onclick='goToCalendar()''>Calendar</button>";
         }
 
-        if($role == 3) {
+        if($role == "serveur") {
             //serveur connecté
 
 
@@ -40,7 +40,7 @@
             echo "<button class='burgerButton' onclick='goToCalendar()''>Calendar</button>";
         }
 
-        if($role == 4) {
+        if($role == "client") {
             //client connecté
         }
 

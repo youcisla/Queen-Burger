@@ -8,7 +8,7 @@ function bdd() {
     if($connection != NULL) {
         return $connection;
     } else {
-        $connection = new mysqli('localhost','root','','queenburger');
+        $connection = new mysqli('localhost','root','root','queenburger');
         if( $connection->connect_error ) {
             die($connection->connect_error);
         }
