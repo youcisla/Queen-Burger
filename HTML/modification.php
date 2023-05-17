@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Modification</title>
 </head>
 <body>
 <div class="headerContainer">
@@ -27,22 +27,37 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 $id=1;
-// Query the database to get the employee data
-$sql = "SELECT serveur.login,serveur.mot_de_passe,personne.nom, personne.prenom, personne.telephone,personne.mail FROM personne
-INNER JOIN serveur ON serveur.information = personne.id WHERE serveur.id='$id'";
+// Je suis parti du principe qu'on avait l'id du serveur, donc on doit retrouver la personne correspondant a l'id du serveur
+$sql = "SELECT id_personne, login 
+        FROM serveur
+        WHERE id = '$id'";
 $result = $conn->query($sql);
+
+// Si on a un resultat alors le serveur existe bien on continue
+if($result) {
+    
+    $result = $result->fetch_assoc();
+    $login = $result['login'];
+    $result = $result['id_personne'];
+    $sql = "SELECT *
+            FROM personne
+            WHERE id = '$result'";
+    $result = $conn->query($sql);
+} else {
+    echo "Erreur de requête : " . $conn->error;
+}
 ?>
 <div class="principal">
-    <h1>Page Gerant</h1>
+    <h1> <?php echo sprintf("Modification des informations de %s %s", $_POST['nom'], $_POST['prenom']) ?> </h1>
     <p>	
-        <?php if ($result) {
+<?php 
+    if ($result) {
     while ($row = $result->fetch_assoc()) {
         // Accéder aux données individuelles
         $nom = $row['nom'];
         $prenom = $row['prenom'];
         $tel = $row['telephone'];
         $mail = $row['mail'];
-        $login = $row['login'];
         $mdp = $row['mot_de_passe'];
 
         // Effectuer les opérations nécessaires avec les données
@@ -50,7 +65,7 @@ $result = $conn->query($sql);
     }
 } else {
     // Gérer l'erreur de la requête
-    echo "Erreur de requête : " . $mysqli->error;
+    echo "Erreur de requête : " . $conn->error;
 }
 $conn->close();
 ?>

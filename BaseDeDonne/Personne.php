@@ -27,9 +27,9 @@ function ReadPersonne($id){
     $row = $result->fetch_assoc();
     return $row;
 }
-function UpdatePersonne($id,$nom,$prenom,$telephone,$mail,$mot_de_passe){
+function UpdatePersonne($id, $nom, $prenom, $telephone, $mail, $mot_de_passe){
     $sql = "UPDATE Personne SET
-    nom='$nom',prenom='$prenom',telephone='$telephone',mail='$mail' where id = '$id'";
+    nom = '$nom', prenom = '$prenom', telephone = '$telephone', mail = '$mail', mot_de_passe = '$mot_de_passe' WHERE id = '$id'";
     bdd()->query($sql);
    
 }

@@ -41,9 +41,8 @@ function ReadServeur($id){
     return $row;
 }
 
-function UpdateServeur($id,$login,$mot_de_passe){
-    $sql="UPDATE Serveur SET login='$login',
-    mot_de_passe='$mot_de_passe'
+function UpdateServeur($id, $login){
+    $sql="UPDATE Serveur SET login='$login'
     WHERE id='$id'";
     bdd()->query($sql);
 }

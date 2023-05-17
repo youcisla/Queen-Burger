@@ -13,6 +13,7 @@ function Gerant(){
         FOREIGN KEY (information) REFERENCES Personne(id))";
         bdd()->query($sql1);
     }
+    
     function CreateGerant($login,$mot_de_passe,$information){
         $sql = "INSERT INTO Gerant (login, mot_de_passe, information) 
                         VALUES ('$login', '$mot_de_passe', '$information')";
