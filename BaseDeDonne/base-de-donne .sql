@@ -87,22 +87,6 @@ CREATE TABLE IF NOT EXISTS `assignation_serveur` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `serveur`
---
-
-DROP TABLE IF EXISTS `serveur`;
-CREATE TABLE IF NOT EXISTS `serveur` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `login` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
-  `id_personne` int NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `login` (`login`),
-  KEY `id_personne` (`id_personne`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `tables`
 --
 
