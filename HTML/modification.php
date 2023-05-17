@@ -27,13 +27,12 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 $id=1;
-// Je suis parti du principe qu'on avait l'id du serveur, donc on doit retrouver la personne correspondant a l'id du serveur
+
 $sql = "SELECT id_personne, login 
         FROM serveur
         WHERE id = '$id'";
 $result = $conn->query($sql);
 
-// Si on a un resultat alors le serveur existe bien on continue
 if($result) {
     
     $result = $result->fetch_assoc();
