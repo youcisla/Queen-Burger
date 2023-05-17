@@ -16,25 +16,9 @@ bdd()->query($sql);
 
 }
 
-// Fonction pour se connecter à la base de données
-function seConnecterBDD() {
-    $serveur = "localhost";
-    $utilisateur = "root";
-    $motDePasse = "root";
-    $baseDeDonnees = "queenburger";
-
-    $connexion = new mysqli($serveur, $utilisateur, $motDePasse, $baseDeDonnees);
-
-    // Vérifier la connexion
-    if ($connexion->connect_error) {
-        die("Erreur de connexion à la base de données: " . $connexion->connect_error);
-    }
-
-    return $connexion;
-}
 
 function getPersonne($id) {
-    $conn = seConnecterBDD();
+    $conn = bdd();
 
     $sql = "SELECT * FROM personne WHERE id = '$id'";
     $result = $conn->query($sql);
@@ -45,7 +29,7 @@ function getPersonne($id) {
 // Vérifie que les infos donnée pour l'inscription ne sont pas deja prises
 function infoValide($login, $mail) {
 
-    $conn = seConnecterBDD();
+    $conn = bdd();
 
     $sqlLogin = "SELECT * FROM personne WHERE login = '$login'";
     $sqlMail = "SELECT * FROM personne WHERE mail = '$mail'";
@@ -63,7 +47,7 @@ function infoValide($login, $mail) {
 // Fonction pour ajouter une personne à la table
 function ajouterPersonne($nom, $prenom, $telephone, $login, $mot_de_passe, $mail, $role) {
 
-    $conn = seConnecterBDD();
+    $conn = bdd();
 
     $sql = "INSERT INTO personne (nom, prenom, telephone, login, mot_de_passe, mail, role)
             VALUES ('$nom', '$prenom', '$telephone', '$login', '$mot_de_passe', '$mail', '$role')";
@@ -81,7 +65,7 @@ function ajouterPersonne($nom, $prenom, $telephone, $login, $mot_de_passe, $mail
 // Fonction pour supprimer une personne de la table
 function supprimerPersonne($id) {
 
-    $conn = seConnecterBDD();
+    $conn = bdd();
 
     $sql = "DELETE FROM personne WHERE id = '$id'";
 
@@ -97,7 +81,7 @@ function supprimerPersonne($id) {
 // Fonction pour modifier les informations d'une personne dans la table
 function modifierPersonne($id, $nouveauNom, $nouveauPrenom, $nouveauRole, $nouveauTelephone, $nouveauLogin, $nouveauMdp, $nouveauMail) {
 
-    $conn = seConnecterBDD();
+    $conn = bdd();
 
     $sql = "UPDATE personne SET nom = '$nouveauNom', prenom = '$nouveauPrenom', role = '$nouveauRole', telephone = '$nouveauTelephone', login = '$nouveauLogin', mot_de_passe = '$nouveauMdp', mail = '$nouveauMail' WHERE id = '$id'";
 
@@ -148,7 +132,7 @@ function afficheRole($role) {
 // Fonction pour obtenir le rôle d'une personne
 function obtenirRole($id) {
 
-    $conn = seConnecterBDD();
+    $conn = bdd();
 
     $sql = "SELECT role FROM personne WHERE id = '$id'";
 
