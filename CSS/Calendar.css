@@ -154,23 +154,24 @@ body {
     border: solid 3px black;
     position: absolute;
     width: 100px;
-    height: 435px;
-    left: 17px;
-    top: 103px;
+    height: 443px;
+    left: 22.5px;
+    top: 104px;
     background-color: antiquewhite;
     display: flex;
     justify-content: center;
     align-items: center;
     /* overflow: hidden; */
+    border-top: transparent;
 }
 
 .right {
     position: absolute;
     width: 17%;
-    height: 518px;
+    height: 528px;
     border: solid 3px black;
     right: 15px;
-    top: 16px;
+    top: 17px;
     background-color: antiquewhite;
     display: flex;
     justify-content: space-around;
