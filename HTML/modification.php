@@ -56,7 +56,6 @@ $conn->close();
 ?>
         <form action="/Queen-Burger/BaseDeDonne/modifier_post.php" method="POST">
 
-
             <label for="nom">Nom</label><br/>
                 <input type="text" name="nom" id= "nom" value="<?php echo $nom ;?>" required><br/>
             <label for="prenom">Prenom</label><br/>
@@ -67,7 +66,7 @@ $conn->close();
                 <input type="text" name="mail" id="mail" value="<?php echo $mail;?>" required><br/>
             <label for="login">Login</label><br/>
                 <input type="text" name="login" id="login" value="<?php echo $login;?>" required><br/>
-            <label for="mot_de_passe">Mots de passe</label><br/>
+            <label for="mot_de_passe">Mot de passe</label><br/>
                 <input type="text" name="mot_de_passe" id="mot_de_passe" value="<?php echo $mdp;?>" required><br/>
             <button type="submit">Modifier</button>
 
