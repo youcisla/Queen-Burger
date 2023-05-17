@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Modification</title>
 </head>
 <body>
 <div class="headerContainer">
@@ -15,47 +15,31 @@
     </div>
     
 <?php
-// Establish a database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "queenburger";
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check for errors in the database connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-$id=1;
-// Query the database to get the employee data
-$sql = "SELECT serveur.login,serveur.mot_de_passe,personne.nom, personne.prenom, personne.telephone,personne.mail FROM personne
-INNER JOIN serveur ON serveur.information = personne.id WHERE serveur.id='$id'";
+include_once '../BaseDeDonne/indexx.php';
+$conn=bdd();
+$id_selec = $_POST['id_selec'];
+$sql = "SELECT * FROM personne WHERE id = '$id_selec'";
 $result = $conn->query($sql);
-?>
-<div class="principal">
-    <h1>Page Gerant</h1>
-    <p>	
-        <?php if ($result) {
-    while ($row = $result->fetch_assoc()) {
-        // Accéder aux données individuelles
-        $nom = $row['nom'];
-        $prenom = $row['prenom'];
-        $tel = $row['telephone'];
-        $mail = $row['mail'];
-        $login = $row['login'];
-        $mdp = $row['mot_de_passe'];
+$result = $result->fetch_assoc();
 
-        // Effectuer les opérations nécessaires avec les données
-        // ...
-    }
-} else {
-    // Gérer l'erreur de la requête
-    echo "Erreur de requête : " . $mysqli->error;
-}
+?>
+
+<div class="principal">
+    <h1> <?php echo sprintf("Modification des informations de %s %s", $result['nom'], $result['prenom']) ?> </h1>
+    <p>	
+<?php 
+
+    $nom = $result['nom'];
+    $prenom = $result['prenom'];
+    $tel = $result['telephone'];
+    $mail = $result['mail'];
+    $mdp = $result['mot_de_passe'];
+    $login = $result['login'];
+    $id = $result['id'];
+
 $conn->close();
 ?>
         <form action="/Queen-Burger/BaseDeDonne/modifier_post.php" method="POST">
-
 
             <label for="nom">Nom</label><br/>
                 <input type="text" name="nom" id= "nom" value="<?php echo $nom ;?>" required><br/>
@@ -67,8 +51,17 @@ $conn->close();
                 <input type="text" name="mail" id="mail" value="<?php echo $mail;?>" required><br/>
             <label for="login">Login</label><br/>
                 <input type="text" name="login" id="login" value="<?php echo $login;?>" required><br/>
-            <label for="mot_de_passe">Mots de passe</label><br/>
+            <label for="mot_de_passe">Mot de passe</label><br/>
                 <input type="text" name="mot_de_passe" id="mot_de_passe" value="<?php echo $mdp;?>" required><br/>
+            <label for="role">Role</label><br/>
+                <select name="role" value>
+                    <option value="client"> Client </option>
+                    <option value="serveur"> Serveur </option>
+                    <option value="cuisinier"> Cuisinier </option>
+                    <option value="gerant"> Gerant </option>
+                </select>
+
+            <input type="hidden" name="id" value="<?php echo $id ?>">
             <button type="submit">Modifier</button>
 
         </form>

@@ -15,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  $sql = "SELECT id FROM `Personne` WHERE Personne.mail = ? AND Personne.mot_de_passe = ?";
+  $sql = "SELECT id FROM `personne` WHERE (personne.mail = '$email' OR personne.login='$email') AND Personne.mot_de_passe = '$password'";
   $stmt = bdd()->prepare($sql);
-  $stmt->bind_param('ss', $email, $password);
+  //$stmt->bind_param('ss', $email, $password);
   $stmt->execute();
 
   $result = $stmt->get_result();
@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/new-post.png"
                         alt="new-post" />
                 </label>
-                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="text" id="email" name="email" required>
                 <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/new-post.png" alt="new-post" />
             </div>
             <div class="mot_de_passe">

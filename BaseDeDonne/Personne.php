@@ -2,80 +2,149 @@
 include_once 'indexx.php';
 //focnrtion non mise a jour :(
 function personne(){
-    $sql="CREATE TABLE IF NOT EXISTS Personne(
-        id INT NOT NULL AUTO_INCREMENT,
-        nom VARCHAR(100) NOT NULL UNIQUE,
-        prenom VARCHAR(100) NOT NULL ,
-        telephone VARCHAR(13) NOT NULL ,
-        mail VARCHAR(250),
-        CONSTRAINT pk_id PRIMARY KEY (id))";
+    $sql="CREATE TABLE IF NOT EXISTS `personne` (
+        `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `nom` varchar(100) NOT NULL,
+        `prenom` varchar(100) NOT NULL,
+        `role` enum('client','serveur','cuisinier','gerant') NOT NULL DEFAULT 'client',
+        `telephone` varchar(100) NOT NULL,
+        `login` varchar(100) NOT NULL,
+        `mot_de_passe` varchar(100) NOT NULL,
+        `mail` varchar(100) NOT NULL
+      )";
 bdd()->query($sql);
 
 }
-function CreatePersonne($nom,$prenom,$telephone,$mail,$mot_de_passe){
-    $sql = "INSERT INTO Personne(nom,prenom,telephone,mail,mot_de_passe)Values('$nom','$prenom','$telephone','$mail','$mot_de_passe')";
-    bdd()->query($sql);
-    return bdd()->insert_id;
-}
-function DeletePersonne($id){
-    $sql="DELETE FROM Personne WHERE id='$id'";
-    bdd()->query($sql);
-}
-function ReadPersonne($id){
-    $sql = "SELECT * from Personne where id = '$id'";
-    $result=bdd()->query($sql);
-    $row = $result->fetch_assoc();
-    return $row;
-}
-function UpdatePersonne($id,$nom,$prenom,$telephone,$mail,$mot_de_passe){
-    $sql = "UPDATE Personne SET
-    nom='$nom',prenom='$prenom',telephone='$telephone',mail='$mail' where id = '$id'";
-    bdd()->query($sql);
-   
-}
-function iDPersonne($nom,$prenom){
-    $sql = "SELECT id from Personne where nom = '$nom' AND prenom ='$prenom' ";
-    $result=bdd()->query($sql);
-    $row = $result->fetch_assoc();
-    return $row;
+
+
+function getPersonne($id) {
+    $conn = bdd();
+
+    $sql = "SELECT * FROM personne WHERE id = '$id'";
+    $result = $conn->query($sql);
+    $result = $result->fetch_assoc();
+    return $result;
 }
 
-/* retourne un entier corespondant a un role
-  - 1 : gerant
-  - 2 : cuisinier
-  - 3 : serveur
-  - 4 : client  
-  - 0 : pas trouvé dans la base de donné
-*/
-function obtenirRolePersonne($id_personne) {
-    $sql1 = "SELECT * FROM gerant WHERE id_personne = {$id_personne}";
-    $result1 = bdd()->query($sql1);
-    if ($result1->num_rows > 0) {
-        return 1;
+// Vérifie que les infos donnée pour l'inscription ne sont pas deja prises
+function infoValide($login, $mail) {
+
+    $conn = bdd();
+
+    $sqlLogin = "SELECT * FROM personne WHERE login = '$login'";
+    $sqlMail = "SELECT * FROM personne WHERE mail = '$mail'";
+
+    $resultLogin = $conn->query($sqlLogin);
+    $resultLogin = $resultLogin -> fetch_assoc();
+
+    $resultMail = $conn->query($sqlMail);
+    $resultMail = $resultMail -> fetch_assoc();
+
+    return (empty($resultLogin) && empty($resultMail));
+
+}
+
+// Fonction pour ajouter une personne à la table
+function ajouterPersonne($nom, $prenom, $telephone, $login, $mot_de_passe, $mail, $role) {
+
+    $conn = bdd();
+
+    $sql = "INSERT INTO personne (nom, prenom, telephone, login, mot_de_passe, mail, role)
+            VALUES ('$nom', '$prenom', '$telephone', '$login', '$mot_de_passe', '$mail', '$role')";
+
+    if ($conn->query($sql) === true) {
+        echo "La personne a été ajoutée avec succès.";
+        
+    } else {
+        echo "Erreur lors de l'ajout de la personne: " . $conn->error;
     }
 
-    $sql2 = "SELECT * FROM cuisinier WHERE id_personne = {$id_personne}";
-    $result2 = bdd()->query($sql2);
-    if ($result2->num_rows > 0) {
-        return 2;
-    }
-
-    $sql3 = "SELECT * FROM serveur WHERE id_personne = {$id_personne}";
-    $result3 = bdd()->query($sql3);
-    if ($result3->num_rows > 0) {
-        return 3;
-    }
-
-    $sql4 = "SELECT * FROM client WHERE id_personne = {$id_personne}";
-    $result4 = bdd()->query($sql4);
-    if ($result4->num_rows > 0) {
-        return 4;
-    }
-
-    return 0;
+    $conn->close();
 }
 
+// Fonction pour supprimer une personne de la table
+function supprimerPersonne($id) {
 
+    $conn = bdd();
 
+    $sql = "DELETE FROM personne WHERE id = '$id'";
 
+    if ($conn->query($sql) === true) {
+        echo "La personne a été supprimée avec succès.";
+    } else {
+        echo "Erreur lors de la suppression de la personne: " . $conn->error;
+    }
+
+    $conn->close();
+}
+
+// Fonction pour modifier les informations d'une personne dans la table
+function modifierPersonne($id, $nouveauNom, $nouveauPrenom, $nouveauRole, $nouveauTelephone, $nouveauLogin, $nouveauMdp, $nouveauMail) {
+
+    $conn = bdd();
+
+    $sql = "UPDATE personne SET nom = '$nouveauNom', prenom = '$nouveauPrenom', role = '$nouveauRole', telephone = '$nouveauTelephone', login = '$nouveauLogin', mot_de_passe = '$nouveauMdp', mail = '$nouveauMail' WHERE id = '$id'";
+
+    if ($conn->query($sql) === true) {
+        echo "Les informations de la personne ont été modifiées avec succès.";
+    } else {
+        echo "Erreur lors de la modification des informations de la personne: " . $conn->error;
+    }
+
+    $conn->close();
+}
+
+function afficheRole($role) {
+
+    $conn = bdd();
+    $sql = "SELECT * FROM personne WHERE role = '$role'";
+    $result = $conn->query($sql);
+
+    if (!$result) {
+        echo "Erreur SQL : " . mysqli_error($conn);
+        exit;
+    }
+
+    if ($result->num_rows > 0) {
+        echo sprintf("
+        <h2> Liste des %ss : </h2>
+        <table>
+            <tr>
+                <td> <strong> Nom </strong> </td>
+                <td> <strong> Prenom </strong> </td>
+                <td> <strong> Mail </strong> </td>
+                <td> <strong> Login </strong> </td>
+                <td> <strong> Mot de passe </strong> </td>
+            </tr>
+        ", $role);
+        foreach($result as $temp) {
+            echo "<tr>";
+            echo sprintf("<td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td>",$temp['nom'],$temp['prenom'],$temp['mail'],$temp['login'],$temp['mot_de_passe']);
+            echo sprintf("<td> <form action='modification.php' method='POST'>
+                            <button type='submit' name='id_selec' value='%d'> Modifier </button>
+                        </form> </td>", $temp['id']);
+            echo "</tr>";
+        }
+        echo "</table>";
+    }
+}
+
+// Fonction pour obtenir le rôle d'une personne
+function obtenirRole($id) {
+
+    $conn = bdd();
+
+    $sql = "SELECT role FROM personne WHERE id = '$id'";
+
+    $resultat = $conn->query($sql);
+
+    if ($resultat->num_rows > 0) {
+        $row = $resultat->fetch_assoc();
+        echo "Le rôle de la personne avec l'ID $id est : " . $row["role"];
+    } else {
+        echo "Aucun enregistrement trouvé pour l'ID $id.";
+    }
+
+    $conn->close();
+}
 ?>

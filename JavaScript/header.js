@@ -35,7 +35,7 @@ function goToReservation() {
 }
 
 function goToServers() {
-  window.location.href = "/Queen-Burger/HTML/test.php";
+  window.location.href = "/Queen-Burger/HTML/gerant.php";
 }
 
 function goToSignUp() {
