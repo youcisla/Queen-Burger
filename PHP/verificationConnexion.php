@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 include_once "../BaseDeDonne/indexx.php";
+include_once "../BaseDeDonne/personne.php";
 
 function estConnecte() {
     if(isset($_SESSION["id"])) {
@@ -31,32 +32,8 @@ function roleConnexion() {
     }
 
     $id_personne = idConnexion();
-
-    $sql1 = "SELECT * FROM gerant WHERE id_personne = {$id_personne}";
-    $result1 = bdd()->query($sql1);
-    if ($result1->num_rows > 0) {
-        return 1;
-    }
-
-    $sql2 = "SELECT * FROM cuisinier WHERE id_personne = {$id_personne}";
-    $result2 = bdd()->query($sql2);
-    if ($result2->num_rows > 0) {
-        return 2;
-    }
-
-    $sql3 = "SELECT * FROM serveur WHERE id_personne = {$id_personne}";
-    $result3 = bdd()->query($sql3);
-    if ($result3->num_rows > 0) {
-        return 3;
-    }
-
-    $sql4 = "SELECT * FROM client WHERE id_personne = {$id_personne}";
-    $result4 = bdd()->query($sql4);
-    if ($result4->num_rows > 0) {
-        return 4;
-    }
-
-    return 0;
+    $res = getPersonne($id_personne)['role'];
+    return $res;
 }
 
 /**
@@ -79,7 +56,4 @@ function redirectionConnexion($roles, $redirection) {
         header("Location: {$redirection}");
     }
 }
-
-
-
 ?>

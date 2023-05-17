@@ -45,15 +45,16 @@ CREATE TABLE IF NOT EXISTS `absence` (
 
 DROP TABLE IF EXISTS `personne`;
 CREATE TABLE IF NOT EXISTS `personne` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL,
-  `role` enum('client','serveur','cuisinier','gerant') NOT NULL,
+  `role` enum('client','serveur','cuisinier','gerant') NOT NULL DEFAULT 'client',
   `telephone` varchar(100) NOT NULL,
   `login` varchar(100) NOT NULL,
-  `mdp` varchar(100) NOT NULL,
+  `mot_de_passe` varchar(100) NOT NULL,
   `mail` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
+
 
 -- --------------------------------------------------------
 

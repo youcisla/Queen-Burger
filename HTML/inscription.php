@@ -88,7 +88,7 @@
                 <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/password.png" alt="password" />
             </div>
 
-            <div class="confirmation">
+            <div class="confirmation du mot de passe">
                 <label for="Tconfirmation">
                     <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/password.png"
                         alt="password" />
@@ -99,10 +99,13 @@
 
             <div class="bouton">
                 <button type="submit">Créer Mon Compte</button>
-                <p>Vous avez un compte ?</p>
-                <button class="burgerButton" onclick="goToSignIn()">Connection</button>
+
             </div>
         </form>
+        <div class = "connexion">
+            <p>Vous avez déjà un compte ?</p>
+            <button class="burgerButton" onclick="goToSignIn()">Connection</button>
+        </div>
     </div>
     <script src="/Queen-Burger/JavaScript/app.js" defer></script>
     <footer>
