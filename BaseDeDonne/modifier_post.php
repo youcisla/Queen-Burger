@@ -1,7 +1,8 @@
 
 <?php
+include_once 'indexx.php';
 include_once 'Personne.php';
-$id=1;
+
 
 function estValide() {
     return (isset($_POST["nom"],$_POST["prenom"],$_POST["telephone"],$_POST["mail"],$_POST["login"],$_POST["mot_de_passe"])
@@ -9,12 +10,7 @@ function estValide() {
     && !empty($_POST["login"]) && !empty($_POST["mot_de_passe"]));
 }
 
-// On retrouver l'id de la personne correspondante au serveur
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "queenburger";
-$conn = new mysqli($servername, $username, $password, $dbname);
+
 
 if(!empty($_POST)){
     if(estValide()) {

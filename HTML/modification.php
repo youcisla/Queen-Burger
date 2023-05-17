@@ -15,18 +15,8 @@
     </div>
     
 <?php
-// Establish a database connection
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "queenburger";
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check for errors in the database connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
+include_once '../BaseDeDonne/indexx.php';
+$conn=bdd();
 $id_selec = $_POST['id_selec'];
 $sql = "SELECT * FROM personne WHERE id = '$id_selec'";
 $result = $conn->query($sql);
