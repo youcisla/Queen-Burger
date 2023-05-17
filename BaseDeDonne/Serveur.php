@@ -28,10 +28,10 @@ function serveur(){
 }
 //creer un serveur
 
-function CreateServeur($login,$mot_de_passe,$information){
-    $sql = "INSERT INTO Serveur (login, mot_de_passe, information) 
-					VALUES ('$login', '$mot_de_passe', '$information')";
-                    bdd()->query($sql);
+function CreateServeur($login,$id_personne){
+    $sql = "INSERT INTO Serveur (login, id_personne) VALUES ('$login', '$id_personne')";
+    bdd()->query($sql);
+    return bdd()->insert_id;
 }
 
 function ReadServeur($id){

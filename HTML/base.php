@@ -2,17 +2,19 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
 include_once '../BaseDeDonne/indexx.php'; 
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
     $sql = "SELECT * FROM Personne WHERE Personne.id = $id";
     $result = bdd()->query($sql);
-    $res = $result->fetch_assoc();
-    echo "Welcome, " . $res['prenom'];
-} else {
+    $personne = $result->fetch_assoc();
+    echo "Welcome, " . $personne['prenom'];
+}
+/* else {
     // echo 'Connectez vous';
     header('Location: connexion.php');
-}
+}*/
 ?>
 
 <html>

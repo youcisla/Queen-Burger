@@ -13,15 +13,15 @@ if(!empty($_POST)){
             $mail=strip_tags($_POST["mail"]);
             $login=strip_tags($_POST["login"]);
             $mot_de_passe=strip_tags($_POST["mot_de_passe"]);
-            CreatePersonne($nom,$prenom,$telephone,$mail);
+           
             //id
-            $information=iDPersonne($nom, $prenom)["id"];
-            CreateServeur($login,$mot_de_passe,$information);
+            $id_personne = CreatePersonne($nom,$prenom,$telephone,$mail,$mot_de_passe);
+            CreateServeur($login,$id_personne);
             header("Location: /Queen-Burger/HTML/test.php");
 
         }
         else{
-            echo "un argument n'est pas correcte"; 
+            echo "un argument n'est pas correct"; 
             header("Location: /Queen-Burger/HTML/ajouter.php");
               }
         }else{echo "Problème du serveur";

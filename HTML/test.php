@@ -1,3 +1,11 @@
+<?php
+    include_once "../PHP/verificationConnexion.php";
+    redirectionConnexion([1,2], "base.php");
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -8,12 +16,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+
+
+
 <body>
-    <div class="headerContainer">
-        <?php 
-            include_once 'header.php';
-        ?>
-    </div>
+    <?php
+        include_once "header.php";
+    ?>
+
     <div class="allclasses">
         <h1>Page Gerant</h1>
         <div class='up'>
@@ -35,23 +45,16 @@
         </div>
 
         <div class='table'>
-            <?php
-// Establish a database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "queenburger";
-$conn = new mysqli($servername, $username, $password, $dbname);
+    
 
-// Check for errors in the database connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+<?php
+
+include_once "../BaseDeDonne/indexx.php";
 
 // Query the database to get the employee data
 $sql = "SELECT serveur.login, personne.nom, personne.prenom, personne.telephone FROM personne
-INNER JOIN serveur ON serveur.information = personne.id";
-$result = $conn->query($sql);
+INNER JOIN serveur ON serveur.id_personne = personne.id";
+$result = bdd()->query($sql);
 
 // Generate the table HTML
 echo "<table>";
@@ -84,8 +87,6 @@ if ($result->num_rows > 0) {
 echo "</tbody>";
 echo "</table>";
 
-// Close the database connection
-$conn->close();
 ?>
 
         </div>

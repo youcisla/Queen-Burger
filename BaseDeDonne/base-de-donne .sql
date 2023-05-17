@@ -47,11 +47,10 @@ DROP TABLE IF EXISTS `client`;
 CREATE TABLE IF NOT EXISTS `client` (
   `id` int NOT NULL AUTO_INCREMENT,
   `login` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
-  `mot_de_passe` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
-  `information` int NOT NULL,
+  `id_personne` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
-  KEY `information` (`information`)
+  KEY `id_personne` (`id_personne`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
 -- --------------------------------------------------------
@@ -64,11 +63,10 @@ DROP TABLE IF EXISTS `cuisinier`;
 CREATE TABLE IF NOT EXISTS `cuisinier` (
   `id` int NOT NULL AUTO_INCREMENT,
   `login` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
-  `mot_de_passe` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
-  `information` int NOT NULL,
+  `id_personne` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
-  KEY `information` (`information`)
+  KEY `id_personne` (`id_personne`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
 -- --------------------------------------------------------
@@ -81,11 +79,10 @@ DROP TABLE IF EXISTS `gerant`;
 CREATE TABLE IF NOT EXISTS `gerant` (
   `id` int NOT NULL AUTO_INCREMENT,
   `login` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
-  `mot_de_passe` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
-  `information` int NOT NULL,
+  `id_personne` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
-  KEY `information` (`information`)
+  KEY `id_personne` (`id_personne`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
 -- --------------------------------------------------------
@@ -98,6 +95,7 @@ DROP TABLE IF EXISTS `personne`;
 CREATE TABLE IF NOT EXISTS `personne` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
+  `mot_de_passe` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
   `prenom` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
   `telephone` varchar(13) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
   `mail` varchar(250) COLLATE utf16_bin NOT NULL,
@@ -114,6 +112,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
 DROP TABLE IF EXISTS `secteur`;
 CREATE TABLE IF NOT EXISTS `secteur` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `nom` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
@@ -143,11 +142,10 @@ DROP TABLE IF EXISTS `serveur`;
 CREATE TABLE IF NOT EXISTS `serveur` (
   `id` int NOT NULL AUTO_INCREMENT,
   `login` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
-  `mot_de_passe` varchar(100) CHARACTER SET utf16 COLLATE utf16_bin NOT NULL,
-  `information` int NOT NULL,
+  `id_personne` int NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
-  KEY `information` (`information`)
+  KEY `id_personne` (`id_personne`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
 -- --------------------------------------------------------
@@ -160,9 +158,9 @@ DROP TABLE IF EXISTS `tables`;
 CREATE TABLE IF NOT EXISTS `tables` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nb_place` int NOT NULL DEFAULT '4',
-  `emplacement` int NOT NULL,
+  `id_secteur` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `emplacement` (`emplacement`)
+  KEY `id_secteur` (`id_secteur`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 COMMIT;
 

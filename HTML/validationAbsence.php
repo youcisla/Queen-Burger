@@ -5,7 +5,6 @@ include_once "../BaseDeDonne/Cuisinier.php";
 
 
 //verif si la personne est co a ajouter
-
 $id_serveur = 1; // 0 zero pour le moment, a modifier avec l id de la personne connecté
 
 

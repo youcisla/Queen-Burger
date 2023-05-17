@@ -13,7 +13,7 @@
         ?>
     </div>
           <h1>Inscription</h1>  
-            <form method="POST" action="/Queen-Burger/BaseDeDonne/inscription_employer.php">
+            <form method="POST" action="/Queen-Burger/BaseDeDonne/inscription_serveur.php">
                 <label for="Tnom">Nom</label><br/>
                 <input type="text" id="nom" name="nom" required><br/>
 

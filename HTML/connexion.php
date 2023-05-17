@@ -1,75 +1,34 @@
 <?php
-session_start(); // Add this line to start the session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+} 
+// Add this line to start the session
+
 include '../BaseDeDonne/indexx.php';
 include '../BaseDeDonne/Personne.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Establish a database connection
-  $c = bdd();
 
   // Query the database to get the person's ID
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  $sql = "SELECT * FROM `Personne` WHERE `Personne`.`mail` = ?";
-  $stmt = $c->prepare($sql);
-  $stmt->bind_param('s', $email);
+  $sql = "SELECT id FROM `Personne` WHERE Personne.mail = ? AND Personne.mot_de_passe = ?";
+  $stmt = bdd()->prepare($sql);
+  $stmt->bind_param('ss', $email, $password);
   $stmt->execute();
 
   $result = $stmt->get_result();
 
-  $row = $result->fetch_assoc();
-  if ($row) {
-    // After successful login/authentication
-    $personId = $row['id'];
-    $_SESSION['role'] = obtenirRolePersonne($personId);
+  if($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
 
-    if ($_SESSION['role'] === 1){
-      $sql = "SELECT * FROM `Gerant` WHERE `Gerant`.`mot_de_passe` = ?";
-      $stmt = $c->prepare($sql);
-      $stmt->bind_param('s', $password);
-      $stmt->execute();
-      $result = $stmt->get_result();
-      $row = $result->fetch_assoc();
-    }
-
-    if ($_SESSION['role'] === 2){
-      $sql = "SELECT * FROM `Cuisinier` WHERE `Cuisinier`.`mot_de_passe` = ?";
-      $stmt = $c->prepare($sql);
-      $stmt->bind_param('s', $password);
-      $stmt->execute();
-      $result = $stmt->get_result();
-      $row = $result->fetch_assoc();
-    }
-    
-    if ($_SESSION['role'] === 3){
-      $sql = "SELECT * FROM `Serveur` WHERE `Serveur`.`mot_de_passe` = ?";
-      $stmt = $c->prepare($sql);
-      $stmt->bind_param('s', $password);
-      $stmt->execute();
-      $result = $stmt->get_result();
-      $row = $result->fetch_assoc();
-    }
-
-    if ($_SESSION['role'] === 4){
-      $sql = "SELECT * FROM `Client` WHERE `Client`.`mot_de_passe` = ?";
-      $stmt = $c->prepare($sql);
-      $stmt->bind_param('s', $password);
-      $stmt->execute();
-      $result = $stmt->get_result();
-      $row = $result->fetch_assoc();
-    }
-    
-    $_SESSION['id'] = $row['id'];
-    
-    // Successful login, redirect to base.php
-    header('Location: base.php');
-    exit();
-  } else {
-    // Failed login, show error message
-    echo 'Invalid email or password';
+    $_SESSION["id"] = $row["id"];
+    header("Location: base.php");
   }
+  
 }
 
 ?>
@@ -121,16 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="email" id="email" name="email" placeholder="Email" required>
                 <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/new-post.png" alt="new-post" />
             </div>
-
-            <div class="empty">
-                <label for="empty">
-                    <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/hamburger.png"
-                        alt="hamburger" />
-                </label>
-                <input>
-                <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/hamburger.png" alt="hamburger" />
-            </div>
-
             <div class="mot_de_passe">
                 <label for="Tmot_de_passe">
                     <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/password.png"

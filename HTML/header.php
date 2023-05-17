@@ -1,29 +1,64 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burger Queen</title>
-    <link rel="stylesheet" href="/Queen-Burger/CSS/style.css">
-</head>
+<header id="header" class="header_return">
+    <?php
+    include_once "../PHP/verificationConnexion.php";
 
-<body>
-    <header id="header" class="header_return">
-        <!-- to be JSed-->
-        <!-- <button class="burgerButton" onclick="goToReservation()">Reservation</button> -->
-        <!-- <button class="burgerButton" onclick="goToMenu()">Menu</button> -->
-        <button class="burgerButton" onclick="goToHome()">Acceuil</button>
-        <button class="burgerButton" onclick="goToSignUp()">Inscription</button>
-        <button class="burgerButton" onclick="goToSignIn()">Connexion</button>
-        <button class="burgerButton" onclick="goToCalendar()">Calendar</button>
-        <button class="burgerButton" onclick="goToServers()">Serveurs</button>
-        <button class="burgerButton" onclick="goToLogOut()">Déconnexion</button>
+    //acueil
+    echo "<button class='burgerButton' onclick='goToHome()'>Acceuil</button>";
 
-    </header>
-    <script src="/Queen-Burger/JavaScript/header.js" defer></script>
-    <script src="/Queen-Burger/JavaScript/app.js" defer></script>
-</body>
+    if(estConnecte()) {
+        // connecté
 
-</html>
+        $role = roleConnexion();
+
+        // ajoute des liens dans le header en fonction du role
+        if($role == 1) {
+            //gerant connecté
+
+            //gestion serveur
+            echo "<button class='burgerButton' onclick='goToServers()'>Serveurs</button>";
+
+            //emploie du temps
+            echo "<button class='burgerButton' onclick='goToCalendar()''>Calendar</button>";
+        }
+
+        if($role == 2) {
+            //cuisinié connecté
+
+            //gestion serveur
+            echo "<button class='burgerButton' onclick='goToServers()'>Serveurs</button>";
+
+            //emploie du temps
+            echo "<button class='burgerButton' onclick='goToCalendar()''>Calendar</button>";
+        }
+
+        if($role == 3) {
+            //serveur connecté
+
+
+            //emploie du temps
+            echo "<button class='burgerButton' onclick='goToCalendar()''>Calendar</button>";
+        }
+
+        if($role == 4) {
+            //client connecté
+        }
+
+        //deconnection
+        echo "<button class='burgerButton' onclick='goToLogOut()'>Déconnexion</button>";
+
+    } else {
+        // pas connecté
+
+        //inscription
+        echo "<button class='burgerButton' onclick='goToSignUp()'>Inscription</button>";
+        //connexion
+        echo "<button class='burgerButton' onclick='goToSignIn()'>Connexion</button>";
+    }
+
+    ?>
+
+<script src="/Queen-Burger/JavaScript/header.js" defer></script>
+<script src="/Queen-Burger/JavaScript/app.js" defer></script>
+
+</header>
