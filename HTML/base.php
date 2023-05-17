@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 include_once '../BaseDeDonne/indexx.php'; 
+var_dump($_SESSION["id"]);
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
     $sql = "SELECT * FROM Personne WHERE Personne.id = $id";
@@ -11,10 +12,10 @@ if (isset($_SESSION['id'])) {
     $personne = $result->fetch_assoc();
     echo "Welcome, " . $personne['prenom'];
 }
-/* else {
-    // echo 'Connectez vous';
-    header('Location: connexion.php');
-}*/
+else {
+    echo 'Connectez vous';
+    // header('Location: connexion.php');
+}
 ?>
 
 <html>

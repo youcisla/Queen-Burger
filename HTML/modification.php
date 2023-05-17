@@ -26,7 +26,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$id=1;
+$id = $_SESSION['id'];
 // Query the database to get the employee data
 $sql = "SELECT serveur.login,serveur.mot_de_passe,personne.nom, personne.prenom, personne.telephone,personne.mail FROM personne
 INNER JOIN serveur ON serveur.information = personne.id WHERE serveur.id='$id'";
@@ -44,9 +44,6 @@ $result = $conn->query($sql);
         $mail = $row['mail'];
         $login = $row['login'];
         $mdp = $row['mot_de_passe'];
-
-        // Effectuer les opérations nécessaires avec les données
-        // ...
     }
 } else {
     // Gérer l'erreur de la requête
