@@ -105,11 +105,6 @@ function removeElement(elementID){
     const element = document.getElementById(elementID);
     element.parentNode.removeChild(element);
 }
-function createTable(line_nb,column_nb){
-    createCalendarView("calendar1",column_nb,line_nb);
-    addDate("date");
-    createCalendar("calendar",column_nb);
-}
 function createTask(parent,taskID){
     //
     const task = createElement(parent,taskID,'draggable');
@@ -125,9 +120,14 @@ function createTask(parent,taskID){
     task.addEventListener('mousemove',e=>{
         removeElement(`${task.id}_time`)
         printTimeSE(task,parent,taskChild);
-    })
 
-}
+        const parentRect = parent.getBoundingClientRect();
+
+
+    });
+    return task;
+
+}                                                                                                                                        
 function enableDrag(elementchild,element,parent) {
     let isDragging = false;
     let initialPosition;
@@ -142,10 +142,15 @@ function enableDrag(elementchild,element,parent) {
     event.stopPropagation();
     
     if (isDragging) {
+        //
         const newPosition = event.clientY + initialPosition;
         const parentBottom = parent.offsetTop + parent.offsetHeight;
         const maxPosition = parentBottom - element.offsetHeight;
         const newPositionInBounds = Math.min(maxPosition, Math.max(newPosition, 0));
+        //
+        const maxHeight = adjustMaxHeight(parent,element);
+        //
+        element.style.maxHeight = `${maxHeight}px`;
         element.style.top = `${newPositionInBounds}px`;
         }
     });
@@ -163,9 +168,20 @@ function createContent(task){
         deleteElement(task.parentNode);
     });
 }
-function deleteElement(element) {
+function deleteElement(element){
     element.remove();
 }
+function adjustMaxHeight(parent, element) {
+    const parentRect = parent.getBoundingClientRect();
+    const elementRect = element.getBoundingClientRect();
+  
+    const parentTop = parentRect.top;
+    const childTop = elementRect.top;
+    const parentHeight = parentRect.height;
+  
+    const maxChildHeight = parentHeight - (childTop - parentTop);
+    return maxChildHeight;
+  }
 // editing below
 function createClickForm(){
     return true;
@@ -192,19 +208,32 @@ function AddTaskManually(){
 
 }
 // lunching functions
+function createTable(line_nb,column_nb){
+    createCalendarView("calendar1",column_nb,line_nb);
+    addDate("date");
+    createCalendar("calendar",column_nb);
+}
 function day(dayNbr){
 
     const target = document.getElementById(`droptarget_${dayNbr}`);
     let taskNumber = 1;
 
     target.addEventListener('click', function(event) {
-        console.log("click");
         if (event.target === target) {
-          event.stopPropagation();
-          createTask(target,`{day:${dayNbr};taskNbr:${taskNumber}}_draggable`);
-          taskNumber++;
+            // holy statment
+            event.stopPropagation();
+            // create element
+            const task = createTask(target,`{day:${dayNbr};taskNbr:${taskNumber}}_draggable`);
+            taskNumber++;
+            // position element on click
+            const parentRect = target.getBoundingClientRect();
+            const offsetY = event.clientY - parentRect.top;
+            task.style.top = `${offsetY}px`;
+            //
+            const maxHeight = adjustMaxHeight(target,task);
+            task.style.maxHeight = `${maxHeight}px`;
         }
-      });
+    });
 }
 function week(){
     const weekDays = 7; 
@@ -213,7 +242,7 @@ function week(){
     }
 }
 function main(){
-    const line_nb = 10;
+    const line_nb = 12;
     const column_nb = 7;
     createTable(line_nb,column_nb)
     week();    

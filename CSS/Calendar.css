@@ -44,7 +44,7 @@ html,body{
 }
 .task {
     width: 100%;
-    height: calc(97.5% / 10);
+    height: calc(97% / 12);
     border: 1px solid;
     /* other styles */
   }
@@ -83,7 +83,7 @@ html,body{
     position: relative;
 }
 .draggable{
-    height: 100px;
+    height: calc(100% / 12);
     width: 100%;
     background-color: rgb(54, 167, 233);
     position: absolute;
@@ -92,9 +92,6 @@ html,body{
     justify-content: flex-end;
     resize: vertical;
     overflow: hidden;
-    border: 1px solid;
-    top: 0;
-    max-height: 100%; /* Limit maximum height to parent's height */
 }
 
 .draggable_Child{
