@@ -31,6 +31,14 @@
 
                 <label for="mot_de_passe">Mots de passes</label><br/>
                 <input type="mot_de_passe" id="mot_de_passe" name="mot_de_passe" required><br/>
+                <label for="role">Role</label><br/>
+                <select name="role" value>
+                    <option value="serveur"> Serveur </option>
+                    <option value="cuisinier"> Cuisinier </option>
+                    <option value="client"> Client </option>
+                    <option value="gerant"> Gerant </option>
+                </select>
+                <br/>
 
                 </div>
                 <button type="submit">Creer mon compte </button>
