@@ -11,26 +11,34 @@ body {
 
 }
 
+#main {
+    width: 90%;
+    height: 100%;
+    background-color: white;
+    border-right: solid 3px;
+    border-bottom: solid 3px;
+}
+
 #app {
     height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 #date {
-    width: 78.5%;
+    width: 99.5%;
     display: flex;
     flex-direction: row;
     background-color: antiquewhite;
     justify-content: center;
     border: solid 3px black;
-    margin-left: -224px;
     padding: 0px 0px;
     gap: 5px;
     text-align: center;
+    height: 15%;
 }
 
 .jour {
@@ -43,16 +51,6 @@ body {
     border: 1px solid;
 }
 
-#main {
-    width: 70%;
-    height: 75%;
-    background-color: white;
-    margin: -13px 117px 0 0;
-    /* transform: translate(-19%,-1%); */
-}
-
-/**/
-/* begin cal*/
 .calendarBody {
     height: 100%;
     width: 100%;
@@ -65,14 +63,9 @@ body {
 
 .task {
     width: 100%;
-    height: calc(97% / 12);
+    height: calc(95% / 12);
     border: 1px solid;
-    /* other styles */
 }
-
-/* end cal*/
-
-/**/
 
 .calendar {
     height: 100%;
@@ -120,7 +113,8 @@ body {
     overflow: hidden;
     border: solid 3px black;
     left: 2.5px;
-    border-radius: 25px;
+    border-radius: 15px;
+    cursor: grab;
 }
 
 .draggable_Child {
@@ -141,7 +135,7 @@ body {
     border-radius: 50%;
     position: absolute;
     right: 0;
-    border: solid 2px antiquewhite;
+    border: solid 5px antiquewhite;
     cursor: pointer;
     background-color: red;
 }
@@ -152,45 +146,68 @@ body {
 
 .time {
     border: solid 3px black;
-    position: absolute;
-    width: 100px;
-    height: 443px;
-    left: 22.5px;
-    top: 104px;
+    width: 10%;
+    height: 100%;
+    /* left: 22.5px;
+    top: 104px; */
     background-color: antiquewhite;
     display: flex;
     justify-content: center;
     align-items: center;
     /* overflow: hidden; */
     border-top: transparent;
+    border-right: transparent;
 }
 
 .right {
-    position: absolute;
+
     width: 17%;
-    height: 528px;
+    height: 95%;
     border: solid 3px black;
-    right: 15px;
-    top: 17px;
+    /* right: 15px;
+    top: 17px; */
     background-color: antiquewhite;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
 }
-.up{
-    width:75%;
-    height:20%;
+
+.up {
+    width: 75%;
+    height: 20%;
     border: solid 2px white;
     display: flex;
     place-content: center;
     align-items: center;
 }
-.down{
-    width:75%;
-    height:65%;
+
+.down {
+    width: 75%;
+    height: 65%;
     border: solid 2px white;
     display: flex;
     place-content: center;
     align-items: center;
+}
+
+.central {
+    display: flex;
+    flex-direction: column;
+    background: pink;
+    height: 95%;
+    width: 80%;
+    gap: 5px;
+}
+
+.donno {
+    display: flex;
+    flex-direction: row;
+    background: pink;
+    height: 85%;
+    width: 100%;
+}
+
+::-webkit-resizer {
+    border: solid 2px green;
 }
