@@ -127,7 +127,7 @@ function createTask(parent,taskID){
     });
     return task;
 
-}                                                                                                                                        
+}          
 function enableDrag(elementchild,element,parent) {
     let isDragging = false;
     let initialPosition;
@@ -161,8 +161,8 @@ function enableDrag(elementchild,element,parent) {
     });
 }
 function createContent(task){
-    let element1 = createElement(task,"id","classs");
-    let element2 = createElement(task,"x","deleter")
+    let x_bar = createElement(task,"x_bar","x_bar");
+    let element2 = createElement(task,"x","deleter");
     element2.addEventListener("click",e=>{
         e.stopPropagation();
         deleteElement(task.parentNode);
