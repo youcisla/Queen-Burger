@@ -1,3 +1,7 @@
+* {
+    font-family: cursive;
+}
+
 html,
 body {
     background-color: white;
@@ -15,8 +19,8 @@ body {
     width: 90%;
     height: 100%;
     background-color: white;
-    border-right: solid 3px;
-    border-bottom: solid 3px;
+    border: solid 3px black;
+    border-left: transparent;
 }
 
 #app {
@@ -29,6 +33,7 @@ body {
 }
 
 #date {
+font-size:13px;
     width: 99.5%;
     display: flex;
     flex-direction: row;
@@ -122,55 +127,58 @@ body {
     height: 100%;
     background-color: antiquewhite;
     position: relative;
-    /* border:solid 5px black; */
 }
 
 
 .deleter {
-    width: 25%;
+    width: 20%;
     aspect-ratio: 1;
-    background: url('../Images/x_bar.png');
+    background: url('../Images/x_bar2.png');
     background-position: 10% 10%;
-    background-size: cover;
+    background-size: 70%;
     border-radius: 50%;
     position: absolute;
-    right: 0;
-    border: solid 5px antiquewhite;
+    right: 0px;
+    top: 3px;
     cursor: pointer;
-    background-color: red;
+    background-repeat: no-repeat;
 }
 
 .deleter:hover {
-    background-color: red;
+    width: 20%;
+    aspect-ratio: 1;
+    background: url('../Images/x_bar.png');
+    background-position: 10% 10%;
+    background-size: 70%;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    top: 3px;
+    cursor: pointer;
+    background-repeat: no-repeat;
 }
 
 .time {
     border: solid 3px black;
     width: 10%;
     height: 100%;
-    /* left: 22.5px;
-    top: 104px; */
     background-color: antiquewhite;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* overflow: hidden; */
-    border-top: transparent;
     border-right: transparent;
 }
 
 .right {
-
     width: 17%;
     height: 95%;
     border: solid 3px black;
-    /* right: 15px;
-    top: 17px; */
     background-color: antiquewhite;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    margin-top: 5px;
 }
 
 .up {
@@ -194,7 +202,6 @@ body {
 .central {
     display: flex;
     flex-direction: column;
-    background: pink;
     height: 95%;
     width: 80%;
     gap: 5px;
@@ -203,11 +210,36 @@ body {
 .donno {
     display: flex;
     flex-direction: row;
-    background: pink;
     height: 85%;
     width: 100%;
 }
 
 ::-webkit-resizer {
-    border: solid 2px green;
+    background: url('../Images/resize.png');
+    background-size: cover;
+}
+
+/* Heure de début tache */
+#\{day\:2\;taskNbr\:1\}_draggable_time>div:nth-child(1) {
+    border: 1px solid;
+}
+
+/* Heure de fin tache */
+#\{day\:2\;taskNbr\:1\}_draggable_time>div:nth-child(2) {
+    border: 1px solid;
+}
+
+/* Leur mother div */
+.Time {
+    border: solid 1px red;
+    display: flex;
+    width: 50%;
+    font-size: 10px;
+    align-items: center;
+    justify-content: space-around;
+    align-content: space-around;
+    flex-wrap: wrap;
+    bottom:0;
+    position:absolute;
+    left:3px;
 }
