@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 include_once '../BaseDeDonne/indexx.php'; 
-var_dump($_SESSION["id"]);
+
 if (isset($_SESSION['id'])) {
     $id = $_SESSION['id'];
     $sql = "SELECT * FROM Personne WHERE Personne.id = $id";
