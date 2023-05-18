@@ -39,6 +39,12 @@ afficheRole("cuisinier");
 afficheRole("client");
 afficheRole("gerant");
  ?>
+ <style>
+    td{text-align: left;
+            padding: 8px;
+
+    }
+ </style>
 
 </table>
 </body>
