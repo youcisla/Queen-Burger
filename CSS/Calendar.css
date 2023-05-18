@@ -220,18 +220,17 @@ font-size:13px;
 }
 
 /* Heure de début tache */
-#\{day\:2\;taskNbr\:1\}_draggable_time>div:nth-child(1) {
+/* #\{day\:2\;taskNbr\:1\}_draggable_time>div:nth-child(1) {
     border: 1px solid;
-}
+} */
 
 /* Heure de fin tache */
-#\{day\:2\;taskNbr\:1\}_draggable_time>div:nth-child(2) {
+/* #\{day\:2\;taskNbr\:1\}_draggable_time>div:nth-child(2) {
     border: 1px solid;
-}
+} */
 
 /* Leur mother div */
 .Time {
-    border: solid 1px red;
     display: flex;
     width: 50%;
     font-size: 10px;
@@ -239,7 +238,21 @@ font-size:13px;
     justify-content: space-around;
     align-content: space-around;
     flex-wrap: wrap;
-    bottom:0;
-    position:absolute;
-    left:3px;
-}
+    bottom: 0;
+    position: absolute;
+    left: 3px;
+  }
+  
+  .Time .currentTime {
+    text-shadow: 
+    -0.9px -0.9px 0 black,
+    0.9px -0.9px 0 black,
+    -0.9px 0.9px 0 black,
+    0.9px 0.9px 0 black,
+    -0.9px -0.9px 0 black,
+    0.9px -0.9px 0 black,
+    -0.9px 0.9px 0 black,
+    0.9px 0.9px 0 black;
+  color: antiquewhite;
+  }
+  
