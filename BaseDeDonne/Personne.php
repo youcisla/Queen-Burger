@@ -94,6 +94,109 @@ function modifierPersonne($id, $nouveauNom, $nouveauPrenom, $nouveauRole, $nouve
     $conn->close();
 }
 
+function affichePage($nb) {
+    $nb = $nb*5;
+    $max = 5;
+    $conn = bdd();
+    $sql = "SELECT * FROM personne ORDER BY id LIMIT $nb, $max";
+    $result = $conn->query($sql);
+
+    if (!$result) {
+        echo "Erreur SQL : " . mysqli_error($conn);
+        exit;
+    }
+
+    if ($result->num_rows > 0) {
+        echo "
+        <h2> Resultat de la recherche : </h2>
+        <table>
+            <tr>
+                <td> <strong> Nom </strong> </td>
+                <td> <strong> Prenom </strong> </td>
+                <td> <strong> Mail </strong> </td>
+                <td> <strong> Login </strong> </td>
+                <td> <strong> Mot de passe </strong> </td>
+            </tr>
+        ";
+        foreach($result as $temp) {
+            echo "<tr>";
+            echo sprintf("<td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td>",$temp['nom'],$temp['prenom'],$temp['mail'],$temp['login'],$temp['mot_de_passe']);
+            echo sprintf("<td> <form action='modification.php' method='POST'>
+                            <button type='submit' name='id_selec' value='%d'> Modifier </button>
+                        </form> </td>
+                        <td> <form action='/Queen-Burger/BaseDeDonne/suppression.php' method='POST'>
+                        <button type='submit' name='id' value='%d'>Supprimer</button>
+                    </form> </td>", $temp['id'],$temp['id']);
+        }
+        echo "</table>";
+    } else {
+        "Fin des résultats";
+    }
+}
+
+function afficheRecherche($recherche) {
+    $conn = bdd();
+    $sql = "SELECT * FROM personne WHERE nom LIKE '$recherche' OR prenom LIKE '$recherche'";
+    $result = $conn->query($sql);
+
+    if (!$result) {
+        echo "Erreur SQL : " . mysqli_error($conn);
+        exit;
+    }
+
+    if ($result->num_rows > 0) {
+        echo "
+        <h2> Resultat de la recherche : </h2>
+        <table>
+            <tr>
+                <td> <strong> Nom </strong> </td>
+                <td> <strong> Prenom </strong> </td>
+                <td> <strong> Mail </strong> </td>
+                <td> <strong> Login </strong> </td>
+                <td> <strong> Mot de passe </strong> </td>
+            </tr>
+        ";
+        foreach($result as $temp) {
+            echo "<tr>";
+            echo sprintf("<td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td>",$temp['nom'],$temp['prenom'],$temp['mail'],$temp['login'],$temp['mot_de_passe']);
+            echo sprintf("<td> <form action='modification.php' method='POST'>
+                            <button type='submit' name='id_selec' value='%d'> Modifier </button>
+                        </form> </td>
+                        <td> <form action='/Queen-Burger/BaseDeDonne/suppression.php' method='POST'>
+                        <button type='submit' name='id' value='%d'>Supprimer</button>
+                    </form> </td>", $temp['id'],$temp['id']);
+        }
+        echo "</table>";
+    } else {
+        "Aucun resultat";
+    }
+
+}
+
+function genererLogin($prenom, $nom) {
+    $prenom = strtolower($prenom);
+    $nom = strtolower($nom);
+    $login = $nom . substr($prenom, 0, 1);
+    return $login;
+}
+
+function randomUserBDD($nb) {
+    $conn = bdd();
+
+    $prenoms = ['Jean', 'Marie', 'Luc', 'Sophie', 'Pierre', 'Julie', 'Paul', 'Isabelle', 'François', 'Alice', 'Antoine', 'Emilie', 'Michel', 'Claire', 'Thomas', 'Charlotte', 'David', 'Valerie', 'Mathieu', 'Caroline'];
+
+    $noms = ['Martin', 'Dubois', 'Lefebvre', 'Bernard', 'Thomas', 'Petit', 'Robert', 'Richard', 'Durand', 'Dufour', 'Moreau', 'Gagnon', 'Girard', 'Tremblay', 'Roy', 'Fortin', 'Morin', 'Lavoie', 'Pelletier', 'Bouchard'];
+
+    while($nb > 0) {
+        $prenom = $prenoms[array_rand($prenoms)];
+        $nom = $noms[array_rand($noms)];
+        $login = genererLogin($prenom, $nom);
+        $sql = sprintf("INSERT INTO `personne` (`id`, `nom`, `prenom`, `role`, `telephone`, `login`, `mot_de_passe`, `mail`) VALUES (NULL, '%s', '%s', 'client', '0987654321', '%s', 'password', 'password');", $nom, $prenom, $login);
+        $conn->query($sql);
+        $nb = $nb - 1;
+    }
+}
+
 function afficheRole($role) {
 
     $conn = bdd();
