@@ -5,7 +5,7 @@ include_once 'Personne.php';
 
 
 function estValide() {
-    return (isset($_POST["nom"],$_POST["prenom"],$_POST["telephone"],$_POST["mail"],$_POST["login"],$_POST["mot_de_passe"])
+    return (isset($_POST["nom"],$_POST["prenom"],$_POST["telephone"],$_POST["mail"],$_POST["login"],$_POST["mot_de_passe"],$_POST["role"])
     && !empty($_POST["nom"]) && !empty($_POST["prenom"]) && !empty($_POST["telephone"]) && !empty($_POST["mail"])
     && !empty($_POST["login"]) && !empty($_POST["mot_de_passe"]));
 }
@@ -22,7 +22,6 @@ if(!empty($_POST)){
             $mot_de_passe = strip_tags($_POST["mot_de_passe"]);
             $id = strip_tags($_POST["id"]);
             $role = $_POST["role"];
-
             modifierPersonne($id ,$nom, $prenom, $role, $telephone, $login, $mot_de_passe, $mail);
             header("Location: /Queen-Burger/HTML/gerant.php");
 
