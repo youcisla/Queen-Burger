@@ -122,10 +122,10 @@ function afficheRole($role) {
             echo sprintf("<td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td>",$temp['nom'],$temp['prenom'],$temp['mail'],$temp['login'],$temp['mot_de_passe']);
             echo sprintf("<td> <form action='modification.php' method='POST'>
                             <button type='submit' name='id_selec' value='%d'> Modifier </button>
-                        </form> </td>", $temp['id']);
-            echo sprintf("<td> 
-             </td>", $temp['id']);
-            echo "</tr>";
+                        </form> </td>
+                        <td> <form action='/Queen-Burger/BaseDeDonne/suppression.php' method='POST'>
+                        <button type='submit' name='id' value='%d'>Supprimer</button>
+                    </form> </td>", $temp['id'],$temp['id']);
         }
         echo "</table>";
     }

@@ -55,9 +55,9 @@ $conn->close();
                 <input type="text" name="mot_de_passe" id="mot_de_passe" value="<?php echo $mdp;?>" required><br/>
             <label for="role">Role</label><br/>
                 <select name="role" value>
-                    <option value="client"> Client </option>
                     <option value="serveur"> Serveur </option>
                     <option value="cuisinier"> Cuisinier </option>
+                    <option value="client"> Client </option>
                     <option value="gerant"> Gerant </option>
                 </select>
 
