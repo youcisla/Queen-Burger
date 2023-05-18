@@ -42,7 +42,17 @@ if(isset($_POST['page'])) {
                     <button type="submit"><img src="/Queen-Burger/Images/loop.png"></button>
                 </form>
             </div>
-        </div>
+            </div>
+            <?php
+            // On determine si l'utilisateur a bien rentré des infos de recherche
+if(isset($_POST['recherche'])) {
+    $recherche = $_POST['recherche'];
+    // Des infos sont bien rentrées
+    afficheRecherche($recherche);
+} else {
+    echo "<br>Rien dans la recherche";
+}
+?>
 </div>
 <form method='POST' action='gerant.php'>
     <?php if($page > 0) {
@@ -54,22 +64,12 @@ if(isset($_POST['page'])) {
 
 <?php
 echo sprintf("Page %d :", $page);
-
 affichePage($page);
 
 function motsSeRessemblent($mot1, $mot2) {
     $seuil = 80;
     similar_text($mot1, $mot2, $taux);
     return($taux >= $seuil);
-}
-
-// On determine si l'utilisateur a bien rentré des infos de recherche
-if(isset($_POST['recherche'])) {
-    $recherche = $_POST['recherche'];
-    // Des infos sont bien rentrées
-    afficheRecherche($recherche);
-} else {
-    echo "<br>Rien dans la recherche";
 }
 ?>
 </table>
