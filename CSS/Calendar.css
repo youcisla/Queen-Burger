@@ -256,3 +256,16 @@ font-size:13px;
   color: antiquewhite;
   }
   
+  .homeButton{
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    aspect-ratio: 1;
+    /* transform: translate(calc(100% - 72px),calc(100% - 65px)); */
+  }
+  #app > div.right > div.up > button > img{
+    cursor: pointer;
+  }

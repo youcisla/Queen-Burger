@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,17 +8,39 @@
     <title>Document</title>
     <link rel="stylesheet" href="../CSS/Calendar.css">
 </head>
+
 <body>
     <div id="app">
         <div class="central">
-            <div id = "date">
-                <div class="jour"><p></p><p></p></div>
-                <div class="jour"><p></p><p></p></div>
-                <div class="jour"><p></p><p></p></div>
-                <div class="jour"><p></p><p></p></div>
-                <div class="jour"><p></p><p></p></div>
-                <div class="jour"><p></p><p></p></div>
-                <div class="jour"><p></p><p></p></div>
+            <div id="date">
+                <div class="jour">
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="jour">
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="jour">
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="jour">
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="jour">
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="jour">
+                    <p></p>
+                    <p></p>
+                </div>
+                <div class="jour">
+                    <p></p>
+                    <p></p>
+                </div>
             </div>
             <div class="donno">
                 <div class="time">Time</div>
@@ -29,6 +52,9 @@
         </div>
         <div class="right">
             <div class="up">
+                <button class="homeButton" onclick="goToHome()">
+                    <img width="24" height="24" src="https://img.icons8.com/material-rounded/24/home.png" alt="home" />
+                </button>
                 Tools
                 <!-- <div id="addTask"></div> -->
             </div>
@@ -39,5 +65,7 @@
     </div>
     <script src="../JavaScript/date.js" defer></script>
     <script src="../JavaScript/calendar.js" defer></script>
+    <script src="../JavaScript/header.js" defer></script>
 </body>
+
 </html>
