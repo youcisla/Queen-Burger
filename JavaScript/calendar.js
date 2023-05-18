@@ -90,16 +90,29 @@ function printTime(hours,min,parent){
     }
     parent.appendChild(div);
 }
-function printTimeSE(element,parent,elementchild){
-    // calculations
+function getTaskTimes(element,parent){
     const corrdsTopBot = getElementCoordinates(element);
     const getTmeSE = getTime(corrdsTopBot.top,corrdsTopBot.bottom,parent);
     const hourAndMinOfStartTime =  calcTime(getTmeSE.timeStart);
     const hourAndMinOfEndTime = calcTime(getTmeSE.timeEnd);
+    const hourStart = hourAndMinOfStartTime.hours;
+    const minStart = hourAndMinOfStartTime.min;
+    const hoursEnd = hourAndMinOfEndTime.hours;
+    const minEnd = hourAndMinOfEndTime.min;
+    return {
+        hourStart:hourStart,
+        minStart:minStart ,
+        hoursEnd:hoursEnd ,      
+        minEnd:minEnd 
+    }
+}
+function printTimeSE(element,parent,elementchild){
+    // calculations
+    let data = getTaskTimes(element,parent);
     // things
     const timeDiv = createElement(elementchild,`${element.id}_time`,"Time");
-    printTime(hourAndMinOfStartTime.hours,hourAndMinOfStartTime.min,timeDiv);
-    printTime(hourAndMinOfEndTime.hours,hourAndMinOfEndTime.min,timeDiv);
+    printTime(data.hourStart,data.minStart,timeDiv);
+    printTime(data.hoursEnd,data.minEnd,timeDiv);
 }
 function removeElement(elementID){
     const element = document.getElementById(elementID);
