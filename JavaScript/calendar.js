@@ -36,9 +36,15 @@ function addDate(idDiv) {
         div.children[i].children[1].innerHTML = dates[i];
     }
 }
-function oneMinInPixils(parent){
+/* function oneMinInPixils(parent){
     let parentSizeInPixils = parent.clientHeight;
     let oneMin = parentSizeInPixils / ( 24 * 60);
+    return oneMin;
+} */
+function oneMinInPixils(element) {
+    let parent = element.parentNode;
+    let parentSizeInPixils = parent.clientHeight;
+    let oneMin = parentSizeInPixils / (24 * 60);
     return oneMin;
 }
 function getDuration(element,parent){
@@ -62,9 +68,9 @@ function getElementCoordinates(element) {
       bottom: bottom
     };
 }
-function getTime(topInPixels,BotInPixels,parent){
-    const oneMin = oneMinInPixils(parent);
-    const timeStart = topInPixels / oneMin;
+function getTime(topInPixels,BotInPixels,element){
+    const oneMin = oneMinInPixils(element);
+    const timeStart = topInPixels / oneMin; 
     const timeEnd = BotInPixels / oneMin;
     return {
         timeStart:timeStart,
@@ -90,20 +96,20 @@ function printTime(hours,min,parent){
     }
     parent.appendChild(div);
 }
-function getTaskTimes(element,parent){
+function getTaskTimes(element){
     const corrdsTopBot = getElementCoordinates(element);
-    const getTmeSE = getTime(corrdsTopBot.top,corrdsTopBot.bottom,parent);
+    const getTmeSE = getTime(corrdsTopBot.top,corrdsTopBot.bottom,element);
     const hourAndMinOfStartTime =  calcTime(getTmeSE.timeStart);
     const hourAndMinOfEndTime = calcTime(getTmeSE.timeEnd);
     const hourStart = hourAndMinOfStartTime.hours;
     const minStart = hourAndMinOfStartTime.min;
     const hoursEnd = hourAndMinOfEndTime.hours;
     const minEnd = hourAndMinOfEndTime.min;
+    const timeStart = {hourStart:hourStart,minStart:minStart}
+    const timeEnd = {hoursEnd:hoursEnd,minEnd:minEnd}
     return {
-        hourStart:hourStart,
-        minStart:minStart ,
-        hoursEnd:hoursEnd ,      
-        minEnd:minEnd 
+        timeStart:timeStart,
+        timeEnd:timeEnd
     }
 }
 function printTimeSE(element,parent,elementchild){
@@ -111,8 +117,8 @@ function printTimeSE(element,parent,elementchild){
     let data = getTaskTimes(element,parent);
     // things
     const timeDiv = createElement(elementchild,`${element.id}_time`,"Time");
-    printTime(data.hourStart,data.minStart,timeDiv);
-    printTime(data.hoursEnd,data.minEnd,timeDiv);
+    printTime(data.timeStart.hourStart,data.timeStart.minStart,timeDiv);
+    printTime(data.timeEnd.hoursEnd,data.timeEnd.minEnd,timeDiv);
 }
 function removeElement(elementID){
     const element = document.getElementById(elementID);
@@ -160,6 +166,12 @@ function enableDrag(elementchild,element,parent) {
         const parentBottom = parent.offsetTop + parent.offsetHeight;
         const maxPosition = parentBottom - element.offsetHeight;
         const newPositionInBounds = Math.min(maxPosition, Math.max(newPosition, 0));
+
+        const computedStyles = getComputedStyle(element);
+
+        //const borderTopSize = parseInt(computedStyles.getPropertyValue('border-top-width'), 10);
+        //const borderBottomSize = parseInt(computedStyles.getPropertyValue('border-bottom-width'), 10)
+        //const border = borderTopSize + borderBottomSize;       
         //
         const maxHeight = adjustMaxHeight(parent,element);
         //
@@ -184,7 +196,7 @@ function createContent(task){
 function deleteElement(element){
     element.remove();
 }
-function adjustMaxHeight(parent, element) {
+function adjustMaxHeight(parent, element,border =null) {
     const parentRect = parent.getBoundingClientRect();
     const elementRect = element.getBoundingClientRect();
   
@@ -192,9 +204,9 @@ function adjustMaxHeight(parent, element) {
     const childTop = elementRect.top;
     const parentHeight = parentRect.height;
   
-    const maxChildHeight = parentHeight - (childTop - parentTop);
+    const maxChildHeight = parentHeight - (childTop - parentTop) - border;
     return maxChildHeight;
-  }
+}
 // editing below
 function createClickForm(){
     return true;
@@ -219,6 +231,29 @@ function AddTaskManually(){
 
 
 
+}
+function getElementsByDay(dayNbr) {
+    var selector = `[id^='{day:${dayNbr};taskNbr:'][id$='_draggable']`;
+    var elements = document.querySelectorAll(selector);
+    return elements;
+    
+}
+function getElementData(element){
+    const time = getTaskTimes(element);
+    return {
+        id:element.id,
+        timeStart:time.timeStart,
+        timeEnd:time.timeEnd
+    }
+}
+function getElementsData(dayNbr){
+    let list = [];
+    data = getElementsByDay(dayNbr);
+    for (let i = 0; i < data.length; i++) {
+        let j = getElementData(data[i]);
+        list.push(j);
+    }
+    return list;
 }
 // lunching functions
 function createTable(line_nb,column_nb){
@@ -245,6 +280,11 @@ function day(dayNbr){
             //
             const maxHeight = adjustMaxHeight(target,task);
             task.style.maxHeight = `${maxHeight}px`;
+            // just for testing bitches
+            if (taskNumber == 5){
+                let PQ = getElementsData(dayNbr);
+                console.log(PQ);
+            }
         }
     });
 }
