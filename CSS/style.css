@@ -1,3 +1,7 @@
+* {
+  font-family: cursive;
+}
+
 .floating_header {
   height: 10vh;
   width: 100%;
@@ -35,7 +39,6 @@
 body {
   background-color: antiquewhite;
   height: 100vh;
-  /* width: 100%; */
 }
 
 body::-webkit-scrollbar {
@@ -122,9 +125,9 @@ header * {
 #core {
   width: 100%;
   display: flex;
-  flex-direction: column;
   padding-top: 1em;
   padding-bottom: 1em;
+  flex-direction: column;
 }
 
 #core>div {
@@ -132,8 +135,9 @@ header * {
   flex-direction: row;
   height: 70vh;
   padding: 1em;
-  justify-content: space-around;
-
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
 }
 
 .L70percent {
@@ -267,19 +271,8 @@ img {
   gap: 1px;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-}
-
-h1,
-h2,
-h3 {
-  font-family: 'Lato', sans-serif;
-}
-
 p {
   color: var(--fifth-color);
-  font-family: 'Roboto', sans-serif;
 }
 
 @media screen and (min-width: 768px) {
@@ -492,6 +485,7 @@ a {
   width: -webkit-fill-available;
   height: -webkit-fill-available;
   background-repeat: no-repeat;
+  width: 75%;
 }
 
 .recette {
@@ -500,6 +494,7 @@ a {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
+  font-size: x-small;
 }
 
 .recette h2 {
