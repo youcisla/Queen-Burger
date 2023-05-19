@@ -42,30 +42,53 @@ $result = $result->fetch_assoc();
 
 $conn->close();
 ?>
-        <form action="/Queen-Burger/BaseDeDonne/modifier_post.php" method="POST">
+        <form class="form" action="/Queen-Burger/BaseDeDonne/modifier_post.php" method="POST">
 
-            <label for="nom">Nom</label><br />
-            <input type="text" name="nom" id="nom" value="<?php echo $nom ;?>" required><br />
-            <label for="prenom">Prenom</label><br />
-            <input type="text" name="prenom" id="prenom" value="<?php echo $prenom;?>" required><br />
-            <label for="telephone">Telephone</label><br />
-            <input type="tel" name="telephone" id="telephone" value="<?php echo $tel;?>" required><br />
-            <label for="mail">Mail</label><br />
-            <input type="text" name="mail" id="mail" value="<?php echo $mail;?>" required><br />
-            <label for="login">Login</label><br />
-            <input type="text" name="login" id="login" value="<?php echo $login;?>" required><br />
-            <label for="mot_de_passe">Mot de passe</label><br />
-            <input type="text" name="mot_de_passe" id="mot_de_passe" value="<?php echo $mdp;?>" required><br />
-            <label for="role">Role</label><br />
-            <select name="role" value>
-                <option value="serveur"> Serveur </option>
-                <option value="cuisinier"> Cuisinier </option>
-                <option value="client"> Client </option>
-                <option value="gerant"> Gerant </option>
-            </select>
+            <div class="together">
+                <label class="label" for="nom">Nom</label>
+                <input class="input" class="input" type="text" name="nom" id="nom" value="<?php echo $nom ;?>" required>
+            </div>
 
-            <input type="hidden" name="id" value="<?php echo $id ?>">
-            <button type="submit">Modifier</button>
+            <div class="together">
+                <label class="label" for="prenom">Prenom</label>
+                <input class="input" type="text" name="prenom" id="prenom" value="<?php echo $prenom;?>" required>
+            </div>
+
+            <div class="together">
+                <label class="label" for="telephone">Telephone</label>
+                <input class="input" type="tel" name="telephone" id="telephone" value="<?php echo $tel;?>" required>
+            </div>
+
+            <div class="together">
+                <label class="label" for="mail">Mail</label>
+                <input class="input" type="text" name="mail" id="mail" value="<?php echo $mail;?>" required>
+            </div>
+
+            <div class="together">
+                <label class="label" for="login">Login</label>
+                <input class="input" type="text" name="login" id="login" value="<?php echo $login;?>" required>
+            </div>
+
+            <div class="together">
+                <label class="label" for="mot_de_passe">Mot de passe</label>
+                <input class="input" type="text" name="mot_de_passe" id="mot_de_passe" value="<?php echo $mdp;?>"
+                    required>
+            </div>
+
+            <div class="together">
+                <label class="label" for="role">Role</label>
+                <select class="select" name="role" value>
+                    <option class="option" value="serveur"> Serveur </option>
+                    <option class="option" value="cuisinier"> Cuisinier </option>
+                    <option class="option" value="client"> Client </option>
+                    <option class="option" value="gerant"> Gerant </option>
+                </select>
+            </div>
+
+            <div class="together">
+                <input type="hidden" name="id" value="<?php echo $id ?>">
+                <button class="buttonForm" type="submit">Modifier</button>
+            </div>
 
         </form>
         </p>

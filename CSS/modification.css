@@ -1,0 +1,50 @@
+.principal {
+    display: flex;
+    align-content: space-around;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+.together{
+    flex:1 1 50%;
+    width:50%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.buttonForm{
+    background: transparent;
+    border: solid 2px;
+    border-radius: 5px;
+    width: 86px;
+}
+
+.buttonForm:hover{
+    background: black;
+    border:solid 2px black;
+    color:white;
+}
+
+.form{
+    width: 80%;
+    display: flex;
+    gap: 3px;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+.input{
+    border:solid 2px white;
+    background:transparent;
+    border-radius:15px;
+    width:50%;
+}
+.label{
+    width:50%;
+}
+.select{
+    border:solid 2px white;
+    background:transparent;
+    border-radius:15px;
+    width:50%;
+}
