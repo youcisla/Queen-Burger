@@ -3,8 +3,8 @@
  * ajoute un nouveau creneau, et retourne son id 
  * !!!!! FONCTION ASYNCHRONE !!!!!!
  * @param {date} date date format yyyy-mm-dd
- * @param {heure} heuredebut heure format hh:mm:ss
- * @param {heure} heurefin heure format hh:mm:ss
+ * @param {hour} heuredebut heure format hh:mm:ss
+ * @param {hour} heurefin heure format hh:mm:ss
  * @param {number} id_secteur id du secteur ou est assigné le serveur
  * @param {number} id_serveur id du serveur
  * @return {data} {id, raison, valide} || null si erreur
@@ -36,6 +36,44 @@ function supprimerCreneau(id_creneau) {
   axios.post('../PHP/suppressionCreneau.php', {
     id_creneau : id_creneau
   });
+}
+
+/**
+ * modifie le secteur d'un creneau
+ * @param {number} id_creneau id du creneau
+ * @param {number} id_secteur id du secteur
+ */
+function supprimerCreneau(id_creneau, id_secteur) {
+  axios.post('../PHP/modifierSecteurCreneau.php', {
+    id_creneau : id_creneau,
+    id_secteur : id_secteur
+  });
+}
+
+/**
+ * modifier l'horraire d'un creneau
+ * FONCTION ASYNCHRONE
+ * @param {number} id_creneau id du creneau
+ * @param {hour} debutheure heure de commencement du creneau
+ * @param {hour} finheure heure de fin du creneau
+ * 
+ * @return {data} {raison, valide} || null si erreur
+ */
+async function modifierHorraireCreneau(id_creneau, debutheure, finheure) { 
+  let result = null;
+  await axios.post('../PHP/modifierHorraireCreneau.php', {
+        id_creneau: id_creneau,
+        heuredebut: heuredebut,
+        heurefin: heurefin
+      })
+      .then(async function (response) {
+        result = response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+  return result;
 }
 
 /**
