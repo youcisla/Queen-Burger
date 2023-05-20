@@ -46,10 +46,10 @@ redirectionConnexion(['serveur'], "base.php");
         </div>
 
         <div class="together">
-            <input class='buttonForm' type="submit" id="validation" value="valider">
+            <input class='buttonForm' type="submit" id="validation" value="Valider">
         </div>
     </form>
-
+    <button class='buttonForm' id="annuler" value="annuler" onclick="deleteDiv()">Annuler</button>
 
 </body>
 

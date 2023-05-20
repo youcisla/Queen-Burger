@@ -24,19 +24,15 @@ function headerBuildHome(){
         header.innerHTML = originalContent; // show the content
       }
     });
-  }
+}
   
-  headerBuildHome();
-  
-  
-// function openPopup() {
-//     window.open('/Queen-Burger/HTML/creationAbsence.php', 'popupWindow', 'width=400,height=300');
-// }
+headerBuildHome();
+
 function openPopup() {
   var popupDiv = document.createElement("div");
   popupDiv.id = "popupDiv";
   popupDiv.style.width = "300px";
-  popupDiv.style.height = "250px";
+  popupDiv.style.height = "220px";
   popupDiv.style.overflow = "auto";
   popupDiv.style.border = "2px solid black";
   popupDiv.style.padding = "10px";
@@ -83,8 +79,10 @@ function openPopup() {
   });
 }
 
-
-
+function deleteDiv() {
+    var divToRemove = document.getElementById("popupDiv");
+    divToRemove.parentNode.removeChild(divToRemove);
+}
   
 function goToReservation() {
     window.location.href = "/Queen-Burger/HTML/base.php";

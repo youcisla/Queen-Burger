@@ -13,7 +13,7 @@ body{
     background:transparent;
 }
 .label{
-    width:50%;
+    width: 40%;
 }
 .together{
     display:flex;
@@ -33,4 +33,14 @@ body{
     background: black;
     border:solid 2px black;
     color:white;
+}
+
+#annuler{
+    border: solid 2px red;
+    background: transparent;
+    height: 25px;
+}
+
+#annuler:hover{
+    background: red;
 }
