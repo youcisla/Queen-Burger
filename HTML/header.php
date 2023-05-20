@@ -35,7 +35,7 @@
         if($role == "serveur") {
             //serveur connecté
 
-
+            echo "<button class='burgerButton' onclick='openPopup()''>Absence</button>";
             //emploie du temps
             echo "<button class='burgerButton' onclick='goToCalendar()''>Calendar</button>";
         }
@@ -60,5 +60,6 @@
 
 <script src="/Queen-Burger/JavaScript/header.js" defer></script>
 <script src="/Queen-Burger/JavaScript/app.js" defer></script>
+<script src="../JavaScript/absence.js" defer></script>
 
 </header>

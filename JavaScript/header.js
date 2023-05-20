@@ -27,8 +27,11 @@ function headerBuildHome(){
   }
   
   headerBuildHome();
-    
   
+  
+function openPopup() {
+    window.open('/Queen-Burger/HTML/creationAbsence.php', 'popupWindow', 'width=400,height=300');
+}
 
 function goToReservation() {
     window.location.href = "/Queen-Burger/HTML/base.php";

@@ -13,33 +13,44 @@ redirectionConnexion(['serveur'], "base.php");
 <!-- ----- La page html ----- -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/creationAbsence.css">
     <script defer src="../JavaScript/absence.js"></script>
 </head>
+
 <body>
-    <form method="POST" action="/Queen-Burger/HTML/validationAbsence.php">
+    <form class="form" method="POST" action="/Queen-Burger/HTML/validationAbsence.php">
 
-        <label for="debutDate">Debut Absence:</label>
-        <?php
+        <div class="together">
+            <label class="label" for="debutDate">Debut Absence:</label>
+            <?php
         echo "
-            <input type='date' id='debutDate' name='debutDate' value='{$dateLendemain}' min='{$dateLendemain}'>
+            <input class='input' type='date' id='debutDate' name='debutDate' value='{$dateLendemain}' min='{$dateLendemain}'>
             "
         ?>
+        </div>
 
-        <label for="finDate">Fin Absence:</label>
-        <?php
+        <div class="together">
+            <label class="label" for="finDate">Fin Absence:</label>
+            <?php
         echo "
-            <input type='date' id='finDate' name='finDate' value='{$dateLendemain}' min='{$dateLendemain}'>
+            <input class='input' type='date' id='finDate' name='finDate' value='{$dateLendemain}' min='{$dateLendemain}'>
             "
         ?>
+        </div>
 
-        <input type="submit" id="validation" value = "valider">
+        <div class="together">
+            <input class='buttonForm' type="submit" id="validation" value="valider">
+        </div>
     </form>
 
 
 </body>
+
 </html>
