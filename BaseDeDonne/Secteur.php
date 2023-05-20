@@ -20,10 +20,10 @@ function secteur(){
 
 
 }
-function CreateSecteur(){
-    $sql = "INSERT INTO Secteur()Values()";
+function CreateSecteur($nom){
+    $sql = "INSERT INTO Secteur(nom)Values('$nom')";
     bdd()->query($sql);
-
+    return bdd()->insert_id;
 }
 function DeleteSecteur($id){
     $sql="DELETE FROM Secteur WHERE id='$id'";
@@ -36,24 +36,65 @@ function ReadSecteur($id){
     return $row;
 }
 
+function ReadAllSecteurs() {
+    $sql = "SELECT * FROM secteur";
+    $result = bdd()->query($sql);
+
+    $return = array();
+
+    while($row = $result->fetch_assoc()) {
+        $return[] = $row;
+    }
+
+    return $row;
+}
+
+
 function CreateTables($nb_place,$secteur){
     $sql = "INSERT INTO Tables(nb_place,emplacement)Values('$nb_place','$secteur')";
     bdd()->query($sql);
+    return bdd()->insert_id;
 }
+
 function DeleteTables($id){
     $sql="DELETE FROM Tables WHERE id='$id'";
     bdd()->query($sql);
 }
+
+function DeleteTablesSecteur($id_secteur) {
+    $sql = "DELETE FROM tables WHERE id_secteur = $id_secteur";
+    bdd()->query($sql);
+}
+
+
 function ReadTables($id){
     $sql = "SELECT * from Tables where id = '$id' ";
     $result=bdd()->query($sql);
     $row = $result->fetch_assoc();
     return $row;
 }
+
+
+function ReadAllTables($id_secteur) {
+    $sql = "SELECT * FROM tables WHERE id_secteur = $id_secteur";
+    $result = bdd()->query($sql);
+
+    $return = array();
+
+    while($row = $result->fetch_assoc()) {
+        $return[] = $row;
+    }
+
+    return $row;
+}
+
 function UpdateTables($id,$nb_place,$secteur){
-    $sql = "UPDATE Tables SET
-    nb_place='$nb_place',emplacement='$secteur' where id = '$id'";
+    $sql = "UPDATE Tables SET nb_place='$nb_place',emplacement='$secteur' where id = '$id'";
     bdd()->query($sql);
-   
+}
+
+function UpdateNbPlacesTable($id_table, $nb_places) {
+    $sql = "UPDATE Tables SET nb_place = '$nb_places', where id = '$id_table'";
+    bdd()->query($sql); 
 }
 ?>
