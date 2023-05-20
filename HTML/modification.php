@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/modification.css">
     <link rel="stylesheet" href="../CSS/style.css">
-    <!-- <script src="../JavaScript/header.js" defer></script> -->
+    <script src="../JavaScript/header.js" defer></script>
     <title>Modification</title>
 </head>
 

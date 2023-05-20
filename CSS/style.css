@@ -38,7 +38,10 @@
 
 body {
   background-color: antiquewhite;
-  height: 100vh;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
 }
 
 body::-webkit-scrollbar {
@@ -64,6 +67,7 @@ section {
   place-content: center;
   align-items: center;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 header {
@@ -102,7 +106,7 @@ header * {
   transition: 1s;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   overflow: hidden;
   align-items: center;
   margin: 1em 1em;
@@ -368,7 +372,6 @@ p {
   place-content: center;
   align-items: center;
   justify-content: center;
-  align-content: center;
 }
 
 .buttonsUp {
@@ -576,4 +579,9 @@ a {
   background :antiquewhite;
   border:solid 2px white;
   color :black;
+}
+
+script{
+  position:absolute;
+  border:none;
 }

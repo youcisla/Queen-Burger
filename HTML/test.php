@@ -78,6 +78,7 @@ if ($result->num_rows > 0) {
     echo "<td>" . $row["prenom"] . "</td>";
     echo "<td>" . $row["telephone"] . "</td>";
     echo "<td>" . $row["login"] . "</td>";
+    echo "<td>" . $row["role"] . "</td>";
     // echo "<td>" . $row["fonction"] . "</td>";
     echo "<td><input type='checkbox' name='selected[]' value='" . $row["nom"] . "'></td>";
     echo "</tr>";

@@ -29,10 +29,63 @@ function headerBuildHome(){
   headerBuildHome();
   
   
+// function openPopup() {
+//     window.open('/Queen-Burger/HTML/creationAbsence.php', 'popupWindow', 'width=400,height=300');
+// }
 function openPopup() {
-    window.open('/Queen-Burger/HTML/creationAbsence.php', 'popupWindow', 'width=400,height=300');
+  var popupDiv = document.createElement("div");
+  popupDiv.id = "popupDiv";
+  popupDiv.style.width = "300px";
+  popupDiv.style.height = "250px";
+  popupDiv.style.overflow = "auto";
+  popupDiv.style.border = "2px solid black";
+  popupDiv.style.padding = "10px";
+  popupDiv.style.position = "absolute";
+  popupDiv.style.top = "50%";
+  popupDiv.style.left = "50%";
+  popupDiv.style.transform = "translate(-50%, -50%)";
+  popupDiv.style.backgroundColor = "antiquewhite";
+  popupDiv.style.cursor = "move";
+  popupDiv.style.borderRadius = "10px";
+  document.body.appendChild(popupDiv);
+
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      popupDiv.innerHTML = xhr.responseText;
+    }
+  };
+  xhr.open("GET", "/Queen-Burger/HTML/creationAbsence.php", true);
+  xhr.send();
+
+  // Make the popup draggable
+  var isDragging = false;
+  var dragOffsetX = 0;
+  var dragOffsetY = 0;
+
+  popupDiv.addEventListener("mousedown", function(e) {
+    isDragging = true;
+    dragOffsetX = e.clientX - popupDiv.offsetLeft;
+    dragOffsetY = e.clientY - popupDiv.offsetTop;
+  });
+
+  document.addEventListener("mousemove", function(e) {
+    if (isDragging) {
+      var leftPos = e.clientX - dragOffsetX;
+      var topPos = e.clientY - dragOffsetY;
+      popupDiv.style.left = leftPos + "px";
+      popupDiv.style.top = topPos + "px";
+    }
+  });
+
+  document.addEventListener("mouseup", function() {
+    isDragging = false;
+  });
 }
 
+
+
+  
 function goToReservation() {
     window.location.href = "/Queen-Burger/HTML/base.php";
 }
