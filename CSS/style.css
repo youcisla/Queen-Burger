@@ -127,25 +127,21 @@ header * {
 }
 
 #core {
-  width: 100%;
   display: flex;
-  padding-top: 1em;
-  padding-bottom: 1em;
   flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
 }
 
 #core>div {
   display: flex;
   flex-direction: row;
-  height: 70vh;
-  padding: 1em;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: stretch;
+  justify-content: space-evenly;
+  padding-bottom: 10px;
 }
 
 .L70percent {
-  width: 60%;
+  width: 30%;
   border-radius: 40px;
   display: flex;
   place-content: center;
@@ -349,8 +345,10 @@ p {
   line-height: 1.7em;
   font-weight: 700;
   box-sizing: border-box;
-  border: solid 3px white;
+  border: 3px dotted antiquewhite;
   border-radius: 45px;
+  background:black;
+  color:antiquewhite;
 }
 
 .nbTables {
@@ -478,17 +476,14 @@ a {
 
 .recettePIC {
   background-position: 50% 50%;
-  background-size: 60%;
+  background-size: 100%;
   display: flex;
   justify-content: space-around;
   overflow: hidden;
   align-items: center;
-  position: relative;
-  cursor: pointer;
-  width: -webkit-fill-available;
   height: -webkit-fill-available;
   background-repeat: no-repeat;
-  width: 75%;
+  width: 50%;
 }
 
 .recette {
@@ -584,4 +579,8 @@ a {
 script{
   position:absolute;
   border:none;
+}
+
+#core > div:nth-child(1) > div.L70percent{
+  width:70%;
 }
