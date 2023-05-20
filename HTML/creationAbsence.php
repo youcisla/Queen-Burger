@@ -3,6 +3,10 @@
 //recupere la date du jour
 $dateActuel = date('Y-m-d');
 $dateLendemain = date('Y-m-d', strtotime($dateActuel . ' +1 day'));
+
+include_once "../PHP/verificationConnexion.php";
+
+redirectionConnexion(['serveur'], "base.php");
 ?>
 
 

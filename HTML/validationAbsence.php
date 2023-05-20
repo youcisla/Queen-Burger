@@ -1,11 +1,14 @@
 <?php
 include_once "../BaseDeDonne/Absence.php";
 include_once "envoieMail.php";
-include_once "../BaseDeDonne/Cuisinier.php";
+include_once "../BaseDeDonne/Personne.php";
 
 
-//verif si la personne est co a ajouter
-$id_serveur = 1; // 0 zero pour le moment, a modifier avec l id de la personne connecté
+include_once "../PHP/verificationConnexion.php";
+redirectionConnexion(['serveur'], "base.php");
+
+
+$id_serveur = $_SESSION["id"];
 
 
 
@@ -25,10 +28,10 @@ if(!isset($_POST["debutDate"],  $_POST["finDate"])) {
 
     } else {
 
-        //envoei du mail
+        //envoit du mail
 
         //recupe le mail de tout les cuisto
-        $mails = GetAllCuisinierMail();
+        $mails = GetAllMail();
         print_r($mails);
 
         foreach($mails as $mail) {
@@ -48,7 +51,7 @@ if(!isset($_POST["debutDate"],  $_POST["finDate"])) {
 
 
         //redirection a changer
-        header("Location: ../calendar.php");
+        header("Location: calendar.php");
     }
 }
 

@@ -7,7 +7,7 @@ require '..\PHPMailer/src/Exception.php';
 require '..\PHPMailer/src/PHPMailer.php';
 require '..\PHPMailer/src/SMTP.php';
 
-include_once "../BasedeDonne/Serveur.php";
+include_once "../BasedeDonne/personne.php";
 
 
 function envoyerMail($adresse_dest, $nom_dest, $contenu, $sujet) {
@@ -54,12 +54,12 @@ function envoyerMail($adresse_dest, $nom_dest, $contenu, $sujet) {
 // id_serveur : id du serveur absent
 
 function envoieMailAbsence($destinataire, $debut, $fin, $id_serveur) {
-    $information = ReadPersonne($id_serveur);
+    $personne = getPersonne($id_serveur);
 
 
     $mailBurgerQueen = "burger.queen.off@gmail.com";
 
-    $sujet = "Absence de " . $information["nom"] . " " . $information["prenom"] . ".";
+    $sujet = "Absence de " . $personne["nom"] . " " . $personne["prenom"] . ".";
 
     // a modifier
     $contenu =
@@ -72,11 +72,11 @@ function envoieMailAbsence($destinataire, $debut, $fin, $id_serveur) {
             </style>
         </head>
         <body>
-            <p>{$information['nom']} {$information['prenom']} sera absent du {$debut} jusqu'a {$fin}</p>
+            <p>{$personne['nom']} {$personne['prenom']} sera absent du {$debut} jusqu'a {$fin}</p>
         <body>
     </html>";
     
-    return envoyerMail($destinataire, $information['nom'] ." ". $information['prenom'], $contenu, $sujet);
+    return envoyerMail($destinataire, $personne['nom'] ." ". $personne['prenom'], $contenu, $sujet);
     
     
 }

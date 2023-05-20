@@ -19,16 +19,15 @@ function idConnexion() {
     return $_SESSION["id"];
 }
 
-/* retourne un entier corespondant a un role
-  - 1 : gerant
-  - 2 : cuisinier
-  - 3 : serveur
-  - 4 : client  
-  - 0 : pas trouvé dans la base de donné
+/* retourne le role de la personne
+  - gerant
+  - cuisinier
+  - serveur
+  - client  
 */
 function roleConnexion() {
     if(!estConnecte()) {
-        return 0;
+        return 'none';
     }
 
     $id_personne = idConnexion();
@@ -41,7 +40,7 @@ function roleConnexion() {
  * si non elle est redirigé
  * 
  * redirection : chemin de la page ou rediriger si mauvais role
- * roles : array contenant les roles autorisé
+ * roles : liste des roles autorisé
  */
 function redirectionConnexion($roles, $redirection) {
     if(!estConnecte()) {

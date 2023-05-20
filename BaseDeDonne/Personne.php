@@ -252,4 +252,18 @@ function obtenirRole($id) {
 
     $conn->close();
 }
+
+
+function GetAllMail() {
+    $sql = "SELECT mail FROM personne WHERE role = 'cuisinier' OR role = 'gerant'";
+
+    $return = array();
+
+    $result = bdd()->query($sql);
+    while($row = $result->fetch_assoc()) {
+        $return[] = $row["mail"];
+    }
+
+    return $return;
+}
 ?>
