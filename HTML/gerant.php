@@ -3,7 +3,7 @@
 include_once '../BaseDeDonne/Personne.php';
 include_once "../PHP/verificationConnexion.php";
 include_once "../BaseDeDonne/indexx.php";
-//redirectionConnexion([1,2], "base.php");
+//redirectionConnexion(['gerant','cuisinier'], "base.php");
 if (isset($_POST['page'])) {
     $page = $_POST['page'];
 } else {
