@@ -63,9 +63,10 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
     <script src="../JavaScript/date.js" defer></script>
     <script src="../JavaScript/calendar.js" defer></script>
-    <script src="../JavaScript/header.js" defer></script>
+    <script src="../JavaScript/requeteCalendrier.js"></script>
 </body>
 
 </html>

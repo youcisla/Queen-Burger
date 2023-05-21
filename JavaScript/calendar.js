@@ -8,6 +8,7 @@ function createElement(parent,id,classs){
 }
 function createCalendarView(parentID,lignes,columns){
     // create calendar
+
     const parent=document.querySelector(`#${parentID}`);
     let calendarBody = createElement(parent,"calendarBody1","calendarBody");
     
@@ -20,11 +21,12 @@ function createCalendarView(parentID,lignes,columns){
 }
 function createCalendar(parentID,lignes){
     // create calendar
+    const date = getAllDaysOfCurrentWeek();
     const parent=document.querySelector("#"+parentID);
     let calendarBody = createElement(parent,"calendarBody","calendarBody");
     
     for(let ligne = 0 ; ligne < lignes ; ligne++ ){
-        let intermidiateDiv = createElement(calendarBody,`droptarget_${ligne+1}`,"droptarget");
+        let intermidiateDiv = createElement(calendarBody,`droptarget_${date[ligne]}`,"droptarget");
     }
 }
 function addDate(idDiv) {
@@ -36,11 +38,6 @@ function addDate(idDiv) {
         div.children[i].children[1].innerHTML = dates[i];
     }
 }
-/* function oneMinInPixils(parent){
-    let parentSizeInPixils = parent.clientHeight;
-    let oneMin = parentSizeInPixils / ( 24 * 60);
-    return oneMin;
-} */
 function oneMinInPixils(element) {
     let parent = element.parentNode;
     let parentSizeInPixils = parent.clientHeight;
@@ -112,41 +109,44 @@ function getTaskTimes(element){
         timeEnd:timeEnd
     }
 }
-function printTimeSE(element,parent,elementchild){
+function printTimeSE(element, elementChild) {
     // calculations
-    let data = getTaskTimes(element,parent);
+    let data = getTaskTimes(element);
     // things
-    const timeDiv = createElement(elementchild,`${element.id}_time`,"Time");
-    printTime(data.timeStart.hourStart,data.timeStart.minStart,timeDiv);
-    printTime(data.timeEnd.hoursEnd,data.timeEnd.minEnd,timeDiv);
-}
-function removeElement(elementID){
-    const element = document.getElementById(elementID);
-    element.parentNode.removeChild(element);
-}
-function createTask(parent,taskID){
+    let timeDiv = document.getElementById(`${element.id}_time`);
+    if (timeDiv) {
+      timeDiv.parentNode.removeChild(timeDiv);
+    }
+    timeDiv = createElement(elementChild, `${element.id}_time`, "Time");
+    printTime(data.timeStart.hourStart, data.timeStart.minStart, timeDiv);
+    printTime(data.timeEnd.hoursEnd, data.timeEnd.minEnd, timeDiv);
+} 
+function createTask(parent, taskID) {
     //
-    const task = createElement(parent,taskID,'draggable');
+    const task = createElement(parent, taskID, "draggable");
     // content
-    const taskChild = createElement(task,`${taskID}_Child`,'draggable_Child');
+    const taskChild = createElement(task, `${taskID}_Child`, "draggable_Child");
     // info
     createContent(taskChild);
     // drag feature
-    enableDrag(taskChild,task,parent);
+    enableDrag(taskChild, task, parent);
+
+    // position element on click
+    const parentRect = parent.getBoundingClientRect();
+    const offsetY = event.clientY - parentRect.top;
+    task.style.top = `${offsetY}px`;
     // time stuff
-    printTimeSE(task,parent,taskChild);
-
-    task.addEventListener('mousemove',e=>{
-        removeElement(`${task.id}_time`)
-        printTimeSE(task,parent,taskChild);
-
-        const parentRect = parent.getBoundingClientRect();
-
-
-    });
+    printTimeSE(task, taskChild);
+    task.addEventListener("mousemove", (e) => {
+        printTimeSE(task, taskChild);
+        });
+        task.addEventListener("mouseup", (e) => {
+        const time = stringTimeFormat(task);
+        const id = task.id.substring(0, task.id.length - 5);
+        modifierHorraireCreneau(id, time.hourStart, time.hourEnd);
+        });
     return task;
-
-}          
+}  
 function enableDrag(elementchild,element,parent) {
     let isDragging = false;
     let initialPosition;
@@ -194,6 +194,8 @@ function createContent(task){
     });
 }
 function deleteElement(element){
+    const id = element.id.substring(0,element.id.length-5);
+    supprimerCreneau(id);
     element.remove();
 }
 function adjustMaxHeight(parent, element,border =null) {
@@ -208,90 +210,49 @@ function adjustMaxHeight(parent, element,border =null) {
     return maxChildHeight;
 }
 // editing below
-function createClickForm(){
-    return true;
-}
-function createManualTaskAdderForum(){
-    return timeStart,timeEnd,day;
-}
-function AddTaskManually(){
-
-    let taskNbr=0;
-    let data =createManualTaskAdderForum();
-    let timeStart = data[0];
-    let timeEnd = data[1];
-    let day = data[2];
-
-    const addTask = document.getElementById("addTask");
-    addTask.addEventListener("click",e=>{
-        e.stopPropagation();
-        createTask(`droptarget_${day}`,``);
-        taskNbr++;
-    })
-
-
-
-}
-function getElementsByDay(dayNbr) {
-    var selector = `[id^='{day:${dayNbr};taskNbr:'][id$='_draggable']`;
-    var elements = document.querySelectorAll(selector);
-    return elements;
-    
-}
-function getElementData(element){
-    const time = getTaskTimes(element);
-    return {
-        id:element.id,
-        timeStart:time.timeStart,
-        timeEnd:time.timeEnd
-    }
-}
-function getElementsData(dayNbr){
-    let list = [];
-    data = getElementsByDay(dayNbr);
-    for (let i = 0; i < data.length; i++) {
-        let j = getElementData(data[i]);
-        list.push(j);
-    }
-    return list;
-}
 // lunching functions
 function createTable(line_nb,column_nb){
     createCalendarView("calendar1",column_nb,line_nb);
     addDate("date");
     createCalendar("calendar",column_nb);
 }
-function day(dayNbr){
+function day(date){
 
-    const target = document.getElementById(`droptarget_${dayNbr}`);
+    const target = document.getElementById(`droptarget_${date}`);
     let taskNumber = 1;
 
-    target.addEventListener('click', function(event) {
-        if (event.target === target) {
-            // holy statment
-            event.stopPropagation();
-            // create element
-            const task = createTask(target,`{day:${dayNbr};taskNbr:${taskNumber}}_draggable`);
-            taskNumber++;
-            // position element on click
-            const parentRect = target.getBoundingClientRect();
-            const offsetY = event.clientY - parentRect.top;
-            task.style.top = `${offsetY}px`;
-            //
-            const maxHeight = adjustMaxHeight(target,task);
-            task.style.maxHeight = `${maxHeight}px`;
-            // just for testing bitches
-            if (taskNumber == 5){
-                let PQ = getElementsData(dayNbr);
-                console.log(PQ);
+    target.addEventListener('click',
+        async function(event) {
+            if (event.target === target) {
+                // holy statment
+                event.stopPropagation();
+                // create element
+                const task = createTask(target,"Temp");
+
+                //
+                const time = stringTimeFormat(task);
+                //
+                let data = await ajouterCreneau(date,time.hourStart,time.hourEnd,1,1);
+                if (data.id == -1){
+                    task.remove();
+                }else{
+                    task.id =data.id + "_task";
+                }
+                taskNumber++;
+
+
+                //
+                const maxHeight = adjustMaxHeight(target,task);
+                task.style.maxHeight = `${maxHeight}px`;
+            
             }
-        }
     });
 }
 function week(){
     const weekDays = 7; 
-    for(var i = 1 ; i <= weekDays ; i++){
-        day(i)
+    let x = getAllDaysOfCurrentWeek();
+    for(var i = 0 ; i < weekDays ; i++){
+        day(x[i]);
     }
 }
 function main(){
@@ -299,5 +260,16 @@ function main(){
     const column_nb = 7;
     createTable(line_nb,column_nb)
     week();    
+}
+function stringTimeFormat(task){
+    const tempTime = getTaskTimes(task);
+    const timeStart = tempTime.timeStart;
+    const timeEnd = tempTime.timeEnd;
+    const hourStart = timeStart.hourStart + ":" + timeStart.minStart + ":00";
+    const hourEnd = timeEnd.hoursEnd + ":" + timeEnd.minEnd + ":00";
+    return {
+        hourStart:hourStart,
+        hourEnd:hourEnd
+    }
 }
 main();

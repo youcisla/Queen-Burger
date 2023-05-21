@@ -43,7 +43,7 @@ function supprimerCreneau(id_creneau) {
  * @param {number} id_creneau id du creneau
  * @param {number} id_secteur id du secteur
  */
-function supprimerCreneau(id_creneau, id_secteur) {
+function modifierSecteurCreneau(id_creneau, id_secteur) {
   axios.post('../PHP/modifierSecteurCreneau.php', {
     id_creneau : id_creneau,
     id_secteur : id_secteur
