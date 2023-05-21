@@ -40,7 +40,7 @@ function roleConnexion() {
  * si non elle est redirigé
  * 
  * redirection : chemin de la page ou rediriger si mauvais role
- * roles : liste des roles autorisé
+ * roles : liste des roles autorisés
  */
 function redirectionConnexion($roles, $redirection) {
     if(!estConnecte()) {

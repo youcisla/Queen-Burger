@@ -46,17 +46,17 @@ function ReadAllSecteurs() {
         $return[] = $row;
     }
 
-    return $row;
+    return $return;
 }
 
 
 function CreateTables($nb_place,$secteur){
-    $sql = "INSERT INTO Tables(nb_place,emplacement)Values('$nb_place','$secteur')";
+    $sql = "INSERT INTO Tables(nb_place,id_secteur)Values('$nb_place','$secteur')";
     bdd()->query($sql);
     return bdd()->insert_id;
 }
 
-function DeleteTables($id){
+function DeleteTable($id){
     $sql="DELETE FROM Tables WHERE id='$id'";
     bdd()->query($sql);
 }
@@ -67,8 +67,8 @@ function DeleteTablesSecteur($id_secteur) {
 }
 
 
-function ReadTables($id){
-    $sql = "SELECT * from Tables where id = '$id' ";
+function ReadTable($id){
+    $sql = "SELECT * from Tables where id = $id ";
     $result=bdd()->query($sql);
     $row = $result->fetch_assoc();
     return $row;
@@ -85,16 +85,16 @@ function ReadAllTables($id_secteur) {
         $return[] = $row;
     }
 
-    return $row;
+    return $return;
 }
 
-function UpdateTables($id,$nb_place,$secteur){
+function UpdateTable($id,$nb_place,$secteur){
     $sql = "UPDATE Tables SET nb_place='$nb_place',emplacement='$secteur' where id = '$id'";
     bdd()->query($sql);
 }
 
 function UpdateNbPlacesTable($id_table, $nb_places) {
-    $sql = "UPDATE Tables SET nb_place = '$nb_places', where id = '$id_table'";
+    $sql = "UPDATE Tables SET nb_place = $nb_places where id = $id_table";
     bdd()->query($sql); 
 }
 ?>

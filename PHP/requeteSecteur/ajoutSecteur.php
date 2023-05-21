@@ -1,5 +1,5 @@
 <?php
-include_once "../BaseDeDonne/secteur.php";
+include_once "../../BaseDeDonne/Secteur.php";
 
 //cree un nouveau secteur
 /*
@@ -14,7 +14,13 @@ $data = json_decode($request_body, true);
 
 $nom = $data["nom"];
 
-$id = CreateSecteur($nom);
+$sql = "SELECT * FROM secteur WHERE nom = '$nom'";
+$return = bdd()->query($sql);
+if($return->num_rows > 0) {
+    $id = -1;
+} else {
+    $id = CreateSecteur($nom);
+}
 
 echo json_encode($id);
 ?>

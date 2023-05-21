@@ -1,5 +1,5 @@
 <?php
-include_once "../BaseDeDonne/secteur.php";
+include_once "../../BaseDeDonne/Secteur.php";
 
 //recupere toute les tables d'un secteur
 /*

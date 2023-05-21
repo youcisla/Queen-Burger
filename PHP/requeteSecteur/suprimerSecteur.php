@@ -1,5 +1,5 @@
 <?php
-include_once "../BaseDeDonne/secteur.php";
+include_once "../../BaseDeDonne/Secteur.php";
 
 //suprimer un secteur et toute ses tables
 /*
