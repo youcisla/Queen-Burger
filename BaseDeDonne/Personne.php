@@ -116,11 +116,12 @@ function affichePage($nb) {
                 <td> <strong> Mail </strong> </td>
                 <td> <strong> Login </strong> </td>
                 <td> <strong> Mot de passe </strong> </td>
+                <td> <strong> Role </strong> </td>
             </tr>
         ";
         foreach($result as $temp) {
             echo "<tr>";
-            echo sprintf("<td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td>",$temp['nom'],$temp['prenom'],$temp['mail'],$temp['login'],$temp['mot_de_passe']);
+            echo sprintf("<td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td>",$temp['nom'],$temp['prenom'],$temp['mail'],$temp['login'],$temp['mot_de_passe'],$temp['role']);
             echo sprintf("<td> <form action='modification.php' method='POST'>
                             <button type='submit' name='id_selec' value='%d'> Modifier </button>
                         </form> </td>
@@ -154,11 +155,12 @@ function afficheRecherche($recherche) {
                 <td> <strong> Mail </strong> </td>
                 <td> <strong> Login </strong> </td>
                 <td> <strong> Mot de passe </strong> </td>
+                <td> <strong> Role </strong> </td>
             </tr>
         ";
         foreach($result as $temp) {
             echo "<tr>";
-            echo sprintf("<td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td>",$temp['nom'],$temp['prenom'],$temp['mail'],$temp['login'],$temp['mot_de_passe']);
+            echo sprintf("<td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td>",$temp['nom'],$temp['prenom'],$temp['mail'],$temp['login'],$temp['mot_de_passe'],$temp['role']);
             echo sprintf("<td> <form action='modification.php' method='POST'>
                             <button class='buttonForm' type='submit' name='id_selec' value='%d'> Modifier </button>
                         </form> </td>
