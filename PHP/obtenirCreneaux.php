@@ -27,13 +27,15 @@ $dates = $data["dates"];
 foreach($dates as $date) {
     $sql = "SELECT * FROM assignation_serveur WHERE id_serveur = $id_serveur AND date = '$date'";
     $result = bdd()->query($sql);
-
-    $return = array();
-    while($row = $result->fetch_assoc()) {
-        $return[] = $row;
-    }  
-    $creneaux[$date] = $return;   
-
+    if($result->num_rows > 0) {
+        $return = array();
+        while($row = $result->fetch_assoc()) {
+            $return[] = $row;
+        }  
+        $creneaux[$date] = $return;   
+    } else {
+        $creneaux[$date] = [];
+    }
 }
 
 echo json_encode($creneaux);
