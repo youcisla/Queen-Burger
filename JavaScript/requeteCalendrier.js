@@ -59,7 +59,7 @@ function modifierSecteurCreneau(id_creneau, id_secteur) {
  * 
  * @return {data} {raison, valide} || null si erreur
  */
-async function modifierHorraireCreneau(id_creneau, debutheure, finheure) { 
+async function modifierHorraireCreneau(id_creneau, heuredebut, heurefin) { 
   let result = null;
   await axios.post('../PHP/modifierHorraireCreneau.php', {
         id_creneau: id_creneau,

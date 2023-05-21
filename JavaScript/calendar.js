@@ -28,6 +28,8 @@ function createCalendar(parentID,lignes){
     for(let ligne = 0 ; ligne < lignes ; ligne++ ){
         let intermidiateDiv = createElement(calendarBody,`droptarget_${date[ligne]}`,"droptarget");
     }
+    
+    loadCreneaux(date);
 }
 function addDate(idDiv) {
     const days = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
@@ -135,18 +137,27 @@ function createTask(parent, taskID) {
     const parentRect = parent.getBoundingClientRect();
     const offsetY = event.clientY - parentRect.top;
     task.style.top = `${offsetY}px`;
-    // time stuff
-    printTimeSE(task, taskChild);
+    // time stuff    printTimeSE(task, taskChild);
     task.addEventListener("mousemove", (e) => {
         printTimeSE(task, taskChild);
-        });
-        task.addEventListener("mouseup", (e) => {
+    });
+    task.addEventListener("mouseup", async (e) => {
         const time = stringTimeFormat(task);
+        console.log(time);
         const id = task.id.substring(0, task.id.length - 5);
-        modifierHorraireCreneau(id, time.hourStart, time.hourEnd);
-        });
+        //modifierHorraireCreneau(id, time.hourStart, time.hourEnd);
+        console.log(await modifierHorraireCreneau(id, time.hourStart, time.hourEnd))
+    });
     return task;
 }  
+async function loadCreneaux(dates){
+    let creneaux = await obtenirCreneauxDates(1, dates);
+    for(let date of dates){
+        console.log(date)
+        for(let creneau of creneaux[date]){
+        }
+    }
+}
 function enableDrag(elementchild,element,parent) {
     let isDragging = false;
     let initialPosition;

@@ -57,7 +57,7 @@ $test1 = "('{$heuredebut}' >= hdebut AND '{$heuredebut}' <= hfin)";
 $test2 = "('{$heurefin}' >= hdebut AND '{$heurefin}' <= hfin)";
 
 
-$sql2 = "SELECT * FROM assignation_serveur WHERE ({$test1} OR {$test2}) AND id_serveur = {$id_serveur} AND date = '{$date}'";
+$sql2 = "SELECT * FROM assignation_serveur WHERE ({$test1} OR {$test2}) AND id_serveur = {$id_serveur} AND date = '{$date}' AND id != {$id_creneau}";
 $result2 = bdd()->query($sql2);
 $return["zzzz"] = $sql2;
 
@@ -73,7 +73,7 @@ if($result2->num_rows > 0) {
 
 
 // le creneau peut etre modifié
-$sql3 = "UPDATE assignation_serveur SET heuredebut = '$heuredebut', heurefin = '$heurefin' WHERE id = $id_secteur";
+$sql3 = "UPDATE assignation_serveur SET hdebut = '$heuredebut', hfin = '$heurefin' WHERE id = $id_creneau";
 bdd()->query($sql3);
 
 $return["valide"] = true;
