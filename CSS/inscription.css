@@ -95,18 +95,23 @@ label {
 
 input {
     border: none;
-    width: 75%;
+    width: 250Px;
     height: 50;
     background: transparent;
     display: flex;
-    align-items: center;
     justify-content: center;
+    border-radius: 10px;
+    align-items: center;
+    margin: 0px 60px;
+    border: solid 2px transparent;
+    color:black;
     text-align: center;
 }
 
 input:hover {
     color: black;
-    background: antiquewhite;
+    background: transparent;
+    border: solid 2px orange;
 }
 
 .nom {
@@ -176,7 +181,7 @@ button {
     display: inline-block;
     font-family: "Flame Regular";
     color: white;
-    border: 1px solid rgb(187, 30, 50);
+    border: 1px solid transparent;
     font-size: 16px;
     padding: 10px 24px;
     border-radius: 15px;

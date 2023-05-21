@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/new-post.png"
                         alt="new-post" />
                 </label>
-                <input type="text" id="email" name="email" required>
+                <input type="text" id="email" name="email" placeholder="Login / Email" required>
                 <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/new-post.png" alt="new-post" />
             </div>
             <div class="mot_de_passe">
@@ -85,17 +85,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/password.png"
                         alt="password" />
                 </label>
-                <input type="password" id="password" name="password" placeholder="Mots de passe" required>
+                <input type="password" id="password" name="password" placeholder="Mot de passe" required>
                 <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/password.png" alt="password" />
             </div>
-
             <div class="bouton">
-                <input type="submit" value="Se connecter">
-                <p>Vous n'avez pas un compte ?</p>
-                <button class="burgerButton" onclick="goToSignUp()">Inscription</button>
+                <button class="button" type="submit">Se connecter</button>
             </div>
-
         </form>
+        <p>Vous n'avez pas un compte ?</p>
+        <button class="button" onclick="goToSignUp()">Inscription</button>
     </div>
 
     <script src="/Queen-Burger/JavaScript/app.js" defer></script>

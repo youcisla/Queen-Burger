@@ -95,18 +95,23 @@ label {
 
 input {
     border: none;
-    width: 75%;
+    width: 250Px;
     height: 50;
     background: transparent;
     display: flex;
-    align-items: center;
     justify-content: center;
+    border-radius: 10px;
+    align-items: center;
+    margin: 0px 60px;
+    border: solid 2px transparent;
+    color:black;
     text-align: center;
 }
 
 input:hover {
     color: black;
-    background: antiquewhite;
+    background: transparent;
+    border: solid 2px orange;
 }
 
 .mot_de_passe {
@@ -189,4 +194,32 @@ input:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.bouton {
+    height: 50px;
+    background-color: rgb(171, 118, 4);
+    width: 100%;
+    border-radius: 0px 0px 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+button {
+    height: 70%;
+    width: 50%;
+    appearance: none;
+    outline: 0px;
+    background: none rgb(203, 141, 7);
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-family: "Flame Regular";
+    color: white;
+    border: 1px solid transparent;
+    font-size: 16px;
+    padding: 10px 24px;
+    border-radius: 15px;
 }
