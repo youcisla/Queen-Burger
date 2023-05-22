@@ -271,7 +271,7 @@ function GetAllMail() {
 }
 
 
-function GetAllServeur() {
+function GetAllServeurs() {
     $sql = "SELECT * FROM personne WHERE role = 'serveur'";
 
     $return = array();

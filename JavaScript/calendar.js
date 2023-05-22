@@ -29,7 +29,7 @@ function createCalendar(parentID,lignes,id_serveur){
         let intermidiateDiv = createElement(calendarBody,`droptarget_${date[ligne]}`,"droptarget");
     }
     
-    //displayAbsence(date,1);
+    displayAbsence(date,id_serveur);
     loadCreneaux(date,id_serveur);
 }
 function addDate(idDiv) {
@@ -329,14 +329,29 @@ function week(id_serveur){
 function main(){
     const line_nb = 12;
     const column_nb = 7;
-    const id_serveur =1;
-    if (id_serveur != - 1 ){
+    const id_serveur = getServeurId();
+    console.log(id_serveur);
+    if (id_serveur != - 1){
         createTable(line_nb,column_nb,id_serveur)
         week(id_serveur); 
     }
-    //createTable(line_nb,column_nb,id_serveur)
-    //week(id_serveur); 
 }
+
+
+//recupere l id du serveur dans lhyperlien, retourne -1 si aucun
+function getServeurId() {
+    const link = window.location.search;
+    const urlParams = new URLSearchParams(link);
+    if(urlParams.has("serveur")) {
+        id = parseInt(urlParams.get("serveur"));
+    } else {
+        id = -1;
+    }
+
+    return id;
+}
+
+
 function stringTimeFormat(task){
     const tempTime = getTaskTimes(task);
     const timeStart = tempTime.timeStart;
@@ -354,8 +369,8 @@ async function displayAbsence(dates, id_serveur) {
     for(let i = 0; i < 7; i++) {
         console.log(absences, i);
         if(absences[i]) {
-            //let dayElement = document.querySelector("#day_" + (i+1));
-            //dayElement.classList.add("absence");
+            let dayElement = document.querySelector("#day_" + (i+1));
+            dayElement.classList.add("absence");
         }
     }
 }
