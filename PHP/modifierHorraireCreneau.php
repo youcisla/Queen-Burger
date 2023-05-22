@@ -38,6 +38,11 @@ $id_serveur = $creneau["id_serveur"];
 
 
 
+$sqlback = "SELECT hdebut, hfin FROM assignation_serveur WHERE id = $id_creneau";
+$resultback = bdd()->query($sqlback);
+
+
+
 //test si le serveur a donné une absence ce jour
 $sql1 = "SELECT * FROM absence WHERE ('{$date}' BETWEEN absence.dateDebut AND absence.dateFin) AND absence.id_serveur = {$id_serveur}";
 $result1 = bdd()->query($sql1);

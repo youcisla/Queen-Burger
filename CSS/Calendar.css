@@ -106,6 +106,10 @@ font-size:13px;
     position: relative;
 }
 
+.absence > div {
+/*     background-color: red;
+ */}
+
 .draggable {
     height: calc(100% / 12);
     width: calc(100% - 10px);
