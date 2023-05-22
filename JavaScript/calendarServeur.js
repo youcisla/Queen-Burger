@@ -405,6 +405,7 @@ function createCalendarServ(parentID,lignes,id_serveur){
 function createTaskServ(parent, taskID , timeStart =null,timeEnd =null) {
     //
     const task = createElement(parent, taskID, "draggable");
+    
     // content
     const taskChild = createElement(task, `${taskID}_Child`, "draggable_Child");
     // info

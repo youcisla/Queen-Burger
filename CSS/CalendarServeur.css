@@ -1,0 +1,262 @@
+* {
+    font-family: cursive;
+}
+
+html,
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+#main {
+    width: 90%;
+    height: 100%;
+    background-color: white;
+    border: solid 3px black;
+    border-left: transparent;
+}
+
+#app {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+#date {
+font-size:13px;
+    width: 99.5%;
+    display: flex;
+    flex-direction: row;
+    background-color: antiquewhite;
+    justify-content: center;
+    border: solid 3px black;
+    padding: 0px 0px;
+    gap: 5px;
+    text-align: center;
+    height: 15%;
+}
+
+.jour {
+    width: 12%;
+    background-color: antiquewhite;
+    transform: translate(40%, 0%);
+}
+
+#date>p {
+    border: 1px solid;
+}
+
+.calendarBody {
+    height: 100%;
+    width: 100%;
+}
+
+.day {
+    height: 100%;
+    width: calc(100% / 7);
+}
+
+.task {
+    width: 100%;
+    height: calc(95% / 12);
+    border: 1px solid;
+}
+
+.calendar {
+    height: 100%;
+    width: 100%;
+}
+
+#calendar {
+    position: relative;
+    z-index: 3;
+}
+
+#calendar1 {
+    position: relative;
+    top: -100%;
+    z-index: 2;
+}
+
+#calendarBody {
+    display: flex;
+    flex-direction: row;
+}
+
+#calendarBody1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.droptarget {
+    height: 100%;
+    width: calc(100% / 7);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.absence > div {
+    background-color: gray;
+}
+
+.draggable {
+    height: calc(100% / 12);
+    width: calc(100% - 10px);
+    background-color: rgb(54, 167, 233);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    border: solid 3px black;
+    left: 2.5px;
+    border-radius: 15px;
+}
+
+.draggable_Child {
+    width: 100%;
+    height: 100%;
+    background-color: antiquewhite;
+    position: relative;
+}
+
+
+.deleter {
+    width: 20%;
+    aspect-ratio: 1;
+    background: url('../Images/x_bar2.png');
+    background-position: 10% 10%;
+    background-size: 70%;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    top: 3px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+}
+
+.deleter:hover {
+    width: 20%;
+    aspect-ratio: 1;
+    background: url('../Images/x_bar.png');
+    background-position: 10% 10%;
+    background-size: 70%;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    top: 3px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+}
+
+.time {
+    border: solid 3px black;
+    width: 10%;
+    height: 100%;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: transparent;
+}
+
+.right {
+    width: 17%;
+    height: 95%;
+    border: solid 3px black;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+.up {
+    width: 75%;
+    height: 20%;
+    border: solid 2px white;
+    display: flex;
+    place-content: center;
+    align-items: center;
+}
+
+.down {
+    width: 75%;
+    height: 65%;
+    border: solid 2px white;
+    display: flex;
+    place-content: center;
+    align-items: center;
+}
+
+.central {
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    width: 80%;
+    gap: 5px;
+}
+
+.donno {
+    display: flex;
+    flex-direction: row;
+    height: 85%;
+    width: 100%;
+}
+
+::-webkit-resizer {
+    background: url('../Images/resize.png');
+    background-size: cover;
+}
+
+.Time {
+    display: flex;
+    width: 50%;
+    font-size: 10px;
+    align-items: center;
+    justify-content: space-around;
+    align-content: space-around;
+    flex-wrap: wrap;
+    bottom: 0;
+    position: absolute;
+    left: 3px;
+  }
+  
+  /* .Time .currentTime {
+    text-shadow: 
+    -0.9px -0.9px 0 black,
+    0.9px -0.9px 0 black,
+    -0.9px 0.9px 0 black,
+    0.9px 0.9px 0 black,
+    -0.9px -0.9px 0 black,
+    0.9px -0.9px 0 black,
+    -0.9px 0.9px 0 black,
+    0.9px 0.9px 0 black;
+  color: antiquewhite;
+  } */
+  
+  .homeButton{
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    aspect-ratio: 1;
+    /* transform: translate(calc(100% - 72px),calc(100% - 65px)); */
+  }
+  #app > div.right > div.up > button > img{
+    cursor: pointer;
+  }
