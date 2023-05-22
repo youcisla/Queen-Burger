@@ -196,6 +196,8 @@ function createTask(parent, taskID , timeStart =null,timeEnd =null) {
     task.addEventListener("mousemove", (e) => {
         printTimeSE(task, taskChild);
     });
+    const maxHeight = adjustMaxHeight(parent,task);
+    task.style.maxHeight = `${maxHeight}px`;
     return task;
 }  
 async function loadCreneaux(dates,id_serveur){
@@ -309,8 +311,8 @@ function day(date,id_serveur){
                 }
                 taskNumber++;
                 //
-                const maxHeight = adjustMaxHeight(target,task);
-                task.style.maxHeight = `${maxHeight}px`;
+                /* const maxHeight = adjustMaxHeight(target,task);
+                task.style.maxHeight = `${maxHeight}px`; */
             
             }
     });

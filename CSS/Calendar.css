@@ -112,7 +112,7 @@ font-size:13px;
 
 .draggable {
     height: calc(100% / 12);
-    width: calc(100% - 10px);
+    width: calc(100% - 7px);
     background-color: rgb(54, 167, 233);
     position: absolute;
     display: flex;
