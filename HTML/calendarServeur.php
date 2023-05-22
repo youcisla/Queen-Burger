@@ -96,6 +96,8 @@ if(isset($_GET["serveur"])){
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
     <script src="../JavaScript/date.js" defer></script>
     <script src="../JavaScript/calendarServeur.js" defer></script>
+    <script src="../JavaScript/mainCalendar.js" defer></script>
+
     <script src="../JavaScript/requeteCalendrier.js"></script>
 </body>
 
