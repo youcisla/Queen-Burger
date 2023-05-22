@@ -378,11 +378,11 @@ async function loadCreneauxServ(dates,id_serveur){
 function mainServ(){
     const line_nb = 12;
     const column_nb = 7;
-    const id_serveur = 1;
+    const id_serveur = ID_SERVEUR;
     console.log(id_serveur);
-    if (id_serveur != - 1){
-        createTableServ(line_nb,column_nb,id_serveur)
-    }
+    createTableServ(line_nb,column_nb,id_serveur)
+
+    console.log(ID_SERVEUR);
 }
 function createTableServ(line_nb,column_nb,id_serveur){
     createCalendarView("calendar1",column_nb,line_nb);
@@ -417,5 +417,6 @@ function createTaskServ(parent, taskID , timeStart =null,timeEnd =null) {
         printTimeSELoad(timeStart,timeEnd,task,taskChild);
     }
     return task;
-}  
- mainServ();
+}
+
+mainServ();

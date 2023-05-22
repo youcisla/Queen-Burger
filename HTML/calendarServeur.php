@@ -1,15 +1,10 @@
 <?php
-include_once "../BaseDeDonne/indexx.php";
+include_once "../PHP/verificationConnexion.php";
+redirectionConnexion(["serveur"], "base.php");
 
-// verif si l id dans lhyper lien est valide
-if(isset($_GET["serveur"])){
-    $id_serveur = $_GET["serveur"];
-    $sql = "SELECT * FROM personne WHERE id = $id_serveur AND role = 'serveur'";
-    $result = bdd()->query($sql);
-    if($result->num_rows <= 0) {
-        header("Location: calendar.php");
-    }
-}
+$id_serveur = idConnexion();
+
+// pardonnez moi pour ca
 ?>
 
 
@@ -93,10 +88,16 @@ if(isset($_GET["serveur"])){
             </div>
         </div>
     </div>
+
+    <script>
+        // pardonnez moi pour ca  
+        let ID_SERVEUR = <?= $id_serveur?>;
+    </script>
+        
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+    <script src="../JavaScript/requeteCalendrier.js" defer></script>
     <script src="../JavaScript/date.js" defer></script>
     <script src="../JavaScript/calendarServeur.js" defer></script>
-    <script src="../JavaScript/requeteCalendrier.js"></script>
 </body>
 
 </html>
