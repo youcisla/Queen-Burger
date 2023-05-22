@@ -30,8 +30,11 @@ $heurefin = $data["heurefin"];
 
 $sql = "SELECT * FROM assignation_serveur WHERE id = $id_creneau";
 $result = bdd()->query($sql);
-$creneau = $result->fetch_assoc();
+if($result->num_rows <= 0) {
+    exit;
+}
 
+$creneau = $result->fetch_assoc();
 
 $date = $creneau["date"];
 $id_serveur = $creneau["id_serveur"];
