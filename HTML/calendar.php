@@ -1,3 +1,19 @@
+<?php
+include_once "../BaseDeDonne/indexx.php";
+
+// verif si l id dans lhyper lien est valide
+if(isset($_GET["serveur"])){
+    $id_serveur = $_GET["serveur"];
+    $sql = "SELECT * FROM personne WHERE id = $id_serveur AND role = 'serveur'";
+    $result = bdd()->query($sql);
+    if($result->num_rows <= 0) {
+        header("Location: calendar.php");
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +75,21 @@
                 <!-- <div id="addTask"></div> -->
             </div>
             <div class="down">
-                Forums
+                <form method="get" action="calendar.php">
+                    <select name="serveur" id="seveur_select">
+                        <?php
+                            include_once "../BaseDeDonne/Personne.php";
+
+                            $serveurs = GetAllServeurs();
+
+                            foreach($serveurs as $serveur) {
+                                echo "<option value='{$serveur['id']}'>{$serveur['nom']} {$serveur['prenom']}</option>";
+                            }
+                        ?>
+                    </select>
+                
+                    <input type = "submit" value = "valider">
+                </form>
             </div>
         </div>
     </div>
