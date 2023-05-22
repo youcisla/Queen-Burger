@@ -50,8 +50,9 @@ redirectionConnexion(['gerant', 'cuisinier'],'../HTML/base.php');
         // On determine si l'utilisateur a bien rentré des infos de recherche
         if (isset($_POST['recherche'])) {
             $recherche = $_POST['recherche'];
+            $connectedUserId = $_SESSION["id"];
             // Des infos sont bien rentrées
-            afficheRecherche($recherche);
+            afficheRecherche($recherche, $connectedUserId);
         } else {
             echo "<br>Rien dans la recherche";
         }

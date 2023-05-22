@@ -211,14 +211,10 @@ img {
 }
 
 .table {
-  border: 1px solid var(--fifth-color);
-  padding: 10px;
+  border: 2px solid white;
   margin: 10px;
   border-radius: 10px;
-  width: 40px;
-  aspect-ratio: 1;
   flex: 1 1 calc(25% - 20px);
-  max-width: calc(25% - 20px);
 }
 
 .table:nth-of-type(n+10) {
@@ -265,6 +261,7 @@ img {
   display: flex;
   place-content: center;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .L70_30 {

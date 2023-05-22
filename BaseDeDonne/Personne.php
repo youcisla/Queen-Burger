@@ -135,9 +135,10 @@ function affichePage($nb) {
     }
 }
 
-function afficheRecherche($recherche) {
+function afficheRecherche($recherche, $connectedUserId) {
     $conn = bdd();
-    $sql = "SELECT * FROM personne WHERE nom LIKE '$recherche' OR prenom LIKE '$recherche'";
+    // $sql = "SELECT * FROM personne WHERE nom LIKE '$recherche' OR prenom LIKE '$recherche'";
+    $sql = "SELECT * FROM personne WHERE (nom LIKE '$recherche' OR prenom LIKE '$recherche') AND id != '$connectedUserId'";
     $result = $conn->query($sql);
 
     if (!$result) {
