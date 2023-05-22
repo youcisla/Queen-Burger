@@ -216,7 +216,7 @@ function enableDrag(elementchild,element,parent) {
     element.addEventListener("mousedown",e=>{
         element.style.zIndex=100;
     })
-    element.addEventListener("mouseup", async (e) => {
+    document.addEventListener("mouseup", async (e) => {
         element.style.zIndex = 0;
         const time = stringTimeFormat(element);
         
@@ -235,15 +235,14 @@ function enableDrag(elementchild,element,parent) {
             element.style.height = `${coords.bottom - coords.top }px`;
             printTimeSELoad(strStart,strEnd,element,elementchild);
         }
+        isDragging = false;
     });
-
     elementchild.addEventListener("mousedown", (event) => {
         element.style.zIndex = 100;
         console.log(element.style.zIndex);
         isDragging = true;
         initialPosition = element.offsetTop - event.clientY;
     });
-
     document.addEventListener("mousemove", (event) => {
 
     if (isDragging) {
@@ -259,12 +258,11 @@ function enableDrag(elementchild,element,parent) {
         element.style.top = `${newPositionInBounds}px`;
         }
     });
-
-    document.addEventListener("mouseup", event => {
-        
+/*     document.addEventListener("mouseup", event => {
+        event.stopPropagation();
         
         isDragging = false;
-    });
+    }); */
 }
 function createContent(task){
     let x_bar = createElement(task,"x_bar","x_bar");
