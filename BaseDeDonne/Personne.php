@@ -268,4 +268,18 @@ function GetAllMail() {
 
     return $return;
 }
+
+
+function GetAllServeur() {
+    $sql = "SELECT * FROM personne WHERE role = 'serveur'";
+
+    $return = array();
+
+    $result = bdd()->query($sql);
+    while($row = $result->fetch_assoc()) {
+        $return[] = $row;
+    }
+
+    return $return;
+}
 ?>
