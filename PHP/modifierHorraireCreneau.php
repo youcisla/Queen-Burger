@@ -36,33 +36,20 @@ $creneau = $result->fetch_assoc();
 $date = $creneau["date"];
 $id_serveur = $creneau["id_serveur"];
 
-
-
-$sqlback = "SELECT hdebut, hfin FROM assignation_serveur WHERE id = $id_creneau";
-$resultback = bdd()->query($sqlback);
+$return["heuredebut"] = $creneau["hdebut"];
+$return["heurefin"] = $creneau["hfin"];
 
 
 
-//test si le serveur a donné une absence ce jour
-$sql1 = "SELECT * FROM absence WHERE ('{$date}' BETWEEN absence.dateDebut AND absence.dateFin) AND absence.id_serveur = {$id_serveur}";
-$result1 = bdd()->query($sql1);
-
-if($result1->num_rows > 0) {
-    // le serveur a une absence ce jour
-    $return["valide"] = false;
-    $return["raison"] = 1;
-
-    echo json_encode($return);
-    exit;
-}
 
 
 //test si le serveur est deja prit a cet horaire
-$test1 = "('{$heuredebut}' >= hdebut AND '{$heuredebut}' <= hfin)";
-$test2 = "('{$heurefin}' >= hdebut AND '{$heurefin}' <= hfin)";
+$test1 = "('{$heuredebut}' > hdebut AND '{$heuredebut}' < hfin)";
+$test2 = "('{$heurefin}' > hdebut AND '{$heurefin}' < hfin)";
+$test3 = "('{$heuredebut}' < hdebut AND '{$heurefin}' > hfin)";
 
 
-$sql2 = "SELECT * FROM assignation_serveur WHERE ({$test1} OR {$test2}) AND id_serveur = {$id_serveur} AND date = '{$date}' AND id != {$id_creneau}";
+$sql2 = "SELECT * FROM assignation_serveur WHERE ({$test1} OR {$test2} OR {$test3}) AND id_serveur = {$id_serveur} AND date = '{$date}' AND id != {$id_creneau}";
 $result2 = bdd()->query($sql2);
 $return["zzzz"] = $sql2;
 

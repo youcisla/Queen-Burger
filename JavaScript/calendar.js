@@ -196,7 +196,6 @@ function createTask(parent, taskID , timeStart =null,timeEnd =null) {
         printTimeSE(task, taskChild);
     }
     task.addEventListener("mousemove", (e) => {
-        console.log("jo mama");
         printTimeSE(task, taskChild);
     });
     return task;
@@ -214,20 +213,23 @@ async function loadCreneaux(dates){
 function enableDrag(elementchild,element,parent) {
     let isDragging = false;
     let initialPosition;
-
+    element.addEventListener("mousedown",e=>{
+        element.style.zIndex=100;
+    })
     element.addEventListener("mouseup", async (e) => {
-        
+        element.style.zIndex = 0;
         const time = stringTimeFormat(element);
         
-        console.log(element.time)
         const id = element.id.substring(0, element.id.length - 5);
         //modifierHorraireCreneau(id, time.hourStart, time.hourEnd);
         let data = await modifierHorraireCreneau(id, time.hourStart, time.hourEnd);
         console.log(data);
         if(!data.valide) {
-            console.log("invalide")
-            let strStart = strTime(element.time.timeStart.hourStart,element.time.timeStart.minStart);
-            let strEnd = strTime(element.time.timeEnd.hoursEnd,element.time.timeEnd.minEnd);
+
+            console.log("invalide");
+            strStart = data.heuredebut;
+            strEnd = data.heurefin;
+
             const coords = getTaskPosition(strStart,strEnd,element);
             element.style.top = `${coords.top}px`;
             element.style.height = `${coords.bottom - coords.top }px`;
@@ -236,13 +238,14 @@ function enableDrag(elementchild,element,parent) {
     });
 
     elementchild.addEventListener("mousedown", (event) => {
+        element.style.zIndex = 100;
+        console.log(element.style.zIndex);
         isDragging = true;
         initialPosition = element.offsetTop - event.clientY;
     });
 
     document.addEventListener("mousemove", (event) => {
-    event.stopPropagation();
-    
+
     if (isDragging) {
         //
         const newPosition = event.clientY + initialPosition;
@@ -258,7 +261,7 @@ function enableDrag(elementchild,element,parent) {
     });
 
     document.addEventListener("mouseup", event => {
-         event.stopPropagation(); 
+        
         
         isDragging = false;
     });
