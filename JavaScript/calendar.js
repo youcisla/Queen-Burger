@@ -235,6 +235,7 @@ function enableDrag(elementchild,element,parent) {
             element.style.height = `${coords.bottom - coords.top }px`;
             printTimeSELoad(strStart,strEnd,element,elementchild);
         }
+        //
         isDragging = false;
     });
     elementchild.addEventListener("mousedown", (event) => {
