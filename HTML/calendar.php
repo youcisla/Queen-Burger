@@ -52,9 +52,9 @@
         </div>
         <div class="right">
             <div class="up">
-                <button class="homeButton" onclick="goToHome()">
+                <a class="homeButton" href='../HTML/base.php'>
                     <img width="24" height="24" src="https://img.icons8.com/material-rounded/24/home.png" alt="home" />
-                </button>
+                </a>
                 Tools
                 <!-- <div id="addTask"></div> -->
             </div>

@@ -223,17 +223,6 @@ font-size:13px;
     background-size: cover;
 }
 
-/* Heure de début tache */
-/* #\{day\:2\;taskNbr\:1\}_draggable_time>div:nth-child(1) {
-    border: 1px solid;
-} */
-
-/* Heure de fin tache */
-/* #\{day\:2\;taskNbr\:1\}_draggable_time>div:nth-child(2) {
-    border: 1px solid;
-} */
-
-/* Leur mother div */
 .Time {
     display: flex;
     width: 50%;
@@ -247,7 +236,7 @@ font-size:13px;
     left: 3px;
   }
   
-  .Time .currentTime {
+  /* .Time .currentTime {
     text-shadow: 
     -0.9px -0.9px 0 black,
     0.9px -0.9px 0 black,
@@ -258,7 +247,7 @@ font-size:13px;
     -0.9px 0.9px 0 black,
     0.9px 0.9px 0 black;
   color: antiquewhite;
-  }
+  } */
   
   .homeButton{
     background: transparent;
