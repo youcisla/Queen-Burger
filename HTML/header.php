@@ -15,6 +15,8 @@
         if($role == "gerant") {
             //gerant connecté
             
+            echo "<button class = 'burgerButton' onclick = 'goToSecteurs()'>Secteurs</button>";
+            
             //gestion serveur
             echo "<button class = 'burgerButton' onclick = 'goToServers()'>Serveurs</button>";
 
@@ -24,6 +26,8 @@
 
         if($role == "cuisinier") {
             //cuisinier connecté
+            
+            echo "<button class = 'burgerButton' onclick = 'goToSecteurs()'>Secteurs</button>";
 
             //gestion serveur
             echo "<button class='burgerButton' onclick='goToServers()'>Serveurs</button>";
@@ -34,6 +38,9 @@
 
         if($role == "serveur") {
             //serveur connecté
+            
+            //secteur
+            //echo "<button class = 'burgerButton' onclick = 'goToSecteurs()'>Secteurs</button>";
 
             echo "<button class='burgerButton' onclick='openPopup()''>Absence</button>";
             //emploie du temps

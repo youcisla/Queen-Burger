@@ -1,54 +1,113 @@
-html, body {
-    height: 100%;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-* {
-    margin : 0px;
-    padding : 0px;
-    border : 0px;
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: transparent;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+#tables, #secteurs {
+    margin-bottom: 20px;
+}
+
+#liste_tables, #liste_secteurs {
+    margin-bottom: 10px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.option > div {
+    margin-right: 10px;
+}
+
+.option button {
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: black;
+    color: antiquewhite;
+    border: solid 2px white;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    margin: 5px;
+}
+
+.option input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 main {
     display : flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: start;
-}
-
-main > div {
-    border : 2px black solid;
+    justify-content: space-around;
+    align-items: stretch;
 }
 
 #secteurs {
     min-width: 20%;
+    border: solid 2px transparent;
 }
 
 #tables {
     min-width: 10%;
 }
 
-
 #liste_secteurs, #liste_tables {
+    border: solid 2px white;
     display : flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0px 30px;
+    align-content: space-around;
+    align-items: stretch;
 }
 
 .option {
-    display : flex;
-    justify-content: start;
+    border: solid 2px transparent;
 }
 
-
 .table {
-    display: flex;
     flex-direction: row;
+    width: 200PX;
 }
 
 .secteur {
 
+border: solid 2px white;
+
+border-radius: 10px;
+
+margin-top: 5px;
+
+text-align: center;
 }
 
 .secteur_select {
-    background-color: gray;
+    background-color: transparent;
+    border: solid 2px black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+button{
+    background:black;
+    color:antiquewhite;
+    width:20%;
+    border:solid 2px white;
+    border-radius:10px;
 }

@@ -88,6 +88,10 @@ function goToReservation() {
     window.location.href = "/Queen-Burger/HTML/base.php";
 }
 
+function goToSecteurs() {
+  window.location.href = "/Queen-Burger/HTML/gestionSecteur.php";
+}
+
 function goToServers() {
   window.location.href = "/Queen-Burger/HTML/gerant.php";
 }
