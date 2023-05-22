@@ -106,7 +106,7 @@ return creneaux;
  * @param {number} id_serveur : id de l'employé
  * @param {array dates} dates : tableau de date format yyyy-mm-dd
  * 
- * @return {dictionnaire boolean} {date1 : bool1, date2 : bool2}
+ * @return {array boolean} [bool1, bool2]
  */
 async function obtenirAbsencesDates(id_serveur, dates) {
   let absences = null;

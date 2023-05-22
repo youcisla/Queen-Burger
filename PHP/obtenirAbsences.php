@@ -8,11 +8,7 @@ input
     - dates : tableau de date format yyyy-mm-dd
 
 ouput
-    - absence : dictionnaire contenant tout les absences
-            [
-                date1 => boolean, 
-                date2 => boolean
-            ]
+    - absence : liste de booleabn
 */
 
 $request_body = file_get_contents('php://input');
@@ -27,7 +23,7 @@ foreach($dates as $date) {
     $sql = "SELECT * FROM absence WHERE id_serveur = $id_serveur AND ('$date' BETWEEN datedebut AND datefin)";
     $result = bdd()->query($sql);
 
-    $absences[$date] = ($result->num_rows);
+    $absences[] = ($result->num_rows);
 }
 
 echo json_encode($absences);

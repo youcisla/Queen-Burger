@@ -29,6 +29,7 @@ function createCalendar(parentID,lignes){
         let intermidiateDiv = createElement(calendarBody,`droptarget_${date[ligne]}`,"droptarget");
     }
     
+    //displayAbsence(date,1);
     loadCreneaux(date);
 }
 function addDate(idDiv) {
@@ -95,6 +96,21 @@ function printTime(hours,min,parent){
     }
     parent.appendChild(div);
 }
+function strTime(hours,min){
+    let time ="";
+    if( ( hours < 10 ) && ( min < 10 )  ){
+        time=`0${hours}:0${min}`;
+    }else if ( ( hours < 10 )  && ( min > 10 ) ){
+        time=`0${hours}:${min}`;
+    }else if ( ( hours > 10 )  && ( min < 10 ) ){
+        time=`${hours}:0${min}`;
+    }else{
+        time= hours+":"+min;
+    }
+    time = time +":00"
+    return time;
+    
+}
 function getTaskTimes(element){
     const corrdsTopBot = getElementCoordinates(element);
     const getTmeSE = getTime(corrdsTopBot.top,corrdsTopBot.bottom,element);
@@ -111,6 +127,23 @@ function getTaskTimes(element){
         timeEnd:timeEnd
     }
 }
+function getTaskPosition(heurDebut,heurFin,element) {
+    const oneMin = oneMinInPixils(element);
+    const hourStart = parseInt(heurDebut.substring(0, 2))*60;
+    const minStart = parseInt(heurDebut.substring(3 , 5));
+    const minSF = hourStart + minStart ;
+    const top = minSF * oneMin;
+
+    const hourEnd = parseInt(heurFin.substring(0, 2))*60;
+    const minEnd = parseInt(heurFin.substring(3 , 5));
+    const minEF = hourEnd + minEnd ;
+    const bottom = minEF * oneMin;
+
+    return{
+        top:top,
+        bottom:bottom
+    }
+}
 function printTimeSE(element, elementChild) {
     // calculations
     let data = getTaskTimes(element);
@@ -123,7 +156,23 @@ function printTimeSE(element, elementChild) {
     printTime(data.timeStart.hourStart, data.timeStart.minStart, timeDiv);
     printTime(data.timeEnd.hoursEnd, data.timeEnd.minEnd, timeDiv);
 } 
-function createTask(parent, taskID) {
+// hh:mm:ss 
+function printTimeSELoad(timeStart, timeEnd,element,elementChild) {
+    const hourStart = parseInt(timeStart.substring(0, 2));
+    const minStart = parseInt(timeStart.substring(3 , 5));
+    const hourEnd = parseInt(timeEnd.substring(0, 2));
+    const minEnd = parseInt(timeEnd.substring(3 , 5));
+    // things
+    let timeDiv = document.getElementById(`${element.id}_time`);
+    if (timeDiv) {
+      timeDiv.parentNode.removeChild(timeDiv);
+    }
+    timeDiv = createElement(elementChild, `${element.id}_time`, "Time");
+    printTime(hourStart,minStart, timeDiv);
+    printTime(hourEnd,minEnd, timeDiv);
+} 
+
+function createTask(parent, taskID , timeStart =null,timeEnd =null) {
     //
     const task = createElement(parent, taskID, "draggable");
     // content
@@ -134,36 +183,59 @@ function createTask(parent, taskID) {
     enableDrag(taskChild, task, parent);
 
     // position element on click
-    const parentRect = parent.getBoundingClientRect();
-    const offsetY = event.clientY - parentRect.top;
-    task.style.top = `${offsetY}px`;
-    // time stuff    printTimeSE(task, taskChild);
-    task.addEventListener("mousemove", (e) => {
+    if(timeEnd && timeEnd){
+        const coords = getTaskPosition(timeStart,timeEnd,task);
+        task.style.top = `${coords.top}px`;
+        task.style.height = `${coords.bottom - coords.top }px`;
+        printTimeSELoad(timeStart,timeEnd,task,taskChild);
+    }else{
+        const parentRect = parent.getBoundingClientRect();
+        const offsetY = event.clientY - parentRect.top;
+        task.style.top = `${offsetY}px`;
+        // time stuff    
         printTimeSE(task, taskChild);
-    });
-    task.addEventListener("mouseup", async (e) => {
-        const time = stringTimeFormat(task);
-        console.log(time);
-        const id = task.id.substring(0, task.id.length - 5);
-        //modifierHorraireCreneau(id, time.hourStart, time.hourEnd);
-        console.log(await modifierHorraireCreneau(id, time.hourStart, time.hourEnd))
+    }
+    task.addEventListener("mousemove", (e) => {
+        console.log("jo mama");
+        printTimeSE(task, taskChild);
     });
     return task;
 }  
 async function loadCreneaux(dates){
     let creneaux = await obtenirCreneauxDates(1, dates);
     for(let date of dates){
-        console.log(date)
+        let dateElement =document.querySelector("#droptarget_" + date);
         for(let creneau of creneaux[date]){
+            createTask(dateElement, `${creneau["id"]}_task` ,creneau["hdebut"], creneau["hfin"]);
         }
     }
 }
+
 function enableDrag(elementchild,element,parent) {
     let isDragging = false;
     let initialPosition;
 
+    element.addEventListener("mouseup", async (e) => {
+        
+        const time = stringTimeFormat(element);
+        
+        console.log(element.time)
+        const id = element.id.substring(0, element.id.length - 5);
+        //modifierHorraireCreneau(id, time.hourStart, time.hourEnd);
+        let data = await modifierHorraireCreneau(id, time.hourStart, time.hourEnd);
+        console.log(data);
+        if(!data.valide) {
+            console.log("invalide")
+            let strStart = strTime(element.time.timeStart.hourStart,element.time.timeStart.minStart);
+            let strEnd = strTime(element.time.timeEnd.hoursEnd,element.time.timeEnd.minEnd);
+            const coords = getTaskPosition(strStart,strEnd,element);
+            element.style.top = `${coords.top}px`;
+            element.style.height = `${coords.bottom - coords.top }px`;
+            printTimeSELoad(strStart,strEnd,element,elementchild);
+        }
+    });
+
     elementchild.addEventListener("mousedown", (event) => {
-        event.stopPropagation();
         isDragging = true;
         initialPosition = element.offsetTop - event.clientY;
     });
@@ -178,12 +250,6 @@ function enableDrag(elementchild,element,parent) {
         const maxPosition = parentBottom - element.offsetHeight;
         const newPositionInBounds = Math.min(maxPosition, Math.max(newPosition, 0));
 
-        const computedStyles = getComputedStyle(element);
-
-        //const borderTopSize = parseInt(computedStyles.getPropertyValue('border-top-width'), 10);
-        //const borderBottomSize = parseInt(computedStyles.getPropertyValue('border-bottom-width'), 10)
-        //const border = borderTopSize + borderBottomSize;       
-        //
         const maxHeight = adjustMaxHeight(parent,element);
         //
         element.style.maxHeight = `${maxHeight}px`;
@@ -192,7 +258,8 @@ function enableDrag(elementchild,element,parent) {
     });
 
     document.addEventListener("mouseup", event => {
-        /* event.stopPropagation(); */
+         event.stopPropagation(); 
+        
         isDragging = false;
     });
 }
@@ -270,7 +337,7 @@ function main(){
     const line_nb = 12;
     const column_nb = 7;
     createTable(line_nb,column_nb)
-    week();    
+    week(); 
 }
 function stringTimeFormat(task){
     const tempTime = getTaskTimes(task);
@@ -281,6 +348,19 @@ function stringTimeFormat(task){
     return {
         hourStart:hourStart,
         hourEnd:hourEnd
+    }
+}
+
+async function displayAbsence(dates, id_serveur) {
+    let absences = await obtenirAbsencesDates(id_serveur, dates);
+
+    for(let i = 0; i < 7; i++) {
+        console.log(absences, i);
+        if(absences[i]) {
+            
+            //let dayElement = document.querySelector("#day_" + (i+1));
+            //dayElement.classList.add("absence");
+        }
     }
 }
 main();
