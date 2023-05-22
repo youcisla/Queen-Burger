@@ -70,21 +70,6 @@ $id_serveur = idConnexion();
                 <!-- <div id="addTask"></div> -->
             </div>
             <div class="down">
-                <form method="get" action="calendar.php">
-                    <select name="serveur" id="seveur_select">
-                        <?php
-                            include_once "../BaseDeDonne/Personne.php";
-
-                            $serveurs = GetAllServeurs();
-
-                            foreach($serveurs as $serveur) {
-                                echo "<option value='{$serveur['id']}'>{$serveur['nom']} {$serveur['prenom']}</option>";
-                            }
-                        ?>
-                    </select>
-                
-                    <input type = "submit" value = "valider">
-                </form>
             </div>
         </div>
     </div>

@@ -119,6 +119,10 @@ function goToMenu() {
 function goToLogOut() {
   window.location.href = "/Queen-Burger/HTML/logout.php";
 }
+
+function goToCalendarServeur() {
+  window.location.href = "/Queen-Burger/HTML/calendarServeur.php";
+}
 /////////////////////////////////////////////////////////////////////////////////////////////
 //test for header
 function test(){

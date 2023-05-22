@@ -44,7 +44,7 @@
 
             echo "<button class='burgerButton' onclick='openPopup()''>Absence</button>";
             //emploie du temps
-            echo "<button class='burgerButton' onclick='goToCalendar()''>Calendar</button>";
+            echo "<button class='burgerButton' onclick='goToCalendarServeur()''>Calendar</button>";
         }
 
         if($role == "client") {
