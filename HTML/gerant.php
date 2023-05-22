@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <?php
 include_once '../BaseDeDonne/Personne.php';
@@ -9,7 +10,7 @@ if (isset($_POST['page'])) {
 } else {
     $page = 0;
 }
-
+redirectionConnexion(['gerant', 'cuisinier'],'../HTML/base.php');
 ?>
 <html lang="fr">
 
@@ -76,8 +77,6 @@ if (isset($_POST['page'])) {
         return ($taux >= $seuil);
     }
     ?>
-    <!-- </table>
-    </table> -->
     <div class='down'>
         <div class='left'>
             <button class="buttonSHAPE">
