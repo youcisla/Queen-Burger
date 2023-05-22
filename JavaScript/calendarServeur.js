@@ -6,6 +6,11 @@ function createElement(parent,id,classs){
     parent.appendChild(div);
     return div
 }
+function pixelToPercentage(parent,nbr){
+    let parentSizeInPersent = parent.clientHeight;
+    let res = (100 * nbr /parentSizeInPersent);
+    return res;
+}
 function createCalendarView(parentID,lignes,columns){
     // create calendar
 
@@ -183,13 +188,13 @@ function createTask(parent, taskID , timeStart =null,timeEnd =null) {
     // position element on click
     if(timeEnd && timeEnd){
         const coords = getTaskPosition(timeStart,timeEnd,task);
-        task.style.top = `${coords.top}px`;
-        task.style.height = `${coords.bottom - coords.top }px`;
+        task.style.top = `${pixelToPercentage(parent,coords.top)}%`;
+        task.style.height = `${pixelToPercentage(parent,(coords.topcoords.bottom - coords.top ))}%`;
         printTimeSELoad(timeStart,timeEnd,task,taskChild);
     }else{
         const parentRect = parent.getBoundingClientRect();
         const offsetY = event.clientY - parentRect.top;
-        task.style.top = `${offsetY}px`;
+        task.style.top = `${pixelToPercentage(parent,offsetY)}%`;
         // time stuff    
         printTimeSE(task, taskChild);
     }
@@ -229,8 +234,8 @@ function enableDrag(elementchild,element,parent) {
             strEnd = data.heurefin;
 
             const coords = getTaskPosition(strStart,strEnd,element);
-            element.style.top = `${coords.top}px`;
-            element.style.height = `${coords.bottom - coords.top }px`;
+            element.style.top = `${pixelToPercentage(parent,coords.top)}%`;
+            element.style.height = `${pixelToPercentage(parent,coords.bottom - coords.top )}%`;
             printTimeSELoad(strStart,strEnd,element,elementchild);
         }
         //
@@ -253,8 +258,8 @@ function enableDrag(elementchild,element,parent) {
 
         const maxHeight = adjustMaxHeight(parent,element);
         //
-        element.style.maxHeight = `${maxHeight}px`;
-        element.style.top = `${newPositionInBounds}px`;
+        element.style.maxHeight = `${pixelToPercentage(parent,maxHeight)}%`;
+        element.style.top = `${pixelToPercentage(parent,newPositionInBounds)}%`;
         }
     });
 }
@@ -310,7 +315,7 @@ function day(date,id_serveur){
                 taskNumber++;
                 //
                 const maxHeight = adjustMaxHeight(target,task);
-                task.style.maxHeight = `${maxHeight}px`;
+                task.style.maxHeight = `${pixelToPercentage(parent,maxHeight)}%`;
             
             }
     });
@@ -413,8 +418,8 @@ function createTaskServ(parent, taskID , timeStart =null,timeEnd =null) {
     // position element on click
     if(timeEnd && timeEnd){
         const coords = getTaskPosition(timeStart,timeEnd,task);
-        task.style.top = `${coords.top}px`;
-        task.style.height = `${coords.bottom - coords.top }px`;
+        task.style.top = `${pixelToPercentage(parent,coords.top)}%`;
+        task.style.height = `${pixelToPercentage(parent,(coords.bottom - coords.top)) }%`;
         printTimeSELoad(timeStart,timeEnd,task,taskChild);
     }
     return task;
