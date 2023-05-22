@@ -331,8 +331,12 @@ function main(){
     const line_nb = 12;
     const column_nb = 7;
     const id_serveur =1;
-    createTable(line_nb,column_nb,id_serveur)
-    week(id_serveur); 
+    if (id_serveur != - 1 ){
+        createTable(line_nb,column_nb,id_serveur)
+        week(id_serveur); 
+    }
+    //createTable(line_nb,column_nb,id_serveur)
+    //week(id_serveur); 
 }
 function stringTimeFormat(task){
     const tempTime = getTaskTimes(task);
