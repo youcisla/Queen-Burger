@@ -19,7 +19,7 @@ function createCalendarView(parentID,lignes,columns){
         }
     }
 }
-function createCalendar(parentID,lignes){
+function createCalendar(parentID,lignes,id_serveur){
     // create calendar
     const date = getAllDaysOfCurrentWeek();
     const parent=document.querySelector("#"+parentID);
@@ -30,7 +30,7 @@ function createCalendar(parentID,lignes){
     }
     
     //displayAbsence(date,1);
-    loadCreneaux(date);
+    loadCreneaux(date,id_serveur);
 }
 function addDate(idDiv) {
     const days = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
@@ -171,14 +171,13 @@ function printTimeSELoad(timeStart, timeEnd,element,elementChild) {
     printTime(hourStart,minStart, timeDiv);
     printTime(hourEnd,minEnd, timeDiv);
 } 
-
 function createTask(parent, taskID , timeStart =null,timeEnd =null) {
     //
     const task = createElement(parent, taskID, "draggable");
     // content
     const taskChild = createElement(task, `${taskID}_Child`, "draggable_Child");
     // info
-    createContent(taskChild);
+    //createContent(taskChild);
     // drag feature
     enableDrag(taskChild, task, parent);
 
@@ -200,8 +199,9 @@ function createTask(parent, taskID , timeStart =null,timeEnd =null) {
     });
     return task;
 }  
-async function loadCreneaux(dates){
-    let creneaux = await obtenirCreneauxDates(1, dates);
+async function loadCreneaux(dates,id_serveur){
+    let creneaux = await obtenirCreneauxDates(id_serveur, dates);
+    console.log(creneaux);
     for(let date of dates){
         let dateElement =document.querySelector("#droptarget_" + date);
         for(let creneau of creneaux[date]){
@@ -209,7 +209,6 @@ async function loadCreneaux(dates){
         }
     }
 }
-
 function enableDrag(elementchild,element,parent) {
     let isDragging = false;
     let initialPosition;
@@ -259,11 +258,6 @@ function enableDrag(elementchild,element,parent) {
         element.style.top = `${newPositionInBounds}px`;
         }
     });
-/*     document.addEventListener("mouseup", event => {
-        event.stopPropagation();
-        
-        isDragging = false;
-    }); */
 }
 function createContent(task){
     let x_bar = createElement(task,"x_bar","x_bar");
@@ -289,14 +283,12 @@ function adjustMaxHeight(parent, element,border =null) {
     const maxChildHeight = parentHeight - (childTop - parentTop) - border;
     return maxChildHeight;
 }
-// editing below
-// lunching functions
-function createTable(line_nb,column_nb){
+function createTable(line_nb,column_nb,id_serveur){
     createCalendarView("calendar1",column_nb,line_nb);
     addDate("date");
-    createCalendar("calendar",column_nb);
+    createCalendar("calendar",column_nb,id_serveur);
 }
-function day(date){
+function day(date,id_serveur){
 
     const target = document.getElementById(`droptarget_${date}`);
     let taskNumber = 1;
@@ -312,7 +304,7 @@ function day(date){
                 //
                 const time = stringTimeFormat(task);
                 //
-                let data = await ajouterCreneau(date,time.hourStart,time.hourEnd,1,1);
+                let data = await ajouterCreneau(date,time.hourStart,time.hourEnd,1,id_serveur);
                 if (data.id == -1){
                     task.remove();
                 }else{
@@ -328,18 +320,19 @@ function day(date){
             }
     });
 }
-function week(){
+function week(id_serveur){
     const weekDays = 7; 
     let x = getAllDaysOfCurrentWeek();
     for(var i = 0 ; i < weekDays ; i++){
-        day(x[i]);
+        day(x[i],id_serveur);
     }
 }
 function main(){
     const line_nb = 12;
     const column_nb = 7;
-    createTable(line_nb,column_nb)
-    week(); 
+    const id_serveur =1;
+    createTable(line_nb,column_nb,id_serveur)
+    week(id_serveur); 
 }
 function stringTimeFormat(task){
     const tempTime = getTaskTimes(task);
@@ -352,14 +345,12 @@ function stringTimeFormat(task){
         hourEnd:hourEnd
     }
 }
-
 async function displayAbsence(dates, id_serveur) {
     let absences = await obtenirAbsencesDates(id_serveur, dates);
 
     for(let i = 0; i < 7; i++) {
         console.log(absences, i);
         if(absences[i]) {
-            
             //let dayElement = document.querySelector("#day_" + (i+1));
             //dayElement.classList.add("absence");
         }
