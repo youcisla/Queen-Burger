@@ -201,7 +201,7 @@ function createTask(parent, taskID , timeStart =null,timeEnd =null) {
     task.addEventListener("mousemove", (e) => {
         printTimeSE(task, taskChild);
     });
-    const maxHeight = adjustMaxHeight(parent,task);
+    const maxHeight = adjustMaxHeight(parent,task,6);
     task.style.maxHeight = `${pixelToPercentage(parent,maxHeight)}%`;
     return task;
 }  
@@ -258,7 +258,7 @@ function enableDrag(elementchild,element,parent) {
         const maxPosition = parentBottom - element.offsetHeight;
         const newPositionInBounds = Math.min(maxPosition, Math.max(newPosition, 0));
 
-        const maxHeight = adjustMaxHeight(parent,element);
+        const maxHeight = adjustMaxHeight(parent,element,6);
         //
         element.style.maxHeight = `${pixelToPercentage(parent,maxHeight)}%`;
         element.style.top = `${pixelToPercentage(parent,newPositionInBounds)}%`;

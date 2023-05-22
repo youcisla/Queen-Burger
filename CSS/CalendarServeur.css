@@ -68,8 +68,8 @@ font-size:13px;
 
 .task {
     width: 100%;
-    height: calc(95% / 12);
-    border: 1px solid;
+    height: calc(97% / 12);
+        border: 1px solid;
 }
 
 .calendar {

@@ -256,7 +256,7 @@ function enableDrag(elementchild,element,parent) {
         const maxPosition = parentBottom - element.offsetHeight;
         const newPositionInBounds = Math.min(maxPosition, Math.max(newPosition, 0));
 
-        const maxHeight = adjustMaxHeight(parent,element);
+        const maxHeight = adjustMaxHeight(parent,element,6);
         //
         element.style.maxHeight = `${pixelToPercentage(parent,maxHeight)}%`;
         element.style.top = `${pixelToPercentage(parent,newPositionInBounds)}%`;
@@ -314,7 +314,7 @@ function day(date,id_serveur){
                 }
                 taskNumber++;
                 //
-                const maxHeight = adjustMaxHeight(target,task);
+                const maxHeight = adjustMaxHeight(target,task,6);
                 task.style.maxHeight = `${pixelToPercentage(parent,maxHeight)}%`;
             
             }
