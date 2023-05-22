@@ -177,7 +177,7 @@ function createTask(parent, taskID , timeStart =null,timeEnd =null) {
     // content
     const taskChild = createElement(task, `${taskID}_Child`, "draggable_Child");
     // info
-    //createContent(taskChild);
+    createContent(taskChild);
     // drag feature
     enableDrag(taskChild, task, parent);
 
@@ -260,7 +260,6 @@ function enableDrag(elementchild,element,parent) {
     });
 }
 function createContent(task){
-    let x_bar = createElement(task,"x_bar","x_bar");
     let element2 = createElement(task,"x","deleter");
     element2.addEventListener("click",e=>{
         e.stopPropagation();
