@@ -98,6 +98,7 @@ $id_serveur = idConnexion();
     <script src="../JavaScript/requeteCalendrier.js" defer></script>
     <script src="../JavaScript/date.js" defer></script>
     <script src="../JavaScript/calendarServeur.js" defer></script>
+    <script src="../JavaScript/requeteCalendrier.js"></script>
 </body>
 
 </html>
