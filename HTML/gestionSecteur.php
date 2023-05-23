@@ -34,12 +34,13 @@
                     <input type="text" id="nom_secteur"> 
                 </div>
                 <button id="del_secteur">-</button>
-                <button id="reload_secteurs">*</button>
+                <button id="reload_secteurs"><img width="15px" height="15px" src="../Images/reload.png" alt="hexagon-reload"/></button>
             </div>
         </div>
     </main>
     <!-- <script src="/Queen-Burger/JavaScript/tables.js" defer></script> -->
     <script src="/Queen-Burger/JavaScript/app.js" defer></script>
+    
 
     <footer>
         <?php 
